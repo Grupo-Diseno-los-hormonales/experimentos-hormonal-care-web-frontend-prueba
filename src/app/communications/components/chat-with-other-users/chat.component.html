@@ -1,7 +1,8 @@
 <div class="chat-container" *ngIf="currentUser && selectedUser">
   <div class="chat-header">
-    <h3>Chat with {{ selectedUser.name }} {{ selectedUser.lastname }}</h3>
+    <h3>{{ 'MESSAGES.CHAT_WITH' | translate }} {{ selectedUser.name }} {{ selectedUser.lastname }}</h3>
   </div>
+
   <div class="chat-messages">
     <div *ngFor="let message of messages" class="message-container">
       <div [ngClass]="{
@@ -14,8 +15,10 @@
       </div>
     </div>
   </div>
+
   <div class="chat-input">
-    <input [(ngModel)]="newMessage" (keydown.enter)="sendMessage()" placeholder="Type a message...">
-   
+    <input [(ngModel)]="newMessage"
+           (keydown.enter)="sendMessage()"
+           [placeholder]="'MESSAGES.TYPE_MESSAGE' | translate">
   </div>
 </div>

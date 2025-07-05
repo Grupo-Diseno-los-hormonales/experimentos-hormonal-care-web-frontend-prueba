@@ -1,6 +1,96 @@
 {
-  "footer": {
-    "intro": "Hecho con",
-    "author": "por el Equipo de Desarrollo de {{ author }}"
+  "LOGIN": {
+    "HOME": "Inicio",
+    "REGISTER": "Registrarse",
+    "WELCOME": "Bienvenido a",
+    "SUBTITLE": "Controla tu salud hormonal con especialistas de confianza.",
+    "TITLE": "Iniciar sesión",
+    "SUBTITLE_CARD": "Accede a tu panel",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "REMEMBER": "Recordarme",
+    "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
+    "BUTTON": "Entrar",
+    "ERROR": "Correo o contraseña inválidos.",
+    "NO_ACCOUNT": "¿No tienes una cuenta?"
+  },
+  "HOME_DOCTOR": {
+    "TITLE": "Pacientes de hoy",
+    "TABLE": {
+      "NAME": "Nombre",
+      "CARE": "Tipo de atención",
+      "HOUR": "Hora",
+      "DIAGNOSIS": "Diagnóstico",
+      "ALERT": "Alerta",
+      "TRANSFER": "Transferir",
+      "VIDEO": "Videoconferencia",
+      "YEARS": "años"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Buscar un paciente",
+      "SCHEDULE": "Agendar seguimiento",
+      "HISTORY": "Historia clínica"
+    },
+    "LOADING": {
+      "TABLE": "Cargando tabla de pacientes...",
+      "SEARCH": "Cargando resultados de búsqueda..."
+    }
+  },
+  "HEADER": {
+    "TITLE": "HormonalCare",
+    "HOME": "Inicio",
+    "CALENDAR": "Calendario",
+    "MESSAGES": "Mensajes",
+    "NOTIFICATIONS": "Notificaciones",
+    "PROFILE": "Perfil",
+    "SEARCH_COLLEAGUE": "Buscar colega por correo..."
+  },
+  "CALENDAR": {
+    "ALL_EVENTS": "Todos los eventos",
+    "ADD_EVENT": "Agregar evento",
+    "EVENT_DATE": "Fecha del evento",
+    "START_TIME": "Hora de inicio",
+    "END_TIME": "Hora de fin",
+    "TITLE": "Título",
+    "TITLE_PLACEHOLDER": "Escribe un título",
+    "PATIENT_EMAIL": "Paciente asociado",
+    "PATIENT_PLACEHOLDER": "Correo del paciente @",
+    "EMAIL_REQUIRED": "El correo es obligatorio.",
+    "EMAIL_INVALID": "Por favor ingrese un correo válido.",
+    "CREATE_EVENT": "Crear evento"
+  },
+  "MESSAGES": {
+    "CHAT_WITH_PATIENT": "Chat con Paciente",
+    "CLEAR_CHAT": "Borrar chat",
+    "TYPE_MESSAGE": "Escribe un mensaje..."
+  },
+  "NOTIFICATIONS": {
+    "APPOINTMENTS_TITLE": "Notificaciones de citas",
+    "ANNOUNCEMENTS_TITLE": "Comunicados del administrador",
+    "APPOINTMENT_WITH": "Cita con {{name}}",
+    "NEW_APPOINTMENT": "Nueva cita programada",
+    "HIDE": "Ocultar",
+    "SHOW": "Mostrar +",
+    "GOT_IT": "Entendido",
+    "NO_NOTIFICATIONS": "No tienes notificaciones en este momento."
+  },
+  "DOCTOR_PROFILE": {
+    "TITLE": "Perfil de usuario: “Hola, Dr {{name}}”",
+    "SIGN_OUT": "Cerrar sesión",
+    "EDIT_PHOTO": "Editar foto",
+    "PATIENTS": "Número de pacientes",
+    "IMPROVE_PLAN": "Mejorar plan",
+    "AVAILABILITY": "Disponibilidad de citas",
+    "CONFIGURE_CERTIFICATES": "Configurar certificados",
+    "CONFIGURE_PLAN": "Configurar plan actual",
+    "SETUP_NOTIFICATIONS": "Configurar notificaciones"
+  },
+
+  "FOOTER": {
+    "RIGHTS": "HormonalCare. Todos los derechos reservados.",
+    "PRIVACY": "Política de Privacidad",
+    "TERMS": "Términos de Servicio",
+    "PERSONAL": "Datos Personales",
+    "HELP": "Ayuda"
   }
 }

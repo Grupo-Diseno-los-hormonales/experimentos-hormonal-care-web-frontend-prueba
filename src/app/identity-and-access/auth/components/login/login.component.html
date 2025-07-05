@@ -1,39 +1,48 @@
+<!-- HEADER -->
 <header class="main-header">
   <div class="header-left">
     <img src="assets/images/logo.png" alt="HormonalCare Logo" class="logo" />
     <span class="brand-title">HormonalCare</span>
   </div>
+
   <nav class="nav-links">
-    <a routerLink="/">Home</a>
+    <a routerLink="/">{{ 'LOGIN.HOME' | translate }}</a>
   </nav>
+
   <div class="header-right">
-    <a class="register-link" routerLink="/selectRole">Register</a>
+    <!-- Idioma compacto -->
+    <div class="language-wrapper">
+      <app-language-switcher></app-language-switcher>
+    </div>
+
+    <a class="register-link" routerLink="/selectRole">{{ 'LOGIN.REGISTER' | translate }}</a>
   </div>
 </header>
 
-<!-- ✅ LOGIN SECTION -->
+
+<!-- LOGIN SECTION -->
 <div class="login-wrapper">
   <div class="login-container">
     <!-- Left -->
     <div class="left-side">
-      <h1 class="title">Welcome to <span>HormonalCare</span></h1>
-      <p class="subtitle">Track your hormonal health with trusted specialists.</p>
+      <h1 class="title">{{ 'LOGIN.WELCOME' | translate }} <span>HormonalCare</span></h1>
+      <p class="subtitle">{{ 'LOGIN.SUBTITLE' | translate }}</p>
       <img src="assets/images/personas.png" alt="Doctor Illustration" class="illustration" />
     </div>
 
     <!-- Right -->
     <mat-card class="login-card">
-      <h2>Log in</h2>
-      <p class="card-subtitle">Access your dashboard</p>
+      <h2>{{ 'LOGIN.TITLE' | translate }}</h2>
+      <p class="card-subtitle">{{ 'LOGIN.SUBTITLE_CARD' | translate }}</p>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ 'LOGIN.EMAIL' | translate }}</mat-label>
           <input matInput formControlName="email" />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Password</mat-label>
+          <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
           <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
           <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
             <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
@@ -41,8 +50,10 @@
         </mat-form-field>
 
         <div class="extras">
-          <mat-checkbox formControlName="remember">Remember me</mat-checkbox>
-          <a class="forgot" href="javascript:void(0)" (click)="goToForgotPassword()">Forgot password?</a>
+          <mat-checkbox formControlName="remember">{{ 'LOGIN.REMEMBER' | translate }}</mat-checkbox>
+          <a class="forgot" href="javascript:void(0)" (click)="goToForgotPassword()">
+            {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
+          </a>
         </div>
 
         <div class="captcha-container" style="margin: 1rem 0;">
@@ -52,17 +63,18 @@
             (resolved)="onCaptchaResolved($event)">
           </re-captcha>
         </div>
-        <button mat-raised-button color="primary" class="login-btn" type="submit">Enter</button>
+        <button mat-raised-button color="primary" class="login-btn" type="submit">
+          {{ 'LOGIN.BUTTON' | translate }}
+        </button>
         <mat-error *ngIf="loginError" class="login-error">
-          Invalid email or password.
+          {{ 'LOGIN.ERROR' | translate }}
         </mat-error>
       </form>
 
       <p class="register-text">
-        Don’t have an account?
-        <a class="register-link" routerLink="/selectRole">Register</a>
+        {{ 'LOGIN.NO_ACCOUNT' | translate }}
+        <a class="register-link" routerLink="/selectRole">{{ 'LOGIN.REGISTER' | translate }}</a>
       </p>
     </mat-card>
   </div>
 </div>
-

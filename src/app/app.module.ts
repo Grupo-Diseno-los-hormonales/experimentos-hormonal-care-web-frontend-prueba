@@ -98,7 +98,7 @@ import {MatPaginator} from "@angular/material/paginator";
 
 // 🌐 Traducciones
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 // ✅ Inicializa Sentry (ya se usó en main.ts, pero aquí se enlaza como ErrorHandler también)
@@ -108,7 +108,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     PatientsTableComponent,
     SearchDoctorsComponent,
     SearchPatiensComponent,
-    DoctorChatComponent,
     PatientChatComponent,
     HomeDoctorComponent,
     DoctorRegistrationComponent,
@@ -143,6 +142,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     PatientsPendingTaskComponent,
     PatientsReminderComponent,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -202,7 +202,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfilesModule,
     SharedModule,
     NgChartsModule,
-    ChatComponent
+    ChatComponent,
+    DoctorChatComponent
   ],
   providers: [
     DoctorService,

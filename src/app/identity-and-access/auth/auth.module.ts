@@ -19,33 +19,40 @@ import { MatButtonModule } from '@angular/material/button';
 
 // reCAPTCHA
 import { RecaptchaModule } from 'ng-recaptcha';
+import {TranslateModule} from "@ngx-translate/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
   declarations: [
-    LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
     SelectUserRoleComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule,
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterModule,
 
-    // Angular Material
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatIconModule,
-    MatCheckboxModule,
-    MatButtonModule,
+        // Angular Material
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatIconModule,
+        MatCheckboxModule,
+        MatButtonModule,
+      MatSelectModule,
+      MatOptionModule,
+      SharedModule,
+      LoginComponent,
 
-    // reCAPTCHA
-    RecaptchaModule,
-  ],
+        // reCAPTCHA
+        RecaptchaModule,
+        TranslateModule,
+    ],
   exports: [
-    LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
     SelectUserRoleComponent

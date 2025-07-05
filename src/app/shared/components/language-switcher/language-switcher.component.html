@@ -1,0 +1,10 @@
+<button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Select Language">
+  <mat-icon>language</mat-icon>
+</button>
+
+<mat-menu #langMenu="matMenu">
+  <button mat-menu-item *ngFor="let language of languages" (click)="useLanguage(language)">
+    <span class="flag">{{ getFlag(language) }}</span>
+    {{ language.toUpperCase() }}
+  </button>
+</mat-menu>

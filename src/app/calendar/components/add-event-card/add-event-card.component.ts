@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleCalendarService } from '../../services/google-calendar-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EventCalendarService, CalendarEvent } from '../../services/event-calendar.service';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-add-event-card',
@@ -16,8 +17,10 @@ export class AddEventCardComponent implements OnInit {
     private fb: FormBuilder,
     private googleCalendarService: GoogleCalendarService,
     private snackBar: MatSnackBar,
-    private eventCalendarService: EventCalendarService
+    private eventCalendarService: EventCalendarService,
+    private translate: TranslateService,
   ) {
+
     this.eventForm = this.fb.group({
       eventDate: [null, Validators.required],
       startTime: [null, Validators.required],
@@ -25,7 +28,18 @@ export class AddEventCardComponent implements OnInit {
       patientEmail: ['', [Validators.required, Validators.email]],
       title: ['', Validators.required],
     });
-  }
+      const lang = localStorage.getItem('lang') || 'es';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+
+    }
+    selectedLang = localStorage.getItem('lang') || 'es';
+
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
+    }
 
   ngOnInit(): void {}
 

@@ -1,6 +1,97 @@
 {
-  "footer": {
-    "intro": "Made with",
-    "author": "by {{ author }} Developer Team"
+  "LOGIN": {
+    "HOME": "Home",
+    "REGISTER": "Register",
+    "WELCOME": "Welcome to",
+    "SUBTITLE": "Track your hormonal health with trusted specialists.",
+    "TITLE": "Log in",
+    "SUBTITLE_CARD": "Access your dashboard",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REMEMBER": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "BUTTON": "Enter",
+    "ERROR": "Invalid email or password.",
+    "NO_ACCOUNT": "Don’t have an account?"
+  },
+  "HOME_DOCTOR": {
+    "TITLE": "Today's patients",
+    "TABLE": {
+      "NAME": "Name",
+      "CARE": "Type of care",
+      "HOUR": "Hour",
+      "DIAGNOSIS": "Diagnosis",
+      "ALERT": "Alert",
+      "TRANSFER": "Transfer",
+      "VIDEO": "Video conference",
+      "YEARS": "years"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Find a patient",
+      "SCHEDULE": "Schedule follow-up",
+      "HISTORY": "Clinic history"
+    },
+    "LOADING": {
+      "TABLE": "Loading patients table...",
+      "SEARCH": "Loading search results..."
+    }
+  },
+
+  "HEADER": {
+    "TITLE": "HormonalCare",
+    "HOME": "Home",
+    "CALENDAR": "Calendar",
+    "MESSAGES": "Messages",
+    "NOTIFICATIONS": "Notifications",
+    "PROFILE": "Profile",
+    "SEARCH_COLLEAGUE": "Search a colleague by email..."
+  },
+  "CALENDAR": {
+    "ALL_EVENTS": "All Events",
+    "ADD_EVENT": "Add Event",
+    "EVENT_DATE": "Event Date",
+    "START_TIME": "Start Time",
+    "END_TIME": "End Time",
+    "TITLE": "Title",
+    "TITLE_PLACEHOLDER": "Write a title",
+    "PATIENT_EMAIL": "Associate Patient",
+    "PATIENT_PLACEHOLDER": "Add Patient Email @",
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_INVALID": "Please enter a valid email.",
+    "CREATE_EVENT": "Create Event"
+  },
+  "MESSAGES": {
+    "CHAT_WITH_PATIENT": "Chat with Patient",
+    "CLEAR_CHAT": "Clear chat",
+    "TYPE_MESSAGE": "Type a message..."
+  },
+  "NOTIFICATIONS": {
+    "APPOINTMENTS_TITLE": "Appointment Notifications",
+    "ANNOUNCEMENTS_TITLE": "Administrator Announcements",
+    "APPOINTMENT_WITH": "Appointment with {{name}}",
+    "NEW_APPOINTMENT": "New appointment scheduled",
+    "HIDE": "Hide",
+    "SHOW": "Show more",
+    "GOT_IT": "Got it",
+    "NO_NOTIFICATIONS": "You have no notifications at the moment."
+  },
+  "DOCTOR_PROFILE": {
+    "TITLE": "User profile: “ Hello, Dr {{name}}”",
+    "SIGN_OUT": "Sign out",
+    "EDIT_PHOTO": "Edit photo",
+    "PATIENTS": "Number of patients",
+    "IMPROVE_PLAN": "Improve plan",
+    "AVAILABILITY": "Appointment availability",
+    "CONFIGURE_CERTIFICATES": "Configure certificates",
+    "CONFIGURE_PLAN": "Configure current plan",
+    "SETUP_NOTIFICATIONS": "Set up notification"
+  },
+
+  "FOOTER": {
+    "RIGHTS": "HormonalCare. All rights reserved.",
+    "PRIVACY": "Privacy Policy",
+    "TERMS": "Terms of Service",
+    "PERSONAL": "Personal Data",
+    "HELP": "Help"
   }
 }

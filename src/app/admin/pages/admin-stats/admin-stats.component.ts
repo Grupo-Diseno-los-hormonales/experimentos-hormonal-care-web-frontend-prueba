@@ -96,6 +96,26 @@ export class AdminStatsComponent {
       }
     };
 
+    // Aplicar también a gráficos independientes
+    this.monthlyActivityOptions.plugins!.legend!.labels = { color: legendColor };
+    this.monthlyActivityOptions.scales = {
+      x: { ticks: { color: ticksColor } },
+      y: { beginAtZero: true, ticks: { color: ticksColor } }
+    };
+
+    this.ticketCategoryOptions.plugins!.legend!.labels = { color: legendColor };
+    this.ticketCategoryOptions.scales = {
+      y: { beginAtZero: true, ticks: { color: ticksColor } }
+    };
+
+    this.responseTimeOptions.plugins!.legend!.labels = { color: legendColor };
+    this.responseTimeOptions.scales = {
+      y: { beginAtZero: true, ticks: { color: ticksColor } },
+      x: { ticks: { color: ticksColor } }
+    };
+
+    this.userRolesOptions.plugins!.legend!.labels = { color: legendColor };
+
     this.refreshCharts();
   }
 

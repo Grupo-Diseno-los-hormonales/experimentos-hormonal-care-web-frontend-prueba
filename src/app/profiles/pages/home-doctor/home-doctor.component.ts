@@ -12,6 +12,9 @@ import { PatientEntity } from '../../../profiles/model/patient.entity';
 import { AnnouncementService } from '../../../notifications/services/announcement.service';
 import { AnnouncementEntity } from '../../../notifications/model/announcement.entity';
 import { AnnouncementPopupComponent } from '../../../notifications/components/announcement-popup/announcement-popup.component';
+import {FormBuilder} from "@angular/forms";
+import {AuthenticationService} from "../../../iam/services/authentication.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-home-doctor',
@@ -30,8 +33,21 @@ export class HomeDoctorComponent implements OnInit {
     private patientsDataService: PatientsDataService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private announcementService: AnnouncementService
-  ) {}
+    private announcementService: AnnouncementService,
+    private translate: TranslateService
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     const userType = this.userTypeService.getUserType();

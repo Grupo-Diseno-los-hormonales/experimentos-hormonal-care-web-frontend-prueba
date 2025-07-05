@@ -4,6 +4,7 @@ import { DoctorViewColleagueComponent } from "../../components/doctor-view-colle
 import { DoctorProfileService } from "../../services/doctor-profile.service";
 import { Router } from '@angular/router';
 import {FormsModule} from "@angular/forms";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-colleague-search',
@@ -12,13 +13,28 @@ import {FormsModule} from "@angular/forms";
   standalone: true,
 
   imports: [
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class ColleagueSearchComponent {
   searchEmail: string = '';
 
-  constructor(private doctorService: DoctorProfileService, public dialog: MatDialog, private router: Router) { }
+  constructor(private doctorService: DoctorProfileService, public dialog: MatDialog, private router: Router,
+  private translate: TranslateService) {
+      const lang = localStorage.getItem('lang') || 'es';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+
+    }
+    selectedLang = localStorage.getItem('lang') || 'es';
+
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
+    }
+
 
   search() {
     this.doctorService.searchDoctorByEmail(this.searchEmail).subscribe(doctors => {

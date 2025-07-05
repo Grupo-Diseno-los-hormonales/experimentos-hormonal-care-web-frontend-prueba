@@ -18,15 +18,17 @@ import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
 import { EventCalendarService } from '../../services/event-calendar.service';
 import { Subscription } from 'rxjs';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-calendar-doctor',
   templateUrl: './calendar-doctor.component.html',
   styleUrl: './calendar-doctor.component.css',
-  imports: [CommonModule, RouterOutlet, FullCalendarModule],
+  imports: [CommonModule, RouterOutlet, FullCalendarModule, TranslateModule],
   standalone: true
 })
 export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy {
+
   @ViewChild('calendar') calendarComponent: any;
 
   private subscription: Subscription = new Subscription();
@@ -60,9 +62,20 @@ export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private eventCalendarService: EventCalendarService
-  ) {}
+    private eventCalendarService: EventCalendarService,
+    private translate: TranslateService) {
+  const lang = localStorage.getItem('lang') || 'es';
+  this.translate.setDefaultLang(lang);
+  this.translate.use(lang);
 
+}
+selectedLang = localStorage.getItem('lang') || 'es';
+
+changeLang(lang: string): void {
+  this.translate.use(lang);
+  localStorage.setItem('lang', lang);
+  this.selectedLang = lang;
+}
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {

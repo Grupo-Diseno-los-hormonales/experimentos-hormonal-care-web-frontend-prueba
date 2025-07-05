@@ -9,6 +9,15 @@
   flex-wrap: wrap;
 
 }
+.lang-selector {
+  min-width: 120px;
+  margin-right: 1rem;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  height: 40px;
+}
 
 .header-left {
   display: flex;
@@ -54,6 +63,18 @@
 .header-right .register-link:hover {
   background-color: #f1def5;
 }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.language-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 
 /* ==== LOGIN SECTION ==== */
 .login-wrapper {

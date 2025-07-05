@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {MatIcon} from "@angular/material/icon";
 
 interface ChatMessage {
   text?: string;
@@ -13,13 +17,37 @@ interface ChatMessage {
 
 @Component({
   selector: 'app-doctor-chat',
+  standalone: true,
   templateUrl: './doctor-chat.component.html',
-  styleUrls: ['./doctor-chat.component.css']
+  styleUrls: ['./doctor-chat.component.css'],
+  imports: [
+    NgForOf,
+    TranslateModule,
+    NgClass,
+    NgIf,
+    FormsModule,
+    MatIcon
+  ]
 })
 export class DoctorChatComponent implements OnInit {
   messages: ChatMessage[] = [];
   newMessage: string = '';
   uploadedFiles: { name: string; url: string; type?: string }[] = [];
+
+  constructor(private translate: TranslateService) {
+
+      const lang = localStorage.getItem('lang') || 'es';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+
+    }
+    selectedLang = localStorage.getItem('lang') || 'es';
+
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
+    }
 
   ngOnInit(): void {
     const saved = localStorage.getItem('single_chat');

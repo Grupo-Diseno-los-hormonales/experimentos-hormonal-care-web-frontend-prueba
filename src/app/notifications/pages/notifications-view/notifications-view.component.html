@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav-content>
     <div class="notifications-container">
-      <h1 class="title">🔔 Notificaciones de citas</h1>
+      <h1 class="title">🔔 {{ 'NOTIFICATIONS.APPOINTMENTS_TITLE' | translate }}</h1>
 
       <!-- 🔹 Notificaciones comunes -->
       <div *ngIf="notifications.length > 0; else noNotifications">
@@ -10,7 +10,14 @@
             <div mat-card-avatar class="icon-avatar">
               <mat-icon>event</mat-icon>
             </div>
-            <mat-card-title>{{ notif.title }}</mat-card-title>
+            <mat-card-title>
+              <ng-container *ngIf="notif.name; else titleSimple">
+                {{ notif.title | translate:{ name: notif.name } }}
+              </ng-container>
+              <ng-template #titleSimple>
+                {{ notif.title | translate }}
+              </ng-template>
+            </mat-card-title>
             <mat-card-subtitle>{{ notif.date }} – {{ notif.time }}</mat-card-subtitle>
             <span class="spacer"></span>
             <button mat-icon-button color="warn" (click)="remove(i)">
@@ -22,7 +29,7 @@
           </mat-card-content>
           <mat-card-actions align="end">
             <button mat-stroked-button color="accent" (click)="toggle(i)">
-              {{ notif.expanded ? 'Ocultar' : 'Mostrar +' }}
+              {{ notif.expanded ? ('NOTIFICATIONS.HIDE' | translate) : ('NOTIFICATIONS.SHOW' | translate) }}
             </button>
           </mat-card-actions>
         </mat-card>
@@ -30,7 +37,7 @@
 
       <!-- 🔸 Comunicados del administrador -->
       <div *ngIf="announcements.length > 0">
-        <h2 class="subtitle">📣 Comunicados del administrador</h2>
+        <h2 class="subtitle">📣 {{ 'NOTIFICATIONS.ANNOUNCEMENTS_TITLE' | translate }}</h2>
         <mat-card *ngFor="let a of announcements; let i = index" class="notification-card announcement">
           <mat-card-header>
             <div mat-card-avatar class="icon-avatar">
@@ -49,16 +56,18 @@
           </mat-card-content>
           <mat-card-actions align="end">
             <button mat-button color="primary" (click)="toggleDescription(a)">
-              {{ a.expanded ? 'Ocultar' : 'Mostrar +' }}
+              {{ a.expanded ? ('NOTIFICATIONS.HIDE' | translate) : ('NOTIFICATIONS.SHOW' | translate) }}
             </button>
-            <button mat-stroked-button color="accent" (click)="deleteAnnouncement(i)">Got it</button>
+            <button mat-stroked-button color="accent" (click)="deleteAnnouncement(i)">
+              {{ 'NOTIFICATIONS.GOT_IT' | translate }}
+            </button>
           </mat-card-actions>
         </mat-card>
       </div>
 
       <!-- 🟪 Sin notificaciones -->
       <ng-template #noNotifications>
-        <p class="no-data">No hay notificaciones por ahora.</p>
+        <p class="no-data">{{ 'NOTIFICATIONS.NO_NOTIFICATIONS' | translate }}</p>
       </ng-template>
     </div>
   </mat-sidenav-content>

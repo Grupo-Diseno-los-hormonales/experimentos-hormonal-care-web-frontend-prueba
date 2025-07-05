@@ -5,6 +5,7 @@ import { Message } from '../../model/message';
 import { DoctorProfile } from '../../model/doctor-profile';
 import {FormsModule} from "@angular/forms";
 import {DatePipe, NgClass} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +15,8 @@ import {DatePipe, NgClass} from "@angular/common";
     FormsModule,
     DatePipe,
     NgClass,
-    CommonModule
+    CommonModule,
+    TranslateModule
   ],
   styleUrls: ['./chat.component.css']
 })

@@ -8,6 +8,7 @@ import {
 } from "./shared/components/header-for-user-type-service/header-for-user-type-service.component";
 import {FooterContentComponent} from "./public/components/footer-content/footer-content.component";
 import {DarkModeService} from "./shared/services/dark-mode.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -27,9 +28,11 @@ export class AppComponent {
     private userTypeService: UserTypeService,
     private router: Router,
     private darkModeService: DarkModeService,
+    private translate: TranslateService,
   ) {
     this.userTypeService.userType$.subscribe(type => this.userType = type);
-
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.use(lang);
     // Escucha los cambios de ruta
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))

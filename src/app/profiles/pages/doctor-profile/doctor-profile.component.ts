@@ -1,17 +1,46 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "../../../iam/services/authentication.service";
 import {Router} from "@angular/router";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {FormsModule} from "@angular/forms";
+import {MatCalendar} from "@angular/material/datepicker";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-doctor-profile',
+  standalone: true,
   templateUrl: './doctor-profile.component.html',
+  imports: [
+    MatIconButton,
+    MatIcon,
+    MatButton,
+    TranslateModule,
+    FormsModule,
+    MatCalendar,
+    NgForOf
+  ],
   styleUrls: ['./doctor-profile.component.css']
 })
 export class DoctorProfileComponent {
   constructor(
     private authService: AuthenticationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   doctor = {
     photoUrl: '',
     name: 'Emilio Mauricio',

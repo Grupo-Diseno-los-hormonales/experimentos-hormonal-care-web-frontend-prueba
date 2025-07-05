@@ -22,6 +22,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // Otros módulos
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import {TranslateModule} from "@ngx-translate/core";
+import {MatButton} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MatIconModule,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule,
+    MatButton
   ]
 })
 export class CalendarModule {}

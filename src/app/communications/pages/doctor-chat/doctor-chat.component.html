@@ -1,6 +1,7 @@
 <div class="chat-container">
   <div class="chat-content">
-    <div class="chat-header">Chat con Paciente</div>
+
+    <div class="chat-header">{{ 'MESSAGES.CHAT_WITH_PATIENT' | translate }}</div>
 
     <div class="chat-messages">
       <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender === 'doctor' ? 'right' : 'left'">
@@ -16,11 +17,15 @@
     </div>
 
     <div class="chat-actions">
-      <button class="clear-chat-btn" (click)="clearChat()">🗑 Borrar chat</button>
+      <button class="clear-chat-btn" (click)="clearChat()">🗑 {{ 'MESSAGES.CLEAR_CHAT' | translate }}</button>
     </div>
 
     <div class="chat-input">
-      <input [(ngModel)]="newMessage" type="text" placeholder="Escribe un mensaje..." (keydown.enter)="sendMessage()" />
+      <input
+        [(ngModel)]="newMessage"
+        type="text"
+        [placeholder]="'MESSAGES.TYPE_MESSAGE' | translate"
+        (keydown.enter)="sendMessage()" />
 
       <label class="file-upload-icon">
         <input type="file" (change)="handleFileUpload($event)" />
@@ -36,5 +41,6 @@
         <mat-icon>send</mat-icon>
       </button>
     </div>
+
   </div>
 </div>

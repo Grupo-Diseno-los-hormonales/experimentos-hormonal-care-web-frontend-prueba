@@ -24,7 +24,6 @@ import { TreatmentPatientComponent } from './pages/treatment-patient/treatment-p
 
 @NgModule({
   declarations: [
-    DoctorProfileComponent,
     PatientProfileComponent,
     PhotoPatientsComponent,
     InfoProfilePatiensComponent,
@@ -45,7 +44,8 @@ import { TreatmentPatientComponent } from './pages/treatment-patient/treatment-p
     MatIconModule,
     SharedModule,
     ProfilesRoutingModule,
-    TreatmentPatientComponent
+    TreatmentPatientComponent,
+    DoctorProfileComponent
   ],
   exports: [
     DoctorProfileComponent,
