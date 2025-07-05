@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-appointments',
   standalone: true,
   templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.css'],
-  imports: [CommonModule, MatButtonModule, FormsModule],
+  imports: [CommonModule, MatButtonModule, FormsModule, TranslateModule],
 })
 export class AppointmentsComponent {
   doctorId!: number;
@@ -32,7 +33,20 @@ export class AppointmentsComponent {
     '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM'
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router,
+              private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');

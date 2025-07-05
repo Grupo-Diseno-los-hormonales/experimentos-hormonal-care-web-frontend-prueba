@@ -85,7 +85,6 @@
     "CONFIGURE_PLAN": "Configurar plan actual",
     "SETUP_NOTIFICATIONS": "Configurar notificaciones"
   },
-
   "FOOTER": {
     "RIGHTS": "HormonalCare. Todos los derechos reservados.",
     "PRIVACY": "Política de Privacidad",
@@ -356,36 +355,30 @@
     },
     "SETTINGS": {
       "TITLE": "⚙️ Configuración de Soporte",
-
       "NOTIFICATIONS": {
         "TITLE": "🔔 Notificaciones",
         "EMAIL": "Enviar notificaciones por correo electrónico",
         "PUSH": "Activar notificaciones emergentes (push)"
       },
-
       "HOURS": {
         "TITLE": "🕒 Horario de atención",
         "START": "Inicio",
         "END": "Fin"
       },
-
       "TEST_MODE": {
         "TITLE": "🧪 Modo de prueba",
         "TOGGLE": "Activar entorno de pruebas"
       },
-
       "STYLE": {
         "TITLE": "🎨 Estilo del soporte",
         "BACKGROUND": "Color de fondo",
         "TEXT": "Color de texto"
       },
-
       "EXPORT": {
         "TITLE": "💾 Exportación",
         "CSV": "Exportar en CSV",
         "PDF": "Exportar en PDF"
       },
-
       "RESET": {
         "TITLE": "♻️ Restaurar configuración",
         "BUTTON": "Restaurar valores por defecto"
@@ -574,14 +567,12 @@
     "hide": "Ocultar",
     "none": "No hay notificaciones en este momento"
   },
-
   "notificationTitles": {
     "Nueva Cita Médica": "Nueva Cita Médica"
   },
   "notificationMessages": {
     "newMedicalAppointment": "Tienes una nueva cita el {{date}} a las {{time}} con {{doctor}}."
   },
-
   "patientHome": {
     "card1Title": "Consultas médicas",
     "card1Content": "Agenda tu próxima visita o resuelve tus dudas médicas, haz clic aquí.",
@@ -597,9 +588,107 @@
     "phoneNumber": "Número de teléfono",
     "email": "Correo electrónico",
     "bloodType": "Tipo de sangre"
+  },
+  "doctorSearch": {
+    "title": "Doctores disponibles",
+    "searchPlaceholder": "Buscar un endocrinólogo",
+    "genreTitle": "Género:",
+    "female": "Femenino",
+    "male": "Masculino",
+    "subspecialty": "Subespecialidad:",
+    "subspecialtyExample": "Ovario poliquístico, Hiperandrogenismo",
+    "priceRangeTitle": "Rango de precios:",
+    "priceRange": {
+      "50_60": "s/.50 - s/.60",
+      "60_70": "s/.60 - s/.70",
+      "70_80": "s/.70 - s/.80",
+      "80_90": "s/.80 - s/.90",
+      "90_100": "s/.90 - s/.100",
+      "100_plus": "s/.100 o más"
+    },
+    "sortBy": "Ordenar por",
+    "sort": {
+      "none": "Ninguno",
+      "price": "Precio",
+      "rating": "Calificación"
+    }
+  },
+  "doctor": {
+    "specialties": {
+      "Endocrinologist": "Endocrinólogo"
+    },
+    "subSpecialties": {
+      "Diabetes and Metabolism": "Diabetes y Metabolismo",
+      "Thyroid Disorders": "Trastornos de la Tiroides",
+      "Obesity and Nutrition": "Obesidad y Nutrición",
+      "Pediatric Endocrinology": "Endocrinología Pediátrica",
+      "Reproductive Endocrinology": "Endocrinología Reproductiva",
+      "Neuroendocrinology": "Neuroendocrinología"
+    },
+    "universities": {
+      "Universidad Nacional Mayor de San Marcos": "Universidad Nacional Mayor de San Marcos",
+      "Universidad Peruana Cayetano Heredia": "Universidad Peruana Cayetano Heredia",
+      "Universidad Nacional de Trujillo": "Universidad Nacional de Trujillo",
+      "Universidad Científica del Sur": "Universidad Científica del Sur",
+      "Universidad Nacional de San Agustín de Arequipa": "Universidad Nacional de San Agustín de Arequipa",
+      "Pontificia Universidad Católica del Perú": "Pontificia Universidad Católica del Perú",
+      "Universidad Ricardo Palma": "Universidad Ricardo Palma",
+      "Universidad Peruana de Ciencias Aplicadas (UPC)": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "Universidad Nacional Federico Villarreal": "Universidad Nacional Federico Villarreal",
+      "Universidad Nacional del Altiplano": "Universidad Nacional del Altiplano",
+      "Universidad de San Martín de Porres": "Universidad de San Martín de Porres"
+    },
+    "rateTitle": "Tarifa estándar:",
+    "scheduleButton": "Agendar cita",
+    "specialtyLabel": "Especialidad",
+    "subSpecialtyLabel": "Subespecialidad",
+    "schoolNumberLabel": "N° de colegiatura",
+    "rneLabel": "RNE",
+    "undergraduateLabel": "Pregrado",
+    "postgraduateLabel": "Postgrado",
+    "loading": "Cargando información del doctor..."
+  },
+  "appointment": {
+    "availableTimes": "Horarios Disponibles",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "selectedTitle": "Seleccionado:",
+    "confirm": "Confirmar Cita",
+    "at": "a las",
+    "months": {
+      "January": "Enero",
+      "February": "Febrero",
+      "March": "Marzo",
+      "April": "Abril",
+      "May": "Mayo",
+      "June": "Junio",
+      "July": "Julio",
+      "August": "Agosto",
+      "September": "Septiembre",
+      "October": "Octubre",
+      "November": "Noviembre",
+      "December": "Diciembre"
+    }
+  },
+  "payment": {
+    "title": "Selecciona el método de pago",
+    "methods": {
+      "card": "Tarjeta de Crédito / Débito",
+      "yape": "Yape",
+      "plin": "Plin"
+    },
+    "costs": {
+      "title": "Costos:",
+      "standardFee": "Tarifa estándar:",
+      "tax": "Impuesto:",
+      "total": "Total:"
+    },
+    "actions": {
+      "pay": "Pagar"
+    }
+  },
+  "common": {
+    "back": "Volver"
   }
-
-
-
 }
 

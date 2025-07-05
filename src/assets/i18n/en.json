@@ -595,6 +595,106 @@
     "phoneNumber": "Phone Number",
     "email": "Email",
     "bloodType": "Type of blood"
+  },
+  "doctorSearch": {
+    "title": "Doctors Available",
+    "searchPlaceholder": "Find an endocrinologist",
+    "genreTitle": "Genre:",
+    "female": "Female",
+    "male": "Male",
+    "subspecialty": "Subspecialty:",
+    "subspecialtyExample": "Polycystic ovary, Hyperandrogenism",
+    "priceRangeTitle": "Price range:",
+    "priceRange": {
+      "50_60": "s/.50 - s/.60",
+      "60_70": "s/.60 - s/.70",
+      "70_80": "s/.70 - s/.80",
+      "80_90": "s/.80 - s/.90",
+      "90_100": "s/.90 - s/.100",
+      "100_plus": "s/.100 or more"
+    },
+    "sortBy": "Sort by",
+    "sort": {
+      "none": "None",
+      "price": "Price",
+      "rating": "Rating"
+    }
+  },
+  "doctor": {
+    "specialties": {
+      "Endocrinologist": "Endocrinologist"
+    },
+    "subSpecialties": {
+      "Diabetes and Metabolism": "Diabetes and Metabolism",
+      "Thyroid Disorders": "Thyroid Disorders",
+      "Obesity and Nutrition": "Obesity and Nutrition",
+      "Pediatric Endocrinology": "Pediatric Endocrinology",
+      "Reproductive Endocrinology": "Reproductive Endocrinology",
+      "Neuroendocrinology": "Neuroendocrinology"
+    },
+    "universities": {
+      "Universidad Nacional Mayor de San Marcos": "National University of San Marcos",
+      "Universidad Peruana Cayetano Heredia": "Cayetano Heredia Peruvian University",
+      "Universidad Nacional de Trujillo": "National University of Trujillo",
+      "Universidad Científica del Sur": "Southern Scientific University",
+      "Universidad Nacional de San Agustín de Arequipa": "San Agustin National University of Arequipa",
+      "Pontificia Universidad Católica del Perú": "Pontifical Catholic University of Peru",
+      "Universidad Ricardo Palma": "Ricardo Palma University",
+      "Universidad Peruana de Ciencias Aplicadas (UPC)": "Peruvian University of Applied Sciences (UPC)",
+      "Universidad Nacional Federico Villarreal": "Federico Villarreal National University",
+      "Universidad Nacional del Altiplano": "National University of the Altiplano",
+      "Universidad de San Martín de Porres": "San Martín de Porres University"
+    },
+    "rateTitle": "Standard rate:",
+    "scheduleButton": "Schedule Appointment",
+    "specialtyLabel": "Specialty",
+    "subSpecialtyLabel": "Subspecialty",
+    "schoolNumberLabel": "School No.",
+    "rneLabel": "RNE",
+    "undergraduateLabel": "Undergraduate",
+    "postgraduateLabel": "Postgraduate",
+    "loading": "Loading doctor information..."
+  },
+  "appointment": {
+    "availableTimes": "Available Times",
+    "previous": "Previous",
+    "next": "Next",
+    "selectedTitle": "Selected:",
+    "confirm": "Confirm Appointment",
+    "at": "at",
+    "months": {
+      "January": "January",
+      "February": "February",
+      "March": "March",
+      "April": "April",
+      "May": "May",
+      "June": "June",
+      "July": "July",
+      "August": "August",
+      "September": "September",
+      "October": "October",
+      "November": "November",
+      "December": "December"
+    }
+  },
+  "payment": {
+    "title": "Select Payment Method",
+    "methods": {
+      "card": "Credit / Debit Card",
+      "yape": "Yape",
+      "plin": "Plin"
+    },
+    "costs": {
+      "title": "Costs:",
+      "standardFee": "Standard fee:",
+      "tax": "Tax:",
+      "total": "Total:"
+    },
+    "actions": {
+      "pay": "Pay"
+    }
+  },
+  "common": {
+    "back": "Back"
   }
-
 }

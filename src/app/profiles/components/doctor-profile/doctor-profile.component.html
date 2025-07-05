@@ -9,10 +9,10 @@
       <img class="doctor-photo" [src]="doctor.image" alt="Doctor Photo">
 
       <div class="rate-card">
-        <p class="rate-title">Standard rate:</p>
+        <p class="rate-title">{{ 'doctor.rateTitle' | translate }}</p>
         <p class="rate-price">s/. {{ doctor.price }}</p>
         <button mat-raised-button color="primary" (click)="scheduleAppointment(doctor.id)">
-          Schedule Appointment
+          {{ 'doctor.scheduleButton' | translate }}
         </button>
       </div>
     </div>
@@ -20,28 +20,28 @@
     <div class="right-side">
       <div class="info-box">
         <div class="info-item" *ngIf="doctor.specialty">
-          <label>Speciality</label>
-          <input type="text" [value]="doctor.specialty" disabled>
+          <label>{{ 'doctor.specialtyLabel' | translate }}</label>
+          <input type="text" [value]="'doctor.specialties.' + doctor.specialty | translate" disabled>
         </div>
         <div class="info-item" *ngIf="doctor.sub_speciality">
-          <label>Subspeciality</label>
-          <input type="text" [value]="doctor.sub_speciality" disabled>
+          <label>{{ 'doctor.subSpecialtyLabel' | translate }}</label>
+          <input type="text" [value]="'doctor.subSpecialties.' + doctor.sub_speciality | translate" disabled>
         </div>
         <div class="info-item" *ngIf="doctor.schoolNumber">
-          <label>School No.</label>
+          <label>{{ 'doctor.schoolNumberLabel' | translate }}</label>
           <input type="text" [value]="doctor.schoolNumber" disabled>
         </div>
         <div class="info-item" *ngIf="doctor.rne">
-          <label>RNE</label>
+          <label>{{ 'doctor.rneLabel' | translate }}</label>
           <input type="text" [value]="doctor.rne" disabled>
         </div>
         <div class="info-item" *ngIf="doctor.undergraduate">
-          <label>Undergraduate</label>
-          <input type="text" [value]="doctor.undergraduate" disabled>
+          <label>{{ 'doctor.undergraduateLabel' | translate }}</label>
+          <input type="text" [value]="'doctor.universities.' + doctor.undergraduate | translate" disabled>
         </div>
         <div class="info-item" *ngIf="doctor.postgraduate">
-          <label>Postgraduate</label>
-          <input type="text" [value]="doctor.postgraduate" disabled>
+          <label>{{ 'doctor.postgraduateLabel' | translate }}</label>
+          <input type="text" [value]="'doctor.universities.' + doctor.postgraduate | translate" disabled>
         </div>
       </div>
 
@@ -55,5 +55,5 @@
 </div>
 
 <ng-template #noDoctor>
-  <p>Loading doctor information...</p>
+  <p>{{ 'doctor.loading' | translate }}</p>
 </ng-template>

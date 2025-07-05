@@ -2,63 +2,68 @@
   <header class="main-header">
     <div class="header-left">
       <button class="back-button" (click)="goBack()">←</button>
-      <span class="brand-title">Doctors Available</span>
+      <span class="brand-title">{{ 'doctorSearch.title' | translate }}</span>
     </div>
-    <nav class="header-nav">
-    </nav>
+    <nav class="header-nav"></nav>
   </header>
+
   <div class="main-content">
     <div class="filters">
       <div class="search-bar">
-        <input type="text" [(ngModel)]="searchQuery" placeholder="Find an endocrinologist">
-      </div>
-      <div class="filter-item">
-        <h3>Genre:</h3>
-        <label><input type="radio" name="gender" value="F"> F</label>
-        <label><input type="radio" name="gender" value="M"> M</label>
-      </div>
-
-      <div class="filter-item">
-        <h3>Subspecialty:</h3>
-        <p>Polycystic ovary Hyperandrogenism</p>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          [placeholder]="'doctorSearch.searchPlaceholder' | translate"
+        />
       </div>
 
       <div class="filter-item">
-        <h3>Price range:</h3>
-        <label><input type="checkbox" name="price" value="50-60"> s/.50 - s/.60</label><br>
-        <label><input type="checkbox" name="price" value="60-70"> s/.60 - s/.70</label><br>
-        <label><input type="checkbox" name="price" value="70-80"> s/.70 - s/.80</label><br>
-        <label><input type="checkbox" name="price" value="80-90"> s/.80 - s/.90</label><br>
-        <label><input type="checkbox" name="price" value="90-100"> s/.90 - s/.100</label><br>
-        <label><input type="checkbox" name="price" value="100+"> s/.100 or more</label>
+        <h3>{{ 'doctorSearch.genreTitle' | translate }}</h3>
+        <label><input type="radio" name="gender" value="F"> {{ 'doctorSearch.female' | translate }}</label>
+        <label><input type="radio" name="gender" value="M"> {{ 'doctorSearch.male' | translate }}</label>
+      </div>
+
+      <div class="filter-item">
+        <h3>{{ 'doctorSearch.subspecialty' | translate }}</h3>
+        <p>{{ 'doctorSearch.subspecialtyExample' | translate }}</p>
+      </div>
+
+      <div class="filter-item">
+        <h3>{{ 'doctorSearch.priceRangeTitle' | translate }}</h3>
+        <label><input type="checkbox" name="price" value="50-60"> {{ 'doctorSearch.priceRange.50_60' | translate }}</label><br>
+        <label><input type="checkbox" name="price" value="60-70"> {{ 'doctorSearch.priceRange.60_70' | translate }}</label><br>
+        <label><input type="checkbox" name="price" value="70-80"> {{ 'doctorSearch.priceRange.70_80' | translate }}</label><br>
+        <label><input type="checkbox" name="price" value="80-90"> {{ 'doctorSearch.priceRange.80_90' | translate }}</label><br>
+        <label><input type="checkbox" name="price" value="90-100"> {{ 'doctorSearch.priceRange.90_100' | translate }}</label><br>
+        <label><input type="checkbox" name="price" value="100+"> {{ 'doctorSearch.priceRange.100_plus' | translate }}</label>
       </div>
     </div>
 
     <div class="doctor-section">
       <div class="top-bar">
-
         <div class="sort-bar">
-          Sort by:
+          {{ 'doctorSearch.sortBy' | translate }}:
           <select [(ngModel)]="sortOption">
-            <option value="">None</option>
-            <option value="price">Price</option>
-            <option value="rating">Rating</option>
+            <option value="">{{ 'doctorSearch.sort.none' | translate }}</option>
+            <option value="price">{{ 'doctorSearch.sort.price' | translate }}</option>
+            <option value="rating">{{ 'doctorSearch.sort.rating' | translate }}</option>
           </select>
         </div>
       </div>
 
       <div class="doctor-list">
-        <div *ngFor="let doctor of filteredDoctors" (click)="goToDoctorProfile(doctor.id)" class="doctor-card">
+        <div
+          *ngFor="let doctor of filteredDoctors"
+          (click)="goToDoctorProfile(doctor.id)"
+          class="doctor-card"
+        >
           <h3>{{ doctor.name }}</h3>
-          <img [src]="doctor.image" alt="{{ doctor.name }}" class="doctor-image">          <p>{{ doctor.specialty }}</p>
+          <img [src]="doctor.image" alt="{{ doctor.name }}" class="doctor-image" />
+          <p>{{ 'doctor.specialties.' + doctor.specialty | translate }}</p>
           <p>s/. {{ doctor.price }}</p>
           <p class="rating">★ {{ doctor.rating }}</p>
         </div>
       </div>
     </div>
   </div>
-
-
-
 </div>
-

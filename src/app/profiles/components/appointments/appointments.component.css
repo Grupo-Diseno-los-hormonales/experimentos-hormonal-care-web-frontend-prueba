@@ -27,8 +27,7 @@
 /* Fondo general */
 .appointments-container {
   background-color: #f3f0ff;
-  padding: 20px;
-  min-height: calc(100vh - 100px);
+  margin-top:70px;
   box-sizing: border-box;
 }
 
