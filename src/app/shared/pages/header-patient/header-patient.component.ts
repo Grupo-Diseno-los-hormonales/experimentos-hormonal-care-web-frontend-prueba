@@ -8,6 +8,8 @@ import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {CommonModule} from "@angular/common";
 import {ColleagueSearchComponent} from "../../../communications/pages/colleague-search/colleague-search.component";
 import {AuthenticationService} from "../../../iam/services/authentication.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {LanguageSwitcherComponent} from "../../components/language-switcher/language-switcher.component";
 
 @Component({
   selector: 'app-header-patient',
@@ -22,22 +24,37 @@ import {AuthenticationService} from "../../../iam/services/authentication.servic
     RouterModule,
     MatToolbarModule,
     MatButtonModule,
-
+    TranslateModule,
+ LanguageSwitcherComponent
   ]
 
 })
 export class HeaderPatientComponent {
   constructor(
     private authService: AuthenticationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   optionsPatients = [
-    { path: '/homePatient', title: 'Home', icon: 'assets/images/home-icon.png'},
-    { path: '/calendarPatientView', title: 'Calendar', icon: 'assets/images/calendar.png'},
-    { path: '/messagesPatient', title: 'Messages', icon: 'assets/images/message.png'},
-    { path: '/notificationsPatient', title: 'Notifications', icon: 'assets/images/bell.png'},
-    { path: '/patientProfile', title: 'Profile', icon: 'assets/images/profile-icon.png'},
-  ]
+    { path: '/homePatient', title: 'Home', icon: 'assets/images/home-icon.png', key: 'home' },
+    { path: '/calendarPatientView', title: 'Calendar', icon: 'assets/images/calendar.png', key: 'calendar' },
+    { path: '/messagesPatient', title: 'Messages', icon: 'assets/images/message.png', key: 'messages' },
+    { path: '/notificationsPatient', title: 'Notifications', icon: 'assets/images/bell.png', key: 'notifications' },
+    { path: '/patientProfile', title: 'Profile', icon: 'assets/images/profile-icon.png', key: 'profile' }
+  ];
+
   navigateToDoctors() {
     this.router.navigate(['/available-doctors']);
   }

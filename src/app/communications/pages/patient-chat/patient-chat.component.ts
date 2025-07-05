@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserTypeService } from '../../../shared/services/user-type.service';
+import {TranslateService} from "@ngx-translate/core";
 
 interface ChatMessage {
   text?: string;
@@ -25,8 +26,21 @@ export class PatientChatComponent implements OnInit {
 
   constructor(
     private userTypeService: UserTypeService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     const userType = this.userTypeService.getUserType();

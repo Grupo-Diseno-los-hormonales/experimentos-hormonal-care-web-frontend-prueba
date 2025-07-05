@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { loadGapiInsideDOM } from 'gapi-script';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import {TranslateService} from "@ngx-translate/core";
 
 declare const gapi: any;
 
@@ -11,6 +12,19 @@ declare const gapi: any;
   styleUrls: ['./calendar-patient-view.component.css']
 })
 export class CalendarPatientViewComponent implements OnInit {
+  constructor(private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   showAppointments = true;
   showMedication = true;
   calendarEvents: any[] = [];

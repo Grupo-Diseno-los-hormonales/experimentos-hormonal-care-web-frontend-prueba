@@ -1,23 +1,35 @@
-<mat-grid-list cols="3" >
+<mat-grid-list cols="3">
 
-  <mat-grid-tile [colspan]="1"  [rowspan]="1">
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
     <app-photo-patients></app-photo-patients>
-
   </mat-grid-tile>
 
-
-  <mat-grid-tile [colspan]="2"  [rowspan]="1">
-
+  <mat-grid-tile [colspan]="2" [rowspan]="1">
     <app-info-profile-patiens></app-info-profile-patiens>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="1"  [rowspan]="1">
-    <app-info-card-profile-patiens [title]="'Doctor consultations'" [content]="'Schedule your next visit or resolve your medical questions, click here.'" [link]="'https://www.google.com'"></app-info-card-profile-patiens>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <app-info-card-profile-patiens
+      [title]="'patientHome.card1Title' | translate"
+      [content]="'patientHome.card1Content' | translate"
+      [link]="'https://www.google.com'">
+    </app-info-card-profile-patiens>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="1"  [rowspan]="1">
-    <app-info-card-profile-patiens [title]="'Check the status of my treatment'" [content]="'For a detailed evaluation and adjustments to your treatment, click here.'" [link]="'https://www.google.com'"></app-info-card-profile-patiens>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <app-info-card-profile-patiens
+      [title]="'patientHome.card2Title' | translate"
+      [content]="'patientHome.card2Content' | translate"
+      [link]="'https://www.google.com'">
+    </app-info-card-profile-patiens>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="1"  [rowspan]="1">
-    <app-info-card-profile-patiens [title]="'Set up notifications'" [content]="'Activate or customize your alerts to stay informed, click here.'" [link]="'https://www.google.com'"></app-info-card-profile-patiens>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <app-info-card-profile-patiens
+      [title]="'patientHome.card3Title' | translate"
+      [content]="'patientHome.card3Content' | translate"
+      [link]="'https://www.google.com'">
+    </app-info-card-profile-patiens>
   </mat-grid-tile>
 
 </mat-grid-list>

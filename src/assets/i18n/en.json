@@ -479,5 +479,122 @@
       "ACTIVATE": "Activate",
       "DEACTIVATE": "Deactivate"
     }
+  },
+  "patientDashboard": {
+    "remindersTitle": "Today's reminders",
+    "nextAppointment": "Your next appointment...",
+    "treatmentTracking": "Treatment tracking",
+    "pendingTasks": "Pending Tasks",
+    "uploadExams": "Upload your exams",
+    "selectedFile": "Selected file:"
+  },
+  "appName": "HormonalCare",
+  "header": {
+    "availableDoctors": "Available Doctors",
+    "signOut": "Sign out",
+    "options": {
+      "home": "Home",
+      "calendar": "Calendar",
+      "messages": "Messages",
+      "profile": "Profile",
+      "notifications": "Notifications"
+    }
+  },
+  "patientDoctors": {
+    "title": "Find your endocrinologist doctor:",
+    "description": "We have the best endocrinologist doctors at your disposal. Find them by clicking above on available doctors or on 'See more doctors'.",
+    "price": "Price:",
+    "rating": "Rating:",
+    "scheduleButton": "Schedule Appointment",
+    "previous": "Previous",
+    "next": "Next",
+    "feature1": {
+      "title": "Schedule your medical appointment",
+      "desc": "Find times that fit your time. Don't wait weeks…"
+    },
+    "feature2": {
+      "title": "Upload your results analysis",
+      "desc": "Don't forget to upload your results. This will allow efficient monitoring of your disease."
+    },
+    "feature3": {
+      "title": "Organize your history doctor",
+      "desc": "Facilitates accurate diagnoses and personalization of treatment."
+    }
+  },
+  "treatmentTable": {
+    "medication": "Medication",
+    "concentration": "Concentration",
+    "frequency": "Frequency"
+  },
+  "treatmentFrequencies": {
+    "1 time a day": "1 time a day",
+    "2 times a day": "2 times a day",
+    "3 times a day": "3 times a day"
+  },
+  "drugs": {
+    "Levothyroxine": "Levothyroxine",
+    "Metformin": "Metformin",
+    "Hydrocortisone": "Hydrocortisone",
+    "Combined oral contraceptive": "Combined oral contraceptive",
+    "Propylthiouracil (PTU)": "Propylthiouracil (PTU)"
+  },
+  "exams": {
+    "glucose level test": "Glucose level test",
+    "blood lipid level test": "Blood lipid level test",
+    "progesterone level test": "Progesterone level test",
+    "testosterone level test": "Testosterone level test"
+  },
+  "calendar": {
+    "chooseDate": "Choose date",
+    "selectDate": "Select date",
+    "sections": {
+      "appointments": "Medical Appointments",
+      "medication": "Medication"
+    },
+    "filters": {
+      "appointment1": "Follow-up consultation to control hypothyroidism",
+      "appointment2": "Treatment review hormonal",
+      "appointment3": "Medication adjustment",
+      "medication1": "Taking Levothyroxine"
+    },
+    "mainTitle": "Health Calendar: Medical Appointments and Medication",
+    "upcomingEvents": "Upcoming Events"
+  },
+  "chat": {
+    "header": "Chat with the Doctor",
+    "clear": "Clear chat",
+    "inputPlaceholder": "Type a message..."
+  },
+  "notifications": {
+    "title": "Your Notifications",
+    "announcementsTitle": "Admin Announcements",
+    "gotIt": "Got it",
+    "showMore": "Show +",
+    "hide": "Hide",
+    "none": "No notifications at this moment"
+  },
+  "notification": {
+    "nuevaCitaMédica": "New Medical Appointment"
+  },
+  "notificationMessages": {
+    "tituloNuevaCita": "New Medical Appointment",
+    "nuevaCitaMedica": "You have a new appointment on {{date}} at {{time}} with {{doctor}}."
+  },
+  "patientHome": {
+    "card1Title": "Doctor consultations",
+    "card1Content": "Schedule your next visit or resolve your medical questions, click here.",
+    "card2Title": "Check the status of my treatment",
+    "card2Content": "For a detailed evaluation and adjustments to your treatment, click here.",
+    "card3Title": "Set up notifications",
+    "card3Content": "Activate or customize your alerts to stay informed, click here."
+  },
+  "patientProfile": {
+    "sectionTitle": "User information",
+    "fullName": "Full Name",
+    "age": "Age",
+    "phoneNumber": "Phone Number",
+    "email": "Email",
+    "bloodType": "Type of blood"
   }
+
 }

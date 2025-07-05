@@ -2,7 +2,8 @@
 <section>
   <table matSort (matSortChange)="sortData($event)" >
     <tr *ngFor="let exam of dataSource; let i = index">
-      <p [@fadeOut]="exam.checked ? 'void' : 'in'"><mat-checkbox (change)="exam.checked = true; removeExam(i)" formControlName="{{exam.name}}"></mat-checkbox><label>{{exam.name}}</label></p>
+      <p [@fadeOut]="exam.checked ? 'void' : 'in'"><mat-checkbox (change)="exam.checked = true; removeExam(i)" formControlName="{{exam.name}}"></mat-checkbox><label>{{ 'exams.' + exam.name | translate }}</label>
+      </p>
     </tr>
   </table>
 </section>

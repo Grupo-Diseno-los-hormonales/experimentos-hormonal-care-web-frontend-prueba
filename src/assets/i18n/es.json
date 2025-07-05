@@ -480,7 +480,126 @@
       "ACTIVATE": "Activar",
       "DEACTIVATE": "Inactivar"
     }
+  },
+  "patientDashboard": {
+    "remindersTitle": "Recordatorios de hoy",
+    "nextAppointment": "Tu próxima cita...",
+    "treatmentTracking": "Seguimiento de tratamiento",
+    "pendingTasks": "Tareas pendientes",
+    "uploadExams": "Sube tus exámenes",
+    "selectedFile": "Archivo seleccionado:"
+  },
+  "appName": "HormonalCare",
+  "header": {
+    "availableDoctors": "Doctores disponibles",
+    "signOut": "Cerrar sesión",
+    "options": {
+      "home": "Inicio",
+      "calendar": "Calendario",
+      "messages": "Mensajes",
+      "profile": "Perfil",
+      "notifications": "Notificaciones"
+    }
+  },
+  "patientDoctors": {
+    "title": "Encuentra a tu endocrinólogo:",
+    "description": "Tenemos los mejores endocrinólogos a tu disposición. Encuéntralos haciendo clic en doctores disponibles o en 'Ver más doctores'.",
+    "price": "Precio:",
+    "rating": "Calificación:",
+    "scheduleButton": "Agendar cita",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "feature1": {
+      "title": "Agenda tu cita médica",
+      "desc": "Encuentra horarios que se ajusten a tu tiempo. No esperes semanas…"
+    },
+    "feature2": {
+      "title": "Sube tus análisis de resultados",
+      "desc": "No olvides subir tus resultados. Esto permitirá un seguimiento eficiente de tu enfermedad."
+    },
+    "feature3": {
+      "title": "Organiza tu historial médico",
+      "desc": "Facilita diagnósticos precisos y la personalización del tratamiento."
+    }
+  },
+  "treatmentTable": {
+    "medication": "Medicamento",
+    "concentration": "Concentración",
+    "frequency": "Frecuencia"
+  },
+  "treatmentFrequencies": {
+    "1 time a day": "1 vez al día",
+    "2 times a day": "2 veces al día",
+    "3 times a day": "3 veces al día"
+  },
+  "drugs": {
+    "Levothyroxine": "Levotiroxina",
+    "Metformin": "Metformina",
+    "Hydrocortisone": "Hidrocortisona",
+    "Combined oral contraceptive": "Anticonceptivo oral combinado",
+    "Propylthiouracil (PTU)": "Propiltiouracilo (PTU)"
+  },
+  "exams": {
+    "glucose level test": "Prueba de nivel de glucosa",
+    "blood lipid level test": "Prueba de lípidos en sangre",
+    "progesterone level test": "Prueba de nivel de progesterona",
+    "testosterone level test": "Prueba de nivel de testosterona"
+  },
+  "calendar": {
+    "chooseDate": "Elige una fecha",
+    "selectDate": "Seleccionar fecha",
+    "sections": {
+      "appointments": "Citas médicas",
+      "medication": "Medicamentos"
+    },
+    "filters": {
+      "appointment1": "Consulta de seguimiento para controlar el hipotiroidismo",
+      "appointment2": "Revisión de tratamiento hormonal",
+      "appointment3": "Ajuste de medicación",
+      "medication1": "Tomando Levotiroxina"
+    },
+    "mainTitle": "Calendario de salud: citas médicas y medicamentos",
+    "upcomingEvents": "Próximos eventos"
+  },
+  "chat": {
+    "header": "Chat con el Doctor",
+    "clear": "Borrar chat",
+    "inputPlaceholder": "Escribe un mensaje..."
+  },
+  "notifications": {
+    "title": "Tus notificaciones",
+    "announcementsTitle": "Comunicados del administrador",
+    "gotIt": "Entendido",
+    "showMore": "Mostrar +",
+    "hide": "Ocultar",
+    "none": "No hay notificaciones en este momento"
+  },
+
+  "notificationTitles": {
+    "Nueva Cita Médica": "Nueva Cita Médica"
+  },
+  "notificationMessages": {
+    "newMedicalAppointment": "Tienes una nueva cita el {{date}} a las {{time}} con {{doctor}}."
+  },
+
+  "patientHome": {
+    "card1Title": "Consultas médicas",
+    "card1Content": "Agenda tu próxima visita o resuelve tus dudas médicas, haz clic aquí.",
+    "card2Title": "Consultar estado de mi tratamiento",
+    "card2Content": "Para una evaluación detallada y ajustes en tu tratamiento, haz clic aquí.",
+    "card3Title": "Configurar notificaciones",
+    "card3Content": "Activa o personaliza tus alertas para mantenerte informado, haz clic aquí."
+  },
+  "patientProfile": {
+    "sectionTitle": "Información del usuario",
+    "fullName": "Nombre completo",
+    "age": "Edad",
+    "phoneNumber": "Número de teléfono",
+    "email": "Correo electrónico",
+    "bloodType": "Tipo de sangre"
   }
+
+
 
 }
 

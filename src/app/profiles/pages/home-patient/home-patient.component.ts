@@ -12,6 +12,7 @@ import { AnnouncementService } from '../../../notifications/services/announcemen
 import { AnnouncementEntity } from '../../../notifications/model/announcement.entity';
 import { AnnouncementPopupComponent } from '../../../notifications/components/announcement-popup/announcement-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-home-patient',
@@ -26,7 +27,8 @@ import { MatDialog } from '@angular/material/dialog';
     FindDoctorsPatientComponent,
     MatButton,
     RouterLink,
-    MatIconModule
+    MatIconModule,
+    TranslateModule
   ]
 })
 export class HomePatientComponent implements OnInit {
@@ -36,8 +38,21 @@ export class HomePatientComponent implements OnInit {
     private userTypeService: UserTypeService,
     private announcementService: AnnouncementService,
     private router: Router,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     const userType = this.userTypeService.getUserType();

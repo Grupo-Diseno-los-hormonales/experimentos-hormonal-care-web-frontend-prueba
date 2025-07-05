@@ -7,6 +7,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSortModule} from "@angular/material/sort";
 import {ReactiveFormsModule} from "@angular/forms";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-patients-pending-task',
@@ -17,7 +18,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatTableModule,
     MatCheckboxModule,
     MatSortModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule, TranslateModule],
   animations: [
     trigger('fadeOut', [
       state('in', style({opacity: 1})),
@@ -33,7 +34,19 @@ export class PatientsPendingTaskComponent implements OnInit {
   dataSource: any[] = []; // Change this to be a list of any
   displayed: string[] = ['medical_exams'];
 
-  constructor(private medicalHistoryService: MedicalHistoryService) {
+  constructor(private medicalHistoryService: MedicalHistoryService,
+              private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
   }
 
   ngOnInit() {

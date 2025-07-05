@@ -21,13 +21,11 @@ import { InfoCardProfilePatiensComponent } from './components/info-card-profile-
 import {SharedModule} from "../shared/shared.module";
 import { ProfilesRoutingModule } from './profiles-routing.module';
 import { TreatmentPatientComponent } from './pages/treatment-patient/treatment-patient.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
-    PatientProfileComponent,
-    PhotoPatientsComponent,
-    InfoProfilePatiensComponent,
-    InfoCardProfilePatiensComponent
+
 
   ],
   imports: [
@@ -45,11 +43,18 @@ import { TreatmentPatientComponent } from './pages/treatment-patient/treatment-p
     SharedModule,
     ProfilesRoutingModule,
     TreatmentPatientComponent,
-    DoctorProfileComponent
+    DoctorProfileComponent,
+    TranslateModule,
+    PatientProfileComponent,
+    InfoProfilePatiensComponent,
+    PhotoPatientsComponent,
+    InfoCardProfilePatiensComponent
   ],
   exports: [
     DoctorProfileComponent,
-    PatientProfileComponent
+    PatientProfileComponent,
+    PhotoPatientsComponent,
+    InfoCardProfilePatiensComponent
   ]
 })
 export class ProfilesModule { }

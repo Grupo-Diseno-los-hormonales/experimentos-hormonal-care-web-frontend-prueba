@@ -4,17 +4,35 @@ import { PatientsProfileService } from "../../services/patients-profile.service"
 import { ProfilesService } from "../../services/profiles.service";
 import {ProfilesEntity} from "../../model/profiles.entity";
 import {PatientsDataService} from "../../../medical-history/services/patients-data.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-info-profile-patiens',
+  standalone: true,
   templateUrl: './info-profile-patiens.component.html',
+  imports: [
+    TranslateModule
+  ],
   styleUrls: ['./info-profile-patiens.component.css']
 })
 export class InfoProfilePatiensComponent implements OnInit {
   patient: PatientEntity = new PatientEntity();
   profile: ProfilesEntity = new ProfilesEntity();
 
-  constructor(private patientsDataService: PatientsDataService, private profileDataService: ProfilesService) {}
+  constructor(private patientsDataService: PatientsDataService, private profileDataService: ProfilesService,
+              private translate: TranslateService,){
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   ngOnInit() {
     this.getPatientAndProfileDetails('1'); // replace '1' with the actual patient ID
   }

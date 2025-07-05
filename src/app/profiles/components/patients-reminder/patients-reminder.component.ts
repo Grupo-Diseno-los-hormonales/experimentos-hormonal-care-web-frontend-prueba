@@ -5,21 +5,35 @@ import { forkJoin } from 'rxjs';
 import {CommonModule} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-patients-reminder',
   standalone: true,
   templateUrl: './patients-reminder.component.html',
   styleUrls: ['./patients-reminder.component.css'],
-  imports:[    CommonModule,
+  imports: [CommonModule,
     MatTableModule,
-    MatSortModule]
+    MatSortModule, TranslateModule]
 })
 export class PatientsReminderComponent implements OnInit {
   medicalHistoryData!: MedicalHistoryEntity[];
   dataSource: TreatmentAndMedication[] = [];
   displayed: string[] = ['drug_name', 'concentration', 'frequency'];
 
-  constructor(private medicalHistoryService: MedicalHistoryService) {}
+  constructor(private medicalHistoryService: MedicalHistoryService,
+              private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit() {
     this.getMedicalHistoryDetailsByPatient(['1']); // replace with the actual patient IDs
