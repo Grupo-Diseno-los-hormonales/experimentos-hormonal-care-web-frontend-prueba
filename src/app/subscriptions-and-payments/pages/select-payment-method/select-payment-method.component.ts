@@ -3,6 +3,7 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
 import {MatDivider} from "@angular/material/divider";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatToolbar} from "@angular/material/toolbar";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-select-payment-method',
@@ -16,7 +17,8 @@ import {MatToolbar} from "@angular/material/toolbar";
     MatCardHeader,
     MatCard,
     MatCheckbox,
-    MatToolbar
+    MatToolbar,
+    MatButton
   ],
   styleUrl: './select-payment-method.component.css'
 })

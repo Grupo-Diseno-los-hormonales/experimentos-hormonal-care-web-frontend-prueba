@@ -29,8 +29,17 @@ export class AdminLayoutComponent {
     private darkModeService: DarkModeService,
     private router: Router) {
 
-    const lang = localStorage.getItem('lang') || 'en';
-    translate.use(lang);
+      const lang = localStorage.getItem('lang') || 'es';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+
+    }
+    selectedLang = localStorage.getItem('lang') || 'es';
+
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
 
 
     const stored = localStorage.getItem('dark-mode') === 'true';

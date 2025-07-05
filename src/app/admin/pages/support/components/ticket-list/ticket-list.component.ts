@@ -28,6 +28,7 @@ import {
 import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from '@angular/material/datepicker';
 import { MatTooltip } from '@angular/material/tooltip';
 import { DoctorProfile } from '../../../../../communications/model/doctor-profile';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-ticket-list',
@@ -47,7 +48,8 @@ import { DoctorProfile } from '../../../../../communications/model/doctor-profil
     MatDatepickerToggle,
     MatDatepicker,
     MatDatepickerInput,
-    MatTooltip
+    MatTooltip,
+    TranslateModule
   ],
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.css'],
@@ -76,8 +78,21 @@ export class TicketListComponent implements OnInit, AfterViewInit {
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private chatService: ChatService
-  ) {}
+    private chatService: ChatService,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     const storedStatuses = JSON.parse(localStorage.getItem('ticketStatuses') || '{}');

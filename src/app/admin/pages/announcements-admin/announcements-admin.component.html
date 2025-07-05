@@ -1,49 +1,43 @@
 <div class="announcement-wrapper">
   <div class="announcement-card-container">
-    <h2>📢 Enviar Comunicado</h2>
+    <h2>📢 {{ 'ADMIN_ANNOUNCEMENTS.TITLE' | translate }}</h2>
 
     <form [formGroup]="announcementForm" (ngSubmit)="submit()">
       <mat-form-field appearance="fill">
-        <mat-label>Título</mat-label>
+        <mat-label>{{ 'ADMIN_ANNOUNCEMENTS.FORM.TITLE' | translate }}</mat-label>
         <input matInput formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Descripción</mat-label>
+        <mat-label>{{ 'ADMIN_ANNOUNCEMENTS.FORM.DESCRIPTION' | translate }}</mat-label>
         <textarea matInput formControlName="description" rows="2"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Mensaje emergente (opcional)</mat-label>
+        <mat-label>{{ 'ADMIN_ANNOUNCEMENTS.FORM.POPUP_MSG' | translate }}</mat-label>
         <textarea matInput formControlName="message" rows="2"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Audiencia</mat-label>
+        <mat-label>{{ 'ADMIN_ANNOUNCEMENTS.FORM.AUDIENCE' | translate }}</mat-label>
         <mat-select formControlName="audience">
-          <mat-option value="all">Todos</mat-option>
-          <mat-option value="doctors">Médicos</mat-option>
-          <mat-option value="patients">Pacientes</mat-option>
+          <mat-option value="all">{{ 'ADMIN_ANNOUNCEMENTS.AUDIENCES.ALL' | translate }}</mat-option>
+          <mat-option value="doctors">{{ 'ADMIN_ANNOUNCEMENTS.AUDIENCES.DOCTORS' | translate }}</mat-option>
+          <mat-option value="patients">{{ 'ADMIN_ANNOUNCEMENTS.AUDIENCES.PATIENTS' | translate }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <button mat-raised-button class="send-button" type="submit" [disabled]="announcementForm.invalid">
-        Publicar Comunicado
+        {{ 'ADMIN_ANNOUNCEMENTS.FORM.SUBMIT' | translate }}
       </button>
     </form>
 
     <div class="sent-announcements">
-      <h3>📄 Comunicados Enviados</h3>
+      <h3>📄 {{ 'ADMIN_ANNOUNCEMENTS.SENT.TITLE' | translate }}</h3>
       <mat-card *ngFor="let ann of announcements">
         <mat-card-title>{{ ann.title }}</mat-card-title>
         <mat-card-subtitle>
-          Para: {{
-            ann.audience === 'doctors'
-              ? 'Médicos'
-              : ann.audience === 'patients'
-                ? 'Pacientes'
-                : 'Todos'
-          }}
+          {{ 'ADMIN_ANNOUNCEMENTS.AUDIENCES.' + ann.audience.toUpperCase() | translate }}
           —
           {{ ann.createdAt | date:'short' }}
         </mat-card-subtitle>

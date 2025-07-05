@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {CommonModule} from "@angular/common";
 import {MatIconModule} from "@angular/material/icon";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-admin-stats',
@@ -21,6 +22,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatCardModule,
     NgChartsModule,
     MatIconModule,
+    TranslateModule,
   ]
 })
 export class AdminStatsComponent {
@@ -31,7 +33,19 @@ export class AdminStatsComponent {
   @ViewChild('pieChart') pieChart!: BaseChartDirective;
   @ViewChild('barChart') barChart!: BaseChartDirective;
 
-  constructor(private darkModeService: DarkModeService, private router: Router) {}
+  constructor(private darkModeService: DarkModeService, private router: Router, private translate: TranslateService,){
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   goTo(route: string): void {
     this.router.navigate([`/admin/${route}`]);
   }

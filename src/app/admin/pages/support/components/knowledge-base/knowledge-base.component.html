@@ -1,11 +1,15 @@
 <div class="knowledge-base-container">
-  <h1 class="title">📚 Base de Conocimiento HormonalCare</h1>
+  <h1 class="title">📚 {{ 'SUPPORT.KB.TITLE' | translate }}</h1>
 
   <!-- 🔍 Filtro de búsqueda -->
   <mat-form-field appearance="outline" class="search-field">
-    <mat-label>Buscar pregunta</mat-label>
-    <input matInput placeholder="Escribe una palabra clave..." [(ngModel)]="searchTerm" (input)="filterQuestions()" />
-    <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Limpiar" (click)="clearSearch()">
+    <mat-label>{{ 'SUPPORT.KB.SEARCH_LABEL' | translate }}</mat-label>
+    <input
+      matInput
+      [placeholder]="'SUPPORT.KB.SEARCH_PLACEHOLDER' | translate"
+      [(ngModel)]="searchTerm"
+      (input)="filterQuestions()" />
+    <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label=" 'COMMON.CLEAR' | translate " (click)="clearSearch()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -14,9 +18,10 @@
   <mat-accordion multi>
     <mat-expansion-panel *ngFor="let item of filteredQuestions">
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ item.title }}</mat-panel-title>
+        <mat-panel-title>{{ item.titleKey | translate }}</mat-panel-title>
       </mat-expansion-panel-header>
-      <p>{{ item.content }}</p>
+      <p>{{ item.contentKey | translate }}</p>
     </mat-expansion-panel>
+
   </mat-accordion>
 </div>

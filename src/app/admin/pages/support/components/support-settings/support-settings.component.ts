@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-settings',
@@ -20,7 +22,8 @@ import { saveAs } from 'file-saver';
     MatSlideToggleModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslateModule
   ]
 })
 export class SupportSettingsComponent {
@@ -41,7 +44,19 @@ export class SupportSettingsComponent {
       textColor: '#333333'
     }
   };
+constructor(private http: HttpClient, private translate: TranslateService) {
+  const lang = localStorage.getItem('lang') || 'es';
+  this.translate.setDefaultLang(lang);
+  this.translate.use(lang);
 
+}
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   ngOnInit(): void {
     const saved = localStorage.getItem(this.storageKey);
     if (saved) {

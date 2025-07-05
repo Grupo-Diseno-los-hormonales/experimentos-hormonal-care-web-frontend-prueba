@@ -9,5 +9,6 @@ export interface SupportTicket {
   priority: 'low' | 'medium' | 'high';
   status: 'open' | 'in_progress' | 'resolved' | 'closed';
   attachments?: string[];
-
+  subjectKey?: string;
+  messageKey?: string;
 }

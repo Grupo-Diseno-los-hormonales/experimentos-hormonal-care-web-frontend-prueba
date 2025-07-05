@@ -1,62 +1,63 @@
 <div class="admin-layout" [class.dark-mode]="isDarkMode">
-    <!-- Main Dashboard -->
   <main class="dashboard-main">
 
     <header class="dashboard-header">
       <div class="header-left">
-        <h2>System Overview</h2>
+        <h2>{{ 'ADMIN_DASHBOARD.TITLE' | translate }}</h2>
       </div>
     </header>
 
-
+    <!-- Cards Section -->
     <section class="cards">
-      <div class="card pink"><h3>15,000</h3><p>Announcements Sent</p></div>
-      <div class="card blue"><h3>45,633</h3><p>Logs Recorded</p></div>
-      <div class="card green"><h3>3,012</h3><p>Patients Reassigned</p></div>
-      <div class="card red"><h3>87</h3><p>Failed Login Attempts</p></div>
-      <div class="card purple"><h3>124</h3><p>New Registered Users</p></div>
-      <div class="card yellow"><h3>2h 14m</h3><p>Average Response Time</p></div>
-      <div class="card orange"><h3>16</h3><p>Open Support Tickets</p></div>
+      <div class="card pink"><h3>15,000</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.ANNOUNCEMENTS' | translate }}</p></div>
+      <div class="card blue"><h3>45,633</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.LOGS' | translate }}</p></div>
+      <div class="card green"><h3>3,012</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.REASSIGNED' | translate }}</p></div>
+      <div class="card red"><h3>87</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.FAILED_LOGINS' | translate }}</p></div>
+      <div class="card purple"><h3>124</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.NEW_USERS' | translate }}</p></div>
+      <div class="card yellow"><h3>2h 14m</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.RESPONSE_TIME' | translate }}</p></div>
+      <div class="card orange"><h3>16</h3><p>{{ 'ADMIN_DASHBOARD.CARDS.SUPPORT_OPEN' | translate }}</p></div>
     </section>
 
+    <!-- Logs and Activity -->
     <section class="logs-row">
       <div class="recent-activity">
-        <h3>Recent Activity</h3>
+        <h3>{{ 'ADMIN_DASHBOARD.RECENT_ACTIVITY.TITLE' | translate }}</h3>
         <ul class="activity-list">
-          <li>[06/06 14:20] User <strong>ana99</strong> changed password</li>
-          <li>[06/06 14:10] Announcement sent to all doctors</li>
-          <li>[06/06 13:58] New user <strong>juanita23</strong> registered</li>
-          <li>[06/06 13:45] Doctor <strong>rmendoza</strong> reassigned to patient #303</li>
-          <li>[06/06 13:30] Support request marked as resolved</li>
+          <li>{{ 'ADMIN_DASHBOARD.RECENT_ACTIVITY.ITEMS.CHANGED_PASSWORD' | translate:{user: 'ana99'} }}</li>
+          <li>{{ 'ADMIN_DASHBOARD.RECENT_ACTIVITY.ITEMS.ANNOUNCEMENT_SENT' | translate }}</li>
+          <li>{{ 'ADMIN_DASHBOARD.RECENT_ACTIVITY.ITEMS.NEW_USER' | translate:{user: 'juanita23'} }}</li>
+          <li>{{ 'ADMIN_DASHBOARD.RECENT_ACTIVITY.ITEMS.DOCTOR_REASSIGNED' | translate:{doctor: 'rmendoza', id: '303'} }}</li>
+          <li>{{ 'ADMIN_DASHBOARD.RECENT_ACTIVITY.ITEMS.SUPPORT_RESOLVED' | translate }}</li>
         </ul>
       </div>
 
       <div class="critical-logs">
-        <h3>Critical Logs & Suspicious Access</h3>
+        <h3>{{ 'ADMIN_DASHBOARD.CRITICAL.TITLE' | translate }}</h3>
+
         <div class="log-block">
-          <h4>🔴 Latest System Errors</h4>
+          <h4>{{ 'ADMIN_DASHBOARD.CRITICAL.LATEST_ERRORS' | translate }}</h4>
           <ul>
-            <li>[06/06 14:00] 500 Error on `/api/assign-doctor`</li>
-            <li>[06/06 13:40] Timeout on `/api/support`</li>
+            <li>{{ 'ADMIN_DASHBOARD.CRITICAL.ITEMS.ERROR_1' | translate }}</li>
+            <li>{{ 'ADMIN_DASHBOARD.CRITICAL.ITEMS.ERROR_2' | translate }}</li>
           </ul>
         </div>
+
         <div class="log-block">
-          <h4>⚠️ IPs with Multiple Failed Accesses</h4>
+          <h4>{{ 'ADMIN_DASHBOARD.CRITICAL.FAILED_IPS' | translate }}</h4>
           <ul>
-            <li>192.168.1.44 — 5 failed attempts</li>
-            <li>190.12.55.88 — 3 failed attempts</li>
+            <li>{{ 'ADMIN_DASHBOARD.CRITICAL.ITEMS.IP_1' | translate }}</li>
+            <li>{{ 'ADMIN_DASHBOARD.CRITICAL.ITEMS.IP_2' | translate }}</li>
           </ul>
         </div>
+
         <div class="log-block">
-          <h4>🕵️ Suspicious Behavior Alerts</h4>
+          <h4>{{ 'ADMIN_DASHBOARD.CRITICAL.SUSPICIOUS_BEHAVIOR' | translate }}</h4>
           <ul>
-            <li>User `admin1` logged in from unusual location</li>
-            <li>Unauthorized access attempt to `/admin/reassign`</li>
+            <li>{{ 'ADMIN_DASHBOARD.CRITICAL.ITEMS.SUSPICIOUS_1' | translate }}</li>
+            <li>{{ 'ADMIN_DASHBOARD.CRITICAL.ITEMS.SUSPICIOUS_2' | translate }}</li>
           </ul>
         </div>
       </div>
     </section>
-
-
   </main>
 </div>

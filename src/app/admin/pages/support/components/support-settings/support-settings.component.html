@@ -1,71 +1,71 @@
 <div class="settings-container">
-  <h1 class="title">⚙️ Configuración de Soporte</h1>
+  <h1 class="title">{{ 'SUPPORT.SETTINGS.TITLE' | translate }}</h1>
 
-  <!-- Notificaciones -->
+  <!-- 🔔 Notificaciones -->
   <section class="section">
-    <h2>🔔 Notificaciones</h2>
+    <h2>{{ 'SUPPORT.SETTINGS.NOTIFICATIONS.TITLE' | translate }}</h2>
     <div class="toggle-group">
       <mat-slide-toggle [(ngModel)]="settings.notifications.email">
-        Enviar notificaciones por correo electrónico
+        {{ 'SUPPORT.SETTINGS.NOTIFICATIONS.EMAIL' | translate }}
       </mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="settings.notifications.push">
-        Activar notificaciones emergentes (push)
+        {{ 'SUPPORT.SETTINGS.NOTIFICATIONS.PUSH' | translate }}
       </mat-slide-toggle>
     </div>
   </section>
 
-  <!-- Horario -->
+  <!-- 🕒 Horario de atención -->
   <section class="section">
-    <h2>🕒 Horario de atención</h2>
+    <h2>{{ 'SUPPORT.SETTINGS.HOURS.TITLE' | translate }}</h2>
     <div class="time-row">
       <mat-form-field>
-        <mat-label>Inicio</mat-label>
+        <mat-label>{{ 'SUPPORT.SETTINGS.HOURS.START' | translate }}</mat-label>
         <input matInput type="time" [(ngModel)]="settings.supportHours.start" (change)="onChange()">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Fin</mat-label>
+        <mat-label>{{ 'SUPPORT.SETTINGS.HOURS.END' | translate }}</mat-label>
         <input matInput type="time" [(ngModel)]="settings.supportHours.end" (change)="onChange()">
       </mat-form-field>
     </div>
   </section>
 
-  <!-- Test Mode -->
+  <!-- 🧪 Modo de prueba -->
   <section class="section">
-    <h2>🧪 Modo de prueba</h2>
+    <h2>{{ 'SUPPORT.SETTINGS.TEST_MODE.TITLE' | translate }}</h2>
     <mat-slide-toggle [(ngModel)]="settings.testMode" (change)="onChange()">
-      Activar entorno de pruebas
+      {{ 'SUPPORT.SETTINGS.TEST_MODE.TOGGLE' | translate }}
     </mat-slide-toggle>
   </section>
 
-  <!-- Estilo -->
+  <!-- 🎨 Estilo del soporte -->
   <section class="section">
-    <h2>🎨 Estilo del soporte</h2>
+    <h2>{{ 'SUPPORT.SETTINGS.STYLE.TITLE' | translate }}</h2>
     <mat-form-field appearance="fill">
-      <mat-label>Color de fondo</mat-label>
+      <mat-label>{{ 'SUPPORT.SETTINGS.STYLE.BACKGROUND' | translate }}</mat-label>
       <input matInput type="color" [(ngModel)]="settings.style.backgroundColor" (change)="onChange()">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Color de texto</mat-label>
+      <mat-label>{{ 'SUPPORT.SETTINGS.STYLE.TEXT' | translate }}</mat-label>
       <input matInput type="color" [(ngModel)]="settings.style.textColor" (change)="onChange()">
     </mat-form-field>
   </section>
 
-  <!-- Exportación -->
+  <!-- 💾 Exportación -->
   <section class="section">
-    <h2>💾 Exportación</h2>
+    <h2>{{ 'SUPPORT.SETTINGS.EXPORT.TITLE' | translate }}</h2>
     <button mat-flat-button color="primary" (click)="exportData('csv')">
-      Exportar en CSV
+      {{ 'SUPPORT.SETTINGS.EXPORT.CSV' | translate }}
     </button>
     <button mat-flat-button color="accent" (click)="exportData('pdf')">
-      Exportar en PDF
+      {{ 'SUPPORT.SETTINGS.EXPORT.PDF' | translate }}
     </button>
   </section>
 
-  <!-- Reset -->
+  <!-- ♻️ Restaurar configuración -->
   <section class="section">
-    <h2>♻️ Restaurar configuración</h2>
+    <h2>{{ 'SUPPORT.SETTINGS.RESET.TITLE' | translate }}</h2>
     <button mat-flat-button color="warn" (click)="resetSettings()">
-      Restaurar valores por defecto
+      {{ 'SUPPORT.SETTINGS.RESET.BUTTON' | translate }}
     </button>
   </section>
 </div>

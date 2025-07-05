@@ -5,6 +5,7 @@ import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {CommonModule} from "@angular/common";
 import {MatTooltip, MatTooltipModule} from "@angular/material/tooltip";
 import {MatButton, MatButtonModule} from "@angular/material/button";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-home-admin',
@@ -18,7 +19,8 @@ import {MatButton, MatButtonModule} from "@angular/material/button";
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   standalone: true
 })
@@ -28,8 +30,21 @@ export class HomeAdminComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     this.authService.currentUsername.subscribe(name => {

@@ -7,6 +7,7 @@ import { MatIcon } from "@angular/material/icon";
 import {DarkModeService} from "../../services/dark-mode.service";
 import { Router } from "@angular/router";
 import { AuthenticationService} from "../../../iam/services/authentication.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-header-admin',
@@ -19,6 +20,7 @@ import { AuthenticationService} from "../../../iam/services/authentication.servi
     MatToolbarModule,
     MatButtonModule,
     MatIcon,
+    TranslateModule,
   ]
 })
 export class HeaderAdminComponent implements OnInit {
@@ -27,8 +29,21 @@ export class HeaderAdminComponent implements OnInit {
   constructor(
     private darkModeService: DarkModeService,
     private router: Router,
-    private authService: AuthenticationService
-  ) { }
+    private authService: AuthenticationService,
+    private translate: TranslateService,
+  )  {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     this.darkModeService.darkMode$.subscribe(mode => {

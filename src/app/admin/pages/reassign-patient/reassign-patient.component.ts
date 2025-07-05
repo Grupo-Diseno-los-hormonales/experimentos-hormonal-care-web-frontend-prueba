@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CommonModule, NgForOf, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-reassign-patient',
@@ -18,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     MatIconModule,
     FormsModule,
+    TranslateModule,
   ],
   standalone: true
 })
@@ -35,9 +37,16 @@ export class ReassignPatientComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private translate: TranslateService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-    @Optional() private dialogRef?: MatDialogRef<ReassignPatientComponent>
+    @Optional() private dialogRef?: MatDialogRef<ReassignPatientComponent>,
+
   ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+
     this.reassignForm = this.fb.group({
       currentDoctor: ['', Validators.required],
       newDoctor: ['', Validators.required],
@@ -61,7 +70,13 @@ export class ReassignPatientComponent {
       };
     }
   }
+  selectedLang = localStorage.getItem('lang') || 'es';
 
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   onSubmit(): void {
     if (this.reassignForm.valid) {
       const data = this.reassignForm.value;

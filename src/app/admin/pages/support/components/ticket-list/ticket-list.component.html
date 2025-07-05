@@ -1,47 +1,47 @@
 <div class="filters-container">
-  <!-- Tus filtros se mantienen igual -->
   <mat-form-field appearance="outline">
-    <mat-label>Search</mat-label>
-    <input matInput placeholder="Name or subject" [(ngModel)]="searchQuery" (input)="applyFilters()" />
+    <mat-label>{{ 'FILTER.SEARCH' | translate }}</mat-label>
+    <input matInput [placeholder]="'FILTER.PLACEHOLDER' | translate" [(ngModel)]="searchQuery" (input)="applyFilters()" />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Priority</mat-label>
+    <mat-label>{{ 'FILTER.PRIORITY' | translate }}</mat-label>
     <mat-select [(ngModel)]="selectedPriority" (selectionChange)="applyFilters()">
-      <mat-option value="">All</mat-option>
-      <mat-option value="low">Low</mat-option>
-      <mat-option value="medium">Medium</mat-option>
-      <mat-option value="high">High</mat-option>
+      <mat-option value="">{{ 'FILTER.ALL' | translate }}</mat-option>
+      <mat-option value="low">{{ 'PRIORITY.LOW' | translate }}</mat-option>
+      <mat-option value="medium">{{ 'PRIORITY.MEDIUM' | translate }}</mat-option>
+      <mat-option value="high">{{ 'PRIORITY.HIGH' | translate }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Status</mat-label>
+    <mat-label>{{ 'FILTER.STATUS' | translate }}</mat-label>
     <mat-select [(ngModel)]="selectedStatus" (selectionChange)="applyFilters()">
-      <mat-option value="">All</mat-option>
-      <mat-option value="open">Open</mat-option>
-      <mat-option value="in_progress">In Progress</mat-option>
-      <mat-option value="resolved">Resolved</mat-option>
-      <mat-option value="closed">Closed</mat-option>
+      <mat-option value="">{{ 'FILTER.ALL' | translate }}</mat-option>
+      <mat-option value="open">{{ 'STATUS.OPEN' | translate }}</mat-option>
+      <mat-option value="in_progress">{{ 'STATUS.IN_PROGRESS' | translate }}</mat-option>
+      <mat-option value="resolved">{{ 'STATUS.RESOLVED' | translate }}</mat-option>
+      <mat-option value="closed">{{ 'STATUS.CLOSED' | translate }}</mat-option>
     </mat-select>
   </mat-form-field>
+
   <mat-form-field appearance="outline">
-    <mat-label>Start Date</mat-label>
+    <mat-label>{{ 'FILTER.START_DATE' | translate }}</mat-label>
     <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="applyFilters()">
     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
     <mat-datepicker #startPicker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>End Date</mat-label>
+    <mat-label>{{ 'FILTER.END_DATE' | translate }}</mat-label>
     <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (dateChange)="applyFilters()">
     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
     <mat-datepicker #endPicker></mat-datepicker>
   </mat-form-field>
 
-  <button mat-stroked-button color="primary" (click)="clearFilters()">Clear</button>
+  <button mat-stroked-button color="primary" (click)="clearFilters()">{{ 'ACTIONS.CLEAR' | translate }}</button>
   <button mat-flat-button color="accent" (click)="exportVisibleTicketsToCSV()">
-    Export to CSV
+    {{ 'ACTIONS.EXPORT_CSV' | translate }}
   </button>
 </div>
 
@@ -52,11 +52,13 @@
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let row">
       <button mat-icon-button (click)="toggleRow(row); $event.stopPropagation();">
-        <mat-icon [ngClass]="{ 'rotated': expandedTicket?.id === row.id}">{{ expandedTicket?.id === row.id ? 'expand_less' : 'expand_more' }}</mat-icon>
+        <mat-icon [ngClass]="{ 'rotated': expandedTicket?.id === row.id}">
+          {{ expandedTicket?.id === row.id ? 'expand_less' : 'expand_more' }}
+        </mat-icon>
       </button>
       <mat-icon *ngIf="row.priority === 'high' && row.status === 'open'"
                 class="warning-icon"
-                matTooltip="High Risk"
+                matTooltip="{{ 'TOOLTIPS.HIGH_RISK' | translate }}"
                 color="warn"
                 style="margin-left: 4px;">
         warning
@@ -64,37 +66,38 @@
     </td>
   </ng-container>
 
-  <!-- Demás columnas -->
+  <!-- COLUMNAS -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
     <td mat-cell *matCellDef="let ticket"> {{ ticket.id }} </td>
   </ng-container>
 
   <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'TICKET.DATE' | translate }}</th>
     <td mat-cell *matCellDef="let ticket"> {{ ticket.createdAt | date:'short' }} </td>
   </ng-container>
 
   <ng-container matColumnDef="user">
-    <th mat-header-cell *matHeaderCellDef> User </th>
+    <th mat-header-cell *matHeaderCellDef>{{ 'TICKET.USER' | translate }}</th>
     <td mat-cell *matCellDef="let ticket">
       {{ ticket.userName }} ({{ ticket.userRole }})
     </td>
   </ng-container>
 
   <ng-container matColumnDef="subject">
-    <th mat-header-cell *matHeaderCellDef> Subject </th>
-    <td mat-cell *matCellDef="let ticket"> {{ ticket.subject }} </td>
+    <th mat-header-cell *matHeaderCellDef>{{ 'TICKET.SUBJECT' | translate }}</th>
+    <td mat-cell *matCellDef="let ticket">
+      {{ 'SUPPORT.SUBJECTS.' + ticket.subjectKey | translate }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="priority">
-    <th mat-header-cell *matHeaderCellDef> Priority </th>
+    <th mat-header-cell *matHeaderCellDef>{{ 'TICKET.PRIORITY' | translate }}</th>
     <td mat-cell *matCellDef="let ticket">
       <mat-chip [color]="getChipColor('priority', ticket.priority)"
-      selected
-        class="mat-mdc-chip mat-mdc-chip-selected mat-mdc-chip-filled mat-mdc-standard-chip"
-      >
-        {{ ticket.priority }}
+                selected
+                class="mat-mdc-chip mat-mdc-chip-selected mat-mdc-chip-filled mat-mdc-standard-chip">
+        {{ ('PRIORITY.' + ticket.priority.toUpperCase()) | translate }}
         <mat-icon *ngIf="ticket.priority === 'high' && ticket.status === 'open'"
                   class="warning-icon"
                   color="warn"
@@ -106,85 +109,87 @@
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <th mat-header-cell *matHeaderCellDef>{{ 'TICKET.STATUS' | translate }}</th>
     <td mat-cell *matCellDef="let ticket">
       <mat-chip [color]="getChipColor('status', ticket.status)"
                 selected class="mat-mdc-chip mat-mdc-chip-selected mat-mdc-chip-filled mat-mdc-standard-chip">
-        {{ ticket.status }}
+        {{ ('STATUS.' + ticket.status.toUpperCase()) | translate }}
       </mat-chip>
     </td>
   </ng-container>
-  <!-- Template para fila expandida -->
+
+  <!-- Detalle Expandido -->
   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
       <div class="ticket-detail" *ngIf="expandedTicket?.id === row.id">
-        <p><strong>Message:</strong> {{ row.message }}</p>
-        <p><strong>Created at:</strong> {{ row.createdAt | date:'full' }}</p>
-        <p><strong>User:</strong> {{ row.userName }} ({{ row.userRole }})</p>
+        <p>
+          <strong>{{ 'TICKET.MESSAGE' | translate }}:</strong>
+          {{ 'SUPPORT.MESSAGES.' + row.messageKey | translate }}
+        </p>
+        <p>
+          <strong>{{ 'TICKET.CREATED_AT' | translate }}:</strong>
+          {{ row.createdAt | date:'full' }}
+        </p>
+        <p>
+          <strong>{{ 'TICKET.USER' | translate }}:</strong>
+          {{ row.userName }} ({{ row.userRole }})
+        </p>
 
         <ng-container *ngIf="row.attachments?.length > 0; else noFiles">
-          <p><strong>Attachments:</strong></p>
+          <p><strong>{{ 'TICKET.ATTACHMENTS' | translate }}:</strong></p>
           <ul>
-            <li *ngFor="let file of row.attachments">
-              📎 {{ file }}
-            </li>
+            <li *ngFor="let file of row.attachments">📎 {{ file }}</li>
           </ul>
         </ng-container>
         <ng-template #noFiles>
-          <p><strong>Attachments:</strong> None</p>
+          <p>
+            <strong>{{ 'TICKET.ATTACHMENTS' | translate }}:</strong>
+            {{ 'TICKET.NONE' | translate }}
+          </p>
         </ng-template>
 
-        <span [matTooltip]="expandedTicket?.status === 'closed' ? 'You cannot change status of a closed ticket' : ''">
-  <button mat-stroked-button color="accent" style="margin-top: 8px;"
-          [disabled]="expandedTicket?.status === 'closed'"
-          (click)="changeStatus(expandedTicket!)">
-    Change Status
-  </button>
-</span>
+        <span [matTooltip]="expandedTicket?.status === 'closed' ? ('TOOLTIPS.CANNOT_CHANGE_STATUS' | translate) : ''">
+        <button mat-stroked-button color="accent" style="margin-top: 8px;"
+                [disabled]="expandedTicket?.status === 'closed'"
+                (click)="changeStatus(expandedTicket!)">
+          {{ 'ACTIONS.CHANGE_STATUS' | translate }}
+        </button>
+      </span>
 
         <ng-container *ngIf="true">
-  <span [matTooltip]="row.status === 'closed' ? 'You cannot reply to a closed ticket' : ''">
-    <button mat-raised-button color="primary"
-            [disabled]="row.status === 'closed'"
-            (click)="openReplyDialog(row)">
-      <mat-icon>reply</mat-icon> Reply
-    </button>
-  </span>
+        <span [matTooltip]="row.status === 'closed' ? ('TOOLTIPS.CANNOT_REPLY' | translate) : ''">
+          <button mat-raised-button color="primary"
+                  [disabled]="row.status === 'closed'"
+                  (click)="openReplyDialog(row)">
+            <mat-icon>reply</mat-icon> {{ 'ACTIONS.REPLY' | translate }}
+          </button>
+        </span>
         </ng-container>
       </div>
-
     </td>
   </ng-container>
+
   <!-- FILAS -->
-
-  <!-- Encabezado -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-  <!-- Fila principal -->
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"
       (click)="toggleRow(row)"
       class="main-row"
       [class.expanded]="expandedTicket?.id === row.id"
       [ngClass]="{'high-priority-row': row.priority === 'high'}">
   </tr>
-  <!-- Fila expandida (sin usar columnas) -->
   <tr mat-row
       *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
       class="detail-row"
       [@detailExpand]="expandedTicket?.id === row.id ? 'expanded' : 'collapsed'">
   </tr>
-
-
 </table>
 
 <!-- Sin datos -->
 <div *ngIf="dataSource.data.length === 0" class="no-data-message">
-  <p>No tickets found for the selected filters.</p>
+  <p>{{ 'TICKET.NO_RESULTS' | translate }}</p>
 </div>
-
-
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 <div class="results-count">
-  Showing {{ dataSource.filteredData.length }} of {{ tickets.length }} tickets
+  {{ 'TICKET.SHOWING' | translate:{ shown: dataSource.filteredData.length, total: tickets.length } }}
 </div>

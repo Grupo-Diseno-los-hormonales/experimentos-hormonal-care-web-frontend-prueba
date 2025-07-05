@@ -1,22 +1,29 @@
-
 <mat-toolbar class="admin-toolbar" [class.dark-mode]="isDarkMode">
   <div class="logo-container">
     <img src="assets/images/logo.png" alt="Logo" class="logo" />
     <span class="brand-title">HormonalCare Admin</span>
   </div>
+
   <span class="spacer"></span>
+
+  <!-- Botón panel principal -->
   <button mat-button color="white" routerLink="/admin/home">
-    Main Panel
+    {{ 'ADMIN_HEADER.MAIN_PANEL' | translate }}
   </button>
 
   <div class="admin-info">
+    <!-- Botón modo oscuro -->
     <button mat-icon-button (click)="toggleDarkMode()" aria-label="Toggle dark mode">
       <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
 
-
-    <span class="admin-name">Admin</span>
+    <!-- Nombre del admin -->
+    <span class="admin-name">{{ 'ADMIN_HEADER.ADMIN' | translate }}</span>
     <img src="assets/images/admin.png" alt="admin" class="admin-avatar" />
-    <button mat-raised-button color="warn" (click)="logout()">Sign out</button>
+
+    <!-- Botón cerrar sesión -->
+    <button mat-raised-button color="warn" (click)="logout()">
+      {{ 'ADMIN_HEADER.SIGN_OUT' | translate }}
+    </button>
   </div>
 </mat-toolbar>

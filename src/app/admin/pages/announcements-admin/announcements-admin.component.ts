@@ -15,6 +15,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatInput, MatInputModule } from '@angular/material/input';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-announcements-admin',
@@ -34,7 +35,8 @@ import { MatInput, MatInputModule } from '@angular/material/input';
     MatSelect,
     MatOption,
     MatButton,
-    MatInput
+    MatInput,
+    TranslateModule
   ]
 })
 export class AnnouncementsAdminComponent implements OnInit {
@@ -43,8 +45,21 @@ export class AnnouncementsAdminComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private announcementService: AnnouncementService
-  ) {}
+    private announcementService: AnnouncementService,
+    private translate: TranslateService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     this.announcementForm = this.fb.group({

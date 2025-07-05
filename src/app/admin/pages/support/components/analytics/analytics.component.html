@@ -1,29 +1,32 @@
 <div class="analytics-container">
-  <h1 class="title">📊 Panel de Analítica de Soporte</h1>
+  <h1 class="title">📊 {{ 'SUPPORT.ANALYTICS.TITLE' | translate }}</h1>
 
   <div class="analytics-cards">
     <mat-card class="stat-card">
-      <mat-card-title>Visitas a la Base de Conocimiento</mat-card-title>
-      <mat-card-content>{{ knowledgeVisits }} visitas</mat-card-content>
+      <mat-card-title>{{ 'SUPPORT.ANALYTICS.KB_VISITS.TITLE' | translate }}</mat-card-title>
+      <mat-card-content>{{ knowledgeVisits }} {{ 'SUPPORT.ANALYTICS.KB_VISITS.LABEL' | translate }}</mat-card-content>
     </mat-card>
 
     <mat-card class="stat-card">
-      <mat-card-title>Tickets de soporte</mat-card-title>
-      <mat-card-content>{{ totalTickets }} creados / {{ resolvedTickets }} resueltos</mat-card-content>
+      <mat-card-title>{{ 'SUPPORT.ANALYTICS.TICKETS.TITLE' | translate }}</mat-card-title>
+      <mat-card-content>
+        {{ totalTickets }} {{ 'SUPPORT.ANALYTICS.TICKETS.CREATED' | translate }} /
+        {{ resolvedTickets }} {{ 'SUPPORT.ANALYTICS.TICKETS.RESOLVED' | translate }}
+      </mat-card-content>
     </mat-card>
 
     <mat-card class="stat-card">
-      <mat-card-title>Tiempo promedio de respuesta</mat-card-title>
-      <mat-card-content>{{ avgResponseTime }} hrs</mat-card-content>
+      <mat-card-title>{{ 'SUPPORT.ANALYTICS.AVG_RESPONSE.TITLE' | translate }}</mat-card-title>
+      <mat-card-content>{{ avgResponseTime }} {{ 'SUPPORT.ANALYTICS.AVG_RESPONSE.UNIT' | translate }}</mat-card-content>
     </mat-card>
 
     <mat-card class="stat-card">
-      <mat-card-title>Tasa de resolución</mat-card-title>
+      <mat-card-title>{{ 'SUPPORT.ANALYTICS.RESOLUTION_RATE.TITLE' | translate }}</mat-card-title>
       <mat-card-content>{{ resolutionRate }}%</mat-card-content>
     </mat-card>
   </div>
 
-  <h2 class="chart-title">📅 Evolución semanal de interacciones</h2>
+  <h2 class="chart-title">📅 {{ 'SUPPORT.ANALYTICS.WEEKLY_EVOLUTION' | translate }}</h2>
 
   <canvas baseChart
           [type]="'line'"

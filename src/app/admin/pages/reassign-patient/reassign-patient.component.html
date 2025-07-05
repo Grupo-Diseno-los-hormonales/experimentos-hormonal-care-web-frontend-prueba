@@ -1,6 +1,5 @@
-
 <div class="reassign-container">
-  <h2 class="reassign-title">🔄 Reassign Patient</h2>
+  <h2 class="reassign-title">🔄 {{ 'REASSIGN.TITLE' | translate }}</h2>
 
   <ng-container *ngIf="successMessage; else formSection">
     <div class="success-message">
@@ -10,12 +9,12 @@
 
   <ng-template #formSection>
     <div class="patient-info-card">
-      <p><strong>👤 Full Name:</strong> {{ selectedPatient?.fullName }}</p>
-      <p><strong>🎂 Age:</strong> {{ selectedPatient?.age }} years</p>
+      <p><strong>👤 {{ 'REASSIGN.FULL_NAME' | translate }}:</strong> {{ selectedPatient?.fullName }}</p>
+      <p><strong>🎂 {{ 'REASSIGN.AGE' | translate }}:</strong> {{ selectedPatient?.age }} {{ 'REASSIGN.YEARS' | translate }}</p>
     </div>
 
     <div class="reassign-form">
-      <label for="doctorSelect" class="reassign-label">🩺 <strong>Select a Doctor:</strong></label>
+      <label for="doctorSelect" class="reassign-label">🩺 <strong>{{ 'REASSIGN.SELECT_DOCTOR' | translate }}:</strong></label>
       <select id="doctorSelect" [(ngModel)]="selectedDoctorId" class="reassign-select">
         <option *ngFor="let doctor of doctors" [value]="doctor.id">
           {{ doctor.name }}
@@ -24,8 +23,8 @@
     </div>
 
     <div class="reassign-buttons">
-      <button class="btn-confirm" (click)="confirmReassignment()">✅ Confirm Transfer</button>
-      <button class="btn-cancel" (click)="cancel()">❌ Cancel</button>
+      <button class="btn-confirm" (click)="confirmReassignment()">✅ {{ 'REASSIGN.CONFIRM' | translate }}</button>
+      <button class="btn-cancel" (click)="cancel()">❌ {{ 'REASSIGN.CANCEL' | translate }}</button>
     </div>
   </ng-template>
 </div>
