@@ -1,3 +1,4 @@
+/* === BASE CLARO === */
 .chat-container {
   display: flex;
   flex-direction: row;
@@ -102,8 +103,8 @@
 }
 
 .message.right .bubble {
-  background-color: #60a5fa; /* Azul celeste claro */
-  color: #1e3a8a; /* Azul oscuro para contraste */
+  background-color: #60a5fa;
+  color: #1e3a8a;
 }
 
 .bubble a {
@@ -153,6 +154,8 @@
   border: 1px solid #ccc;
   outline: none;
   font-size: 14px;
+  background-color: white;
+  color: #000;
 }
 
 .chat-input input[type="file"] {
@@ -279,4 +282,120 @@
   display: flex;
   flex-direction: column;
   background-color: #f9fafb;
+}
+
+/* === 🌙 MODO OSCURO === */
+body.dark-mode .chat-container,
+body.dark-mode .chat-content,
+body.dark-mode .chat-panel,
+body.dark-mode .file-preview {
+  background-color: #1c1b29;
+  color: #f1f1f1;
+}
+
+body.dark-mode .sidebar,
+body.dark-mode .chat-sidebar {
+  background-color: #26243a;
+  border-color: #3c3c55;
+}
+
+body.dark-mode .sidebar h3,
+body.dark-mode .user-name {
+  color: #e0e0ff;
+}
+
+body.dark-mode .chat-preview:hover,
+body.dark-mode .user-item:hover {
+  background-color: #383857;
+}
+
+body.dark-mode .user-item.active {
+  background-color: #494979;
+}
+
+body.dark-mode .chat-header {
+  background-color: #393267;
+  color: #ffffff;
+}
+
+body.dark-mode .bubble {
+  background-color: #2e2e4d;
+  color: #f0f0f0;
+}
+
+body.dark-mode .message.right .bubble {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+body.dark-mode .bubble a {
+  color: #93c5fd;
+}
+
+body.dark-mode .chat-input {
+  background-color: #26243a;
+  border-top: 1px solid #3c3c55;
+}
+
+body.dark-mode .chat-input input[type="text"] {
+  background-color: #2a2a40;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+body.dark-mode .file-upload-icon,
+body.dark-mode .chat-input button {
+  color: #a5b4fc;
+}
+
+body.dark-mode .clear-chat-btn {
+  background-color: #dc2626;
+}
+
+body.dark-mode .clear-chat-btn:hover {
+  background-color: #b91c1c;
+}
+
+body.dark-mode .file-preview-item {
+  background-color: #2f2f42;
+  border-color: #444;
+  color: #f1f1f1;
+}
+/* === 🔧 FIX CRÍTICO: Forzamos estilos con ::ng-deep en modo oscuro === */
+::ng-deep body.dark-mode .chat-container,
+::ng-deep body.dark-mode .chat-content,
+::ng-deep body.dark-mode .chat-panel,
+::ng-deep body.dark-mode .file-preview {
+  background-color: #1c1b29 !important;
+  color: #f1f1f1 !important;
+}
+
+::ng-deep body.dark-mode .chat-header {
+  background-color: #393267 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep body.dark-mode .chat-input {
+  background-color: #26243a !important;
+  border-top: 1px solid #3c3c55 !important;
+}
+
+::ng-deep body.dark-mode .chat-input input[type="text"] {
+  background-color: #2a2a40 !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+}
+
+::ng-deep body.dark-mode .message.right .bubble {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep body.dark-mode .bubble {
+  background-color: #2e2e4d !important;
+  color: #f0f0f0 !important;
+}
+
+::ng-deep body.dark-mode .bubble a {
+  color: #93c5fd !important;
 }

@@ -3,6 +3,7 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 interface ChatMessage {
   text?: string;
@@ -30,16 +31,17 @@ interface ChatMessage {
   ]
 })
 export class DoctorChatComponent implements OnInit {
+  isDarkMode = false;
   messages: ChatMessage[] = [];
   newMessage: string = '';
   uploadedFiles: { name: string; url: string; type?: string }[] = [];
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private darkModeService: DarkModeService) {
 
       const lang = localStorage.getItem('lang') || 'es';
       this.translate.setDefaultLang(lang);
       this.translate.use(lang);
-
+      this.isDarkMode= this.darkModeService.current;
     }
     selectedLang = localStorage.getItem('lang') || 'es';
 
@@ -82,7 +84,10 @@ export class DoctorChatComponent implements OnInit {
     this.uploadedFiles = [];
     this.saveMessages();
   }
-
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   handleFileUpload(event: any): void {
     const files: FileList = event.target.files;
     for (let i = 0; i < files.length; i++) {

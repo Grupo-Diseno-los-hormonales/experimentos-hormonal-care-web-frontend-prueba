@@ -1,4 +1,3 @@
-
 h2 {
   margin: 0;
   font-size: 16px;
@@ -14,7 +13,7 @@ li {
   padding: 0;
 }
 
-b { /* used for event dates/times */
+b {
   margin-right: 3px;
 }
 
@@ -30,20 +29,6 @@ b { /* used for event dates/times */
   line-height: 1.5;
 }
 
-.demo-app-sidebar-section {
-  padding: 2em;
-}
-
-.demo-app-main {
-  flex-grow: 1;
-  padding: 3em;
-}
-
-.fc { /* the calendar root */
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: rgb(255, 255, 255);
-}
 .demo-app-sidebar-section {
   margin-top: 150px;
   padding: 2em;
@@ -77,4 +62,50 @@ b { /* used for event dates/times */
 
 .demo-app-sidebar-section ul li i {
   color: #666;
+}
+
+.demo-app-main {
+  flex-grow: 1;
+  padding: 3em;
+}
+
+/* Calendario (FullCalendar) */
+.fc {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+}
+
+
+/* 🌙 Modo oscuro */
+:host-context(.dark-mode) .demo-app {
+  background-color: #1a1a2e;
+  color: #f1f1f1;
+}
+
+:host-context(.dark-mode) .demo-app-sidebar-section {
+  background-color: #2a2a40;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+  border: 1px solid #3c3c55;
+}
+
+:host-context(.dark-mode) .demo-app-sidebar-section h2 {
+  color: #e0e0ff;
+}
+
+:host-context(.dark-mode) .demo-app-sidebar-section ul li {
+  border-bottom: 1px solid #4a4a65;
+}
+
+:host-context(.dark-mode) .demo-app-sidebar-section ul li b {
+  color: #d9bfff;
+}
+
+:host-context(.dark-mode) .demo-app-sidebar-section ul li i {
+  color: #aaa;
+}
+
+:host-context(.dark-mode) .fc {
+  background-color: #2b2b3d;
+  color: #f0f0f0;
 }

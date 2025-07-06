@@ -7,8 +7,8 @@
 html, body {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #faf7fb;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   overflow-x: hidden;
 }
 
@@ -17,7 +17,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #8c5e9b;
+  background-color: var(--accent-color);
   color: white;
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -57,7 +57,7 @@ html, body {
 }
 .header-right .register-link {
   background-color: white;
-  color: #8c5e9b;
+  color: var(--accent-color);
   padding: 0.6rem 1.4rem;
   border-radius: 12px;
   font-weight: bold;
@@ -71,7 +71,7 @@ html, body {
 /* ==== REGISTER FORM ==== */
 .register-wrapper {
   flex: 1;
-  min-height: calc(100vh - 160px); /* Ajusta según altura del header + footer */
+  min-height: calc(100vh - 160px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +88,6 @@ html, body {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .register-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
@@ -110,7 +109,6 @@ html, body {
   width: 100%;
   margin-bottom: 1rem;
 }
-
 input {
   border: 1px solid #d6bce2;
   border-radius: 8px;
@@ -119,12 +117,10 @@ input {
   outline: none;
   transition: border-color 0.3s ease;
 }
-
 input:focus {
   border-color: #a974c4;
   box-shadow: 0 0 0 3px rgba(169, 116, 196, 0.2);
 }
-
 .register-button {
   width: 100%;
   padding: 0.8rem;
@@ -154,8 +150,6 @@ input:focus {
 .footer-text a:hover {
   text-decoration: underline;
 }
-
-/*  CHECKBOX de aceptación */
 .policy-checkbox {
   margin: 1rem 0;
   text-align: left;
@@ -170,43 +164,239 @@ input:focus {
   color: #5e2a70;
 }
 
-/* ==== MEDIA QUERIES (HEADER, FORM, FOOTER) ==== */
+/* ==== DARK MODE GENERAL ==== */
+body.dark-mode {
+  background-color: #2c2c3e;
+  color: #f0f0f0;
+}
+body.dark-mode .register-wrapper {
+  background-color: #2c2c3e;
+}
+body.dark-mode .register-card {
+  background: #3a3451;
+  box-shadow: 0 10px 32px rgba(255, 255, 255, 0.05);
+}
+body.dark-mode .register-card h2 {
+  color: #e0c4f0;
+}
+body.dark-mode .subtitle {
+  color: #d3c6e7;
+}
+body.dark-mode .footer-text {
+  color: #d3d3e0;
+}
+body.dark-mode .footer-text a {
+  color: #cfaaff;
+}
+body.dark-mode .policy-checkbox a {
+  color: #d9c2ff;
+}
+body.dark-mode .main-header {
+  background-color: #3e3752;
+  border-bottom: 2px solid #ab8fcd;
+}
+body.dark-mode .nav-links a:hover {
+  color: #dfc0ff;
+}
+body.dark-mode .header-right .register-link {
+  background-color: #f5f5f5;
+  color: #2c2c3e;
+}
+
+/* ==== DARK MODE INPUTS ==== */
+body.dark-mode input {
+  background-color: #3e3752;
+  border: 1px solid #3e3752;
+  color: #f0eaff;
+}
+body.dark-mode input::placeholder {
+  color: #3e3752;
+}
+
+/* ==== Angular Material Overrides con ::ng-deep ==== */
+::ng-deep body.dark-mode .mat-form-field-appearance-outline .mat-input-element {
+  background-color: #4b4460 !important;
+  color: #f0eaff !important;
+  border-radius: 6px;
+}
+::ng-deep body.dark-mode .mat-form-field-appearance-outline .mat-input-element::placeholder {
+  color: #3e3752 !important;
+}
+::ng-deep body.dark-mode .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #a893d2;
+  border-color: #a893d2 !important;
+}
+::ng-deep body.dark-mode .mat-form-field-label {
+  color: #e0c4f0 !important;
+}
+::ng-deep body.dark-mode .mat-form-field-label {
+  color: #ffffff !important;
+}
+
+::ng-deep body.dark-mode .mat-form-field-label.mat-focused {
+  color: #ffffff !important;
+}
+
+::ng-deep body.dark-mode .mat-label {
+  color: #3e3752 !important;
+}
+
+/* ==== MODO OSCURO CON ::ng-deep ==== */
+::ng-deep body.dark-mode {
+  background-color: #2c2c3e;
+  color: #f0f0f0;
+}
+::ng-deep body.dark-mode .register-wrapper {
+  background-color: #2c2c3e;
+}
+::ng-deep body.dark-mode .register-card {
+  background: #3a3451;
+  box-shadow: 0 10px 32px rgba(255, 255, 255, 0.05);
+}
+::ng-deep body.dark-mode .register-card h2 {
+  color: #3e3752;
+}
+::ng-deep body.dark-mode .subtitle {
+  color: #3e3752;
+}
+::ng-deep body.dark-mode input::placeholder {
+  color: #3e3752;
+}
+::ng-deep body.dark-mode .mat-form-field-label {
+  color: #3e3752 !important;
+}
+body.dark-mode .subtitle {
+  color: #3e3752; /* más claro y legible */
+}
+::ng-deep body.dark-mode input {
+  background-color: #5b4a6d;
+  border-color: #bbb;
+  color: #fff;
+}
+::ng-deep body.dark-mode input:focus {
+  border-color: #d0afff;
+  box-shadow: 0 0 0 3px rgba(208, 175, 255, 0.25);
+}
+::ng-deep body.dark-mode .register-button {
+  background: linear-gradient(90deg, #9265a0, #b18dd0);
+  color: white;
+}
+::ng-deep body.dark-mode .register-button:hover {
+  background: linear-gradient(90deg, #a76ac5, #c2a0dd);
+}
+::ng-deep body.dark-mode .footer-text {
+  color: #3e3752;
+}
+::ng-deep body.dark-mode .footer-text a {
+  color: #cfaaff;
+}
+::ng-deep body.dark-mode .policy-checkbox a {
+  color: #d9c2ff;
+}
+::ng-deep body.dark-mode .main-header {
+  background-color: #3e3752;
+  border-bottom: 2px solid #ab8fcd;
+}
+::ng-deep body.dark-mode .nav-links a:hover {
+  color: #dfc0ff;
+}
+::ng-deep body.dark-mode .header-right .register-link {
+  background-color: #f5f5f5;
+  color: #2c2c3e;
+}
+
+/* ==== MEDIA QUERIES ==== */
 @media (max-width: 768px) {
   .main-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.8rem;
   }
-
   .nav-links {
     gap: 1rem;
     margin-top: 0.5rem;
   }
-
   .register-wrapper {
     padding: 2rem 1rem;
   }
-
   .register-card {
     padding: 2rem 1.2rem;
   }
 }
-
 @media (max-width: 480px) {
   .brand-title {
     font-size: 1.25rem;
   }
-
   .register-card h2 {
     font-size: 1.5rem;
   }
-
   .subtitle {
     font-size: 0.9rem;
   }
-
   .register-button {
     font-size: 0.95rem;
     padding: 0.8rem;
   }
 }
+
+/* === Forzar color blanco en los labels de los campos en modo oscuro === */
+::ng-deep body.dark-mode .mat-form-field-label,
+::ng-deep body.dark-mode .mat-form-field-label span,
+::ng-deep body.dark-mode .mat-label {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+::ng-deep body.dark-mode input.mat-input-element {
+  color: #ffffff !important;
+}
+
+
+/* === MODO OSCURO PARA FORMULARIOS === */
+body.dark-mode .mat-mdc-form-field-infix {
+  color: var(--text-color);
+}
+
+body.dark-mode input.mat-mdc-input-element {
+  color: var(--text-color) !important;
+  caret-color: var(--text-color);
+  background-color: transparent;
+}
+
+body.dark-mode .mat-mdc-form-field-outline {
+  border-color: var(--text-color) !important;
+}
+
+body.dark-mode .mat-mdc-form-field-label {
+  color: var(--text-color) !important;
+  opacity: 0.8 !important;
+}
+
+/* Fallback con ::ng-deep por si el encapsulamiento impide aplicar estilos */
+::ng-deep body.dark-mode .mat-mdc-text-field-wrapper,
+::ng-deep body.dark-mode .mat-mdc-form-field-infix,
+::ng-deep body.dark-mode .mat-mdc-input-element,
+::ng-deep body.dark-mode .mat-mdc-floating-label,
+::ng-deep body.dark-mode .mat-mdc-form-field-label {
+  color: var(--text-color) !important;
+}
+
+::ng-deep body.dark-mode .mat-mdc-form-field-outline {
+  border-color: var(--text-color) !important;
+}
+
+body.dark-mode .mat-mdc-checkbox label {
+  color: var(--text-color);
+}
+
+body.dark-mode .mat-mdc-button.mat-primary {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+/* Estilo específico para el texto del checkbox */
+body.dark-mode .mat-mdc-checkbox .mdc-label {
+  color: var(--text-color) !important;
+}
+::ng-deep body.dark-mode .mat-mdc-checkbox .mdc-label {
+  color: var(--text-color) !important;
+}
+

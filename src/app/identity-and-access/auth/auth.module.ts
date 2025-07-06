@@ -23,39 +23,39 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {SharedModule} from "../../shared/shared.module";
+import {LanguageSwitcherComponent} from "../../shared/components/language-switcher/language-switcher.component";
 
 @NgModule({
   declarations: [
-    RegisterComponent,
-    ForgotPasswordComponent,
-    SelectUserRoleComponent
+
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        FormsModule,
-        RouterModule,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
 
-        // Angular Material
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        MatIconModule,
-        MatCheckboxModule,
-        MatButtonModule,
-      MatSelectModule,
-      MatOptionModule,
-      SharedModule,
-      LoginComponent,
+    // Angular Material
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatOptionModule,
+    SharedModule,
+    LoginComponent,
 
-        // reCAPTCHA
-        RecaptchaModule,
-        TranslateModule,
-    ],
-  exports: [
+    // reCAPTCHA
+    RecaptchaModule,
+    TranslateModule,
+    LanguageSwitcherComponent,
     RegisterComponent,
+    SelectUserRoleComponent,
     ForgotPasswordComponent,
-    SelectUserRoleComponent
+  ],
+  exports: [
   ],
 })
 export class AuthModule {}

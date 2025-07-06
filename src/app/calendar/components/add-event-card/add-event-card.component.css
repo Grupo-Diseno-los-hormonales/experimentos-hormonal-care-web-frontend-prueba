@@ -1,20 +1,137 @@
+/* 🎨 Estilo claro */
 .event-card {
-  background-color: #a788ab;
-  color: #ffffff;
-  padding: 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 2em;
   border-radius: 8px;
-  max-width: 400px;
-  margin-left: auto;
+  max-width: 450px;
+  margin: 2em auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
 }
-
-
 
 .full-width {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 1.5em;
 }
 
 button {
   display: block;
   width: 100%;
+  font-weight: bold;
+  background-color: #ede9fe;
+  color: #6d28d9;
+  transition: background-color 0.3s ease;
 }
+
+button:hover {
+  background-color: #ddd6fe;
+}
+
+/* 🌙 Modo oscuro */
+:host-context(.dark-mode) .event-card {
+  background-color: #2a2a40;
+  color: #f1f1f1;
+  border: 1px solid #3c3c55;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+}
+
+/* Inputs y campos de texto */
+:host-context(.dark-mode) .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #2f2f42 !important;
+}
+
+:host-context(.dark-mode) .mat-input-element,
+:host-context(.dark-mode) .mat-form-field-label,
+:host-context(.dark-mode) .mat-label {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+:host-context(.dark-mode) input {
+  background-color: #2f2f42 !important;
+  color: #ffffff !important;
+  border: none;
+  caret-color: #ffffff;
+}
+
+/* Placeholder */
+:host-context(.dark-mode) input::placeholder {
+  color: #bbbbbb !important;
+}
+
+/* Errores */
+:host-context(.dark-mode) mat-error {
+  color: #ffb4b4 !important;
+}
+
+/* Date y time picker icons */
+:host-context(.dark-mode) input[type="time"]::-webkit-calendar-picker-indicator,
+:host-context(.dark-mode) input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Icono blanco */
+}
+
+/* Botón */
+:host-context(.dark-mode) button {
+  background-color: #7e57c2;
+  color: #ffffff;
+}
+
+:host-context(.dark-mode) button:hover {
+  background-color: #6a45b1;
+}
+
+/* 🔍 Fallback con ::ng-deep para estilos internos de MDC */
+::ng-deep body.dark-mode .mat-mdc-text-field-wrapper,
+::ng-deep body.dark-mode .mat-mdc-form-field-infix,
+::ng-deep body.dark-mode .mat-mdc-input-element,
+::ng-deep body.dark-mode .mat-mdc-floating-label,
+::ng-deep body.dark-mode .mat-mdc-form-field-label {
+  color: #ffffff !important;
+}
+
+::ng-deep body.dark-mode .mat-mdc-form-field-outline {
+  border-color: #bbbbbb !important;
+}
+
+::ng-deep body.dark-mode .mat-datepicker-toggle-default-icon {
+  filter: brightness(0.8);
+}
+/* Forzar modo oscuro en labels, inputs y campos de Angular Material MDC */
+::ng-deep body.dark-mode .mat-mdc-form-field .mat-mdc-floating-label,
+::ng-deep body.dark-mode .mat-mdc-form-field-infix,
+::ng-deep body.dark-mode .mat-mdc-input-element,
+::ng-deep body.dark-mode .mdc-text-field__input,
+::ng-deep body.dark-mode .mat-mdc-form-field-subscript-wrapper,
+::ng-deep body.dark-mode .mat-mdc-form-field-label,
+::ng-deep body.dark-mode .mdc-floating-label,
+::ng-deep body.dark-mode .mat-mdc-form-field .mdc-line-ripple {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  border-color: #ffffff !important;
+}
+
+/* Fondo oscuro para inputs de MDC */
+::ng-deep body.dark-mode .mat-mdc-text-field-wrapper {
+  background-color: #2f2f42 !important;
+}
+
+/* Placeholder y subtexto */
+::ng-deep body.dark-mode .mat-mdc-hint,
+::ng-deep body.dark-mode .mat-mdc-placeholder,
+::ng-deep body.dark-mode .mat-mdc-subscript-wrapper {
+  color: #cccccc !important;
+}
+
+/* Íconos dentro del campo */
+::ng-deep body.dark-mode .mat-mdc-icon-button svg,
+::ng-deep body.dark-mode .mat-mdc-form-field-icon-prefix svg {
+  fill: #ffffff !important;
+}
+
+/* Date picker toggle */
+::ng-deep body.dark-mode .mat-datepicker-toggle-default-icon {
+  filter: invert(1);
+}
+

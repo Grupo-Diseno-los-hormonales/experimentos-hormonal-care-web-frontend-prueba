@@ -19,6 +19,7 @@ import { INITIAL_EVENTS, createEventId } from './event-utils';
 import { EventCalendarService } from '../../services/event-calendar.service';
 import { Subscription } from 'rxjs';
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 @Component({
   selector: 'app-calendar-doctor',
@@ -28,7 +29,7 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
   standalone: true
 })
 export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy {
-
+isDarkMode = false;
   @ViewChild('calendar') calendarComponent: any;
 
   private subscription: Subscription = new Subscription();
@@ -63,11 +64,11 @@ export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy
   constructor(
     private changeDetector: ChangeDetectorRef,
     private eventCalendarService: EventCalendarService,
-    private translate: TranslateService) {
+    private translate: TranslateService, private darkModeService: DarkModeService,) {
   const lang = localStorage.getItem('lang') || 'es';
   this.translate.setDefaultLang(lang);
   this.translate.use(lang);
-
+this.isDarkMode= this.darkModeService.current;
 }
 selectedLang = localStorage.getItem('lang') || 'es';
 
@@ -76,7 +77,9 @@ changeLang(lang: string): void {
   localStorage.setItem('lang', lang);
   this.selectedLang = lang;
 }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  this.applyDarkModeClass();
+  }
 
   ngAfterViewInit(): void {
     this.subscription = this.eventCalendarService.events$.subscribe(events => {
@@ -96,7 +99,19 @@ changeLang(lang: string): void {
       }
     });
   }
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+    this.applyDarkModeClass(); // 👈 Aplica al cambiar
+  }
 
+  applyDarkModeClass(): void {
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
@@ -144,4 +159,5 @@ changeLang(lang: string): void {
     const detail = event?.detail || event;
     this.handleEvents(detail);
   }
+
 }

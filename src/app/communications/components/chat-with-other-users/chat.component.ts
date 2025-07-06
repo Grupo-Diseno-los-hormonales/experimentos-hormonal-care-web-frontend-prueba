@@ -5,7 +5,8 @@ import { Message } from '../../model/message';
 import { DoctorProfile } from '../../model/doctor-profile';
 import {FormsModule} from "@angular/forms";
 import {DatePipe, NgClass} from "@angular/common";
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +22,7 @@ import {TranslateModule} from "@ngx-translate/core";
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, OnChanges {
-
+isDarkMode = false;
   @Input() currentUserEmail: string = '';
   @Input() selectedUserEmail: string = '';
 
@@ -30,8 +31,25 @@ export class ChatComponent implements OnInit, OnChanges {
   messages: Message[] = [];
   newMessage: string = '';
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, private translate: TranslateService, private darkModeService: DarkModeService, private translateService: TranslateService)
+    {
+      const lang = localStorage.getItem('lang') || 'es';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+this.isDarkMode=this.darkModeService.current;
+    }
+    selectedLang = localStorage.getItem('lang') || 'es';
 
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
+
+  }
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   ngOnInit() {
     this.loadUsersAndMessages();
   }

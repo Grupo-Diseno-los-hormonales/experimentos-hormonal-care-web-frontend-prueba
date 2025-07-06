@@ -13,6 +13,8 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {RecaptchaModule} from "ng-recaptcha";
 import {NgIf} from "@angular/common";
+import {DarkModeService} from "../../../../shared/services/dark-mode.service";
+import {MatTooltip} from "@angular/material/tooltip";
 
 
 @Component({
@@ -34,11 +36,13 @@ import {NgIf} from "@angular/common";
     RecaptchaModule,
     MatButton,
     MatError,
-    NgIf
+    NgIf,
+    MatTooltip
   ],
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isDarkMode = false;
   loginForm!: FormGroup;
   hidePassword = true;
   loginError = false;
@@ -57,10 +61,12 @@ export class LoginComponent implements OnInit {
     private userTypeService: UserTypeService,
     private authenticationService: AuthenticationService,
     private translate: TranslateService,
+    private darkModeService: DarkModeService,
   ) {
     const lang = localStorage.getItem('lang') || 'es';
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
+    this.isDarkMode = this.darkModeService.current;
 
   }
   selectedLang = localStorage.getItem('lang') || 'es';
@@ -78,7 +84,10 @@ export class LoginComponent implements OnInit {
       recaptcha: ['', Validators.required] // ✅ Add this line
     });
   }
-
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
   }

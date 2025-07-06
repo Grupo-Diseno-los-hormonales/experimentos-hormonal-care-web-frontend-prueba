@@ -13,9 +13,11 @@
 .logo-container mat-toolbar {
   margin: 0;
 }
+
 .spacer {
   flex: 1 1 auto;
 }
+
 app-language-switcher {
   margin-left: 1rem;
 }
@@ -33,19 +35,15 @@ app-language-switcher {
   z-index: 1;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
 .icon-text {
   top: 8px;
   position: relative;
   display: inline-block;
-  margin-left: 0px; /* Mover las imágenes un poco a la derecha */
+  margin-left: 0px;
 }
 
 .option-icon {
   height: 30px;
-
   margin-right: 10px;
 }
 
@@ -56,12 +54,40 @@ app-language-switcher {
 .nav-button {
   margin-left: 44px;
 }
-a{
-border-radius: 20px;
-padding: 15px 10px 20px 10px;
-}
-.active-button {
-  background-color: white;
-  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5); /* Ajusta los valores según tus necesidades */
+
+a {
+  border-radius: 20px;
+  padding: 15px 10px 20px 10px;
 }
 
+.active-button {
+  background-color: white;
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 🌙 Modo oscuro */
+.dark-mode .mat-toolbar {
+  background-color: #2c2c3e !important;
+  color: #f0f0f0;
+}
+
+.dark-mode .nav-button {
+  color: #e0d5f7;
+}
+
+.dark-mode .active-button {
+  background-color: #3e3c50;
+  box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .option-icon {
+  filter: brightness(1.2);
+}
+
+.dark-mode a:hover {
+  background-color: #44415d;
+}
+
+.dark-mode app-language-switcher {
+  color: #ffffff;
+}

@@ -26,13 +26,13 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatButton} from "@angular/material/button";
 
 @NgModule({
-  declarations: [
-    AppointmentsPageComponent,
-    AddEventCardComponent,
-    CalendarViewComponent,
-    CalendarPatientViewComponent,
-    ScheduleFollowUpComponent
-  ],
+    declarations: [
+        AppointmentsPageComponent,
+        CalendarPatientViewComponent,
+        ScheduleFollowUpComponent
+    ],
+    exports: [
+    ],
   imports: [
     CommonModule,
     CalendarRoutingModule,
@@ -48,7 +48,9 @@ import {MatButton} from "@angular/material/button";
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
-    MatButton
+    MatButton,
+    CalendarViewComponent,
+    AddEventCardComponent
   ]
 })
 export class CalendarModule {}

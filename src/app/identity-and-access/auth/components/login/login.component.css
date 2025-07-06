@@ -3,12 +3,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #8c5e9b;
+  background-color: var(--accent-color);
   color: white;
   padding: 1rem 2rem;
   flex-wrap: wrap;
-
 }
+
 .lang-selector {
   min-width: 120px;
   margin-right: 1rem;
@@ -52,7 +52,7 @@
 
 .header-right .register-link {
   background-color: white;
-  color: #8c5e9b;
+  color: var(--accent-color);
   padding: 0.4rem 1rem;
   border-radius: 6px;
   font-weight: bold;
@@ -63,6 +63,7 @@
 .header-right .register-link:hover {
   background-color: #f1def5;
 }
+
 .header-right {
   display: flex;
   align-items: center;
@@ -82,7 +83,7 @@
   justify-content: center;
   align-items: center;
   min-height: calc(99vh - 64px); /* compensamos header */
-  background: #f7ebf9;
+  background: var(--bg-color);
   box-sizing: border-box;
   overflow: hidden;
   padding: 2rem 1rem;
@@ -108,18 +109,18 @@
   font-size: 2.2rem;
   font-weight: bold;
   line-height: 1.3;
-  color: #5d2e82;
+  color: var(--accent-color);
   margin-bottom: 0.7rem;
   display: inline-block;
 }
 
 .title span {
-  color: #8c5e9b;
+  color: var(--accent-color);
 }
 
 .subtitle {
   font-size: 1.15rem;
-  color: #6c4d7c;
+  color: var(--text-color);
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
@@ -137,20 +138,23 @@
   max-width: 95vw;
   padding: 2rem 1.2rem;
   border-radius: 16px;
-  background: white;
+  background: var(--card-bg);
+  color: var(--text-color);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
   text-align: center;
 }
 
+/* === LOGIN CARD GENERAL === */
 .login-card h2 {
-  font-size: 1.4rem;
-  color: #5e366a;
-  margin-bottom: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #8c5e9b; /* Modo claro */
+  margin-bottom: 0.5rem;
 }
 
 .card-subtitle {
   font-size: 0.95rem;
-  color: #777;
+  color: var(--text-color);
   margin-bottom: 1.1rem;
 }
 
@@ -169,7 +173,7 @@
 
 .forgot {
   font-size: 0.85rem;
-  color: #7a3d8e;
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -178,8 +182,8 @@
   padding: 0.9rem;
   font-weight: bold;
   font-size: 1rem;
-  background-color: #8c5e9b !important;
-  color: white;
+  background-color: var(--accent-color) !important;
+  color: var(--text-color);
   border-radius: 8px;
   margin-top: 0.5rem;
   border: none;
@@ -218,18 +222,19 @@
 .register-text {
   font-size: 0.95rem;
   margin-top: 1.2rem;
-  color: #555;
+  color: var(--text-color);
 }
 
 .register-text a {
-  color: #7a3d8e;
+  color: var(--link-color);
   font-weight: 600;
   text-decoration: none;
 }
 
+
 /* ==== FOOTER RESPONSIVO ==== */
 .main-footer {
-  background-color: #8c5e9b;
+  background-color: var(--accent-color);
   color: white;
   padding: 2rem 1rem;
   display: flex;
@@ -289,6 +294,7 @@
   color: #ccc;
 }
 
+
 /* ==== GLOBAL RESET ==== */
 * {
   margin: 0;
@@ -305,23 +311,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: #f7ebf9;
+  background: var(--bg-color);
   overflow: hidden;
 }
 
 body > .login-wrapper {
   min-height: 100vh;
   padding-bottom: 0;
-  /* min-height: auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* ==== MEDIA QUERIES PARA RESPONSIVIDAD ==== */
 
-/* Tablets */
+/* ==== MEDIA QUERIES PARA RESPONSIVIDAD ==== */
 @media (max-width: 900px) {
   .login-container {
     flex-direction: column-reverse;
@@ -338,7 +342,6 @@ body > .login-wrapper {
   }
 }
 
-/* Móvil */
 @media (max-width: 600px) {
   .main-header {
     flex-direction: column;
@@ -402,4 +405,83 @@ body > .login-wrapper {
     font-size: 0.85rem;
     padding: 0.9rem 0.5rem 1.2rem 0.5rem;
   }
+}
+/* === MODO OSCURO PARA FORMULARIOS === */
+body.dark-mode .mat-mdc-form-field-infix {
+  color: var(--text-color);
+}
+::ng-deep body.dark-mode .mat-raised-button {
+  color: white !important;
+  background-color: #5e3a6b !important;
+}
+
+body.dark-mode .mat-mdc-form-field-title {
+  color: var(--text-color);
+}
+body.dark-mode input.mat-mdc-input-element {
+  color: var(--text-color) !important;
+  caret-color: var(--text-color);
+  background-color: transparent;
+}
+
+body.dark-mode .mat-mdc-form-field-outline {
+  border-color: var(--text-color) !important;
+}
+
+body.dark-mode .mat-mdc-form-field-label {
+  color: var(--text-color) !important;
+  opacity: 0.8 !important;
+}
+
+/* Fallback con ::ng-deep por si el encapsulamiento impide aplicar estilos */
+::ng-deep body.dark-mode .mat-mdc-text-field-wrapper,
+::ng-deep body.dark-mode .mat-mdc-form-field-infix,
+::ng-deep body.dark-mode .mat-mdc-input-element,
+::ng-deep body.dark-mode .mat-mdc-floating-label,
+::ng-deep body.dark-mode .mat-mdc-form-field-label {
+  color: var(--text-color) !important;
+}
+
+::ng-deep body.dark-mode .mat-mdc-form-field-outline {
+  border-color: var(--text-color) !important;
+}
+
+body.dark-mode .mat-mdc-checkbox label {
+  color: var(--text-color);
+}
+
+body.dark-mode .mat-mdc-button.mat-primary {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+/* Estilo específico para el texto del checkbox */
+body.dark-mode .mat-mdc-checkbox .mdc-label {
+  color: var(--text-color) !important;
+}
+::ng-deep body.dark-mode .mat-mdc-checkbox .mdc-label {
+  color: var(--text-color) !important;
+}
+/* === MODO OSCURO para login-card === */
+body.dark-mode .login-card {
+  background-color: #e6d0f4 !important; /* más claro que el fondo general */
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+  color: #f0eaff !important;
+}
+
+/* Título del login en modo oscuro */
+body.dark-mode .login-card h2 {
+  color: #e0c4f0 !important;
+}
+
+/* Subtítulo del login */
+body.dark-mode .login-card .card-subtitle {
+  color: #d5c3e3 !important;
+}
+
+/* Textos generales del card */
+body.dark-mode .login-card p,
+body.dark-mode .login-card a,
+body.dark-mode .login-card label,
+body.dark-mode .login-card .mat-checkbox-label {
+  color: #e8dff7 !important;
 }

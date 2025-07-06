@@ -689,6 +689,58 @@
   },
   "common": {
     "back": "Volver"
+  },
+  "auth": {
+    "home": "Inicio",
+    "login": "Iniciar sesión",
+    "selectRole": {
+      "title": "Selecciona tu tipo de usuario",
+      "subtitle": "Elige tu perfil para continuar con el registro",
+      "patient": {
+        "title": "Paciente",
+        "desc": "Accede al monitoreo hormonal y a citas con especialistas.",
+        "button": "Registrarse como Paciente"
+      },
+      "doctor": {
+        "title": "Endocrinólogo",
+        "desc": "Gestiona a tus pacientes, citas y planes de tratamiento.",
+        "button": "Registrarse como Doctor"
+      }
+    },
+    "register": {
+      "button": "Registrarse",
+      "title": "Crea tu cuenta",
+      "subtitle": "Completa tus datos para registrarte",
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "accept": "Acepto la",
+      "privacyPolicy": "Política de Privacidad",
+      "terms": "Términos del Servicio",
+      "and": "y los",
+      "submit": "Registrarse",
+      "already": "¿Ya tienes una cuenta?",
+      "loginLink": "Inicia sesión",
+      "errorPolicies": "Debes aceptar las políticas para registrarte."
+    },
+    "forgotPassword": {
+      "title": "¿Olvidaste tu contraseña?",
+      "subtitle": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+      "emailLabel": "Dirección de correo electrónico",
+      "sendButton": "Enviar enlace de restablecimiento",
+      "backToLogin": "Volver al inicio de sesión",
+      "errors": {
+        "required": "El correo electrónico es obligatorio",
+        "invalid": "Ingresa un correo válido"
+      }
+    }
+  },
+  "footer": {
+    "rightsReserved": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "help": "Ayuda"
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../iam/services/authentication.service";
 import {Router} from "@angular/router";
 import {MatButton, MatIconButton} from "@angular/material/button";
@@ -7,6 +7,7 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
 import {MatCalendar} from "@angular/material/datepicker";
 import {NgForOf} from "@angular/common";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 @Component({
   selector: 'app-doctor-profile',
@@ -23,17 +24,25 @@ import {NgForOf} from "@angular/common";
   ],
   styleUrls: ['./doctor-profile.component.css']
 })
-export class DoctorProfileComponent {
+export class DoctorProfileComponent  {
+  isDarkMode = false;
   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private translate: TranslateService,
+    private darkModeService: DarkModeService,
   ) {
     const lang = localStorage.getItem('lang') || 'es';
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
-
+    this.isDarkMode = this.darkModeService.current;
   }
+
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
+
   selectedLang = localStorage.getItem('lang') || 'es';
 
   changeLang(lang: string): void {

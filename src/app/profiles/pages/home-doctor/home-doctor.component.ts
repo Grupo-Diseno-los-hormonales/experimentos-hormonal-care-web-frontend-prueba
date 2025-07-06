@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import {Router, RouterLink} from '@angular/router';
+import {Location, NgForOf, NgIf} from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -12,20 +12,37 @@ import { PatientEntity } from '../../../profiles/model/patient.entity';
 import { AnnouncementService } from '../../../notifications/services/announcement.service';
 import { AnnouncementEntity } from '../../../notifications/model/announcement.entity';
 import { AnnouncementPopupComponent } from '../../../notifications/components/announcement-popup/announcement-popup.component';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormsModule} from "@angular/forms";
 import {AuthenticationService} from "../../../iam/services/authentication.service";
-import {TranslateService} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
+import {MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
+import {MatIcon} from "@angular/material/icon";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-home-doctor',
+  standalone: true,
   templateUrl: './home-doctor.component.html',
+  imports: [
+    TranslateModule,
+    MatSidenavContainer,
+    MatSidenavContent,
+    NgForOf,
+    MatIcon,
+    MatProgressSpinner,
+    FormsModule,
+    NgIf,
+    RouterLink
+  ],
   styleUrls: ['./home-doctor.component.css']
 })
 export class HomeDoctorComponent implements OnInit {
   isLoading: boolean = true;
   searchTerm: string = '';
   patients: PatientEntity[] = [];
-
+  selectedLang = localStorage.getItem('lang') || 'es';
+  isDarkMode = false;
   constructor(
     private userTypeService: UserTypeService,
     private router: Router,
@@ -34,21 +51,23 @@ export class HomeDoctorComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private announcementService: AnnouncementService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private darkModeService: DarkModeService,
   ) {
     const lang = localStorage.getItem('lang') || 'es';
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
-
+    this.isDarkMode=this.darkModeService.current;
   }
-  selectedLang = localStorage.getItem('lang') || 'es';
-
   changeLang(lang: string): void {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
     this.selectedLang = lang;
   }
-
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   ngOnInit(): void {
     const userType = this.userTypeService.getUserType();
 

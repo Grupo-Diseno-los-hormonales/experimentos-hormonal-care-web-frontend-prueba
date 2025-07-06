@@ -696,5 +696,58 @@
   },
   "common": {
     "back": "Back"
+  },
+  "auth": {
+    "home": "Home",
+    "login": "Login",
+
+    "selectRole": {
+      "title": "Select your user type",
+      "subtitle": "Choose your profile to continue with registration",
+      "patient": {
+        "title": "Patient",
+        "desc": "Access hormonal monitoring and appointments with specialists.",
+        "button": "Register as Patient"
+      },
+      "doctor": {
+        "title": "Endocrinologist",
+        "desc": "Manage your patients, appointments, and treatment plans.",
+        "button": "Register as Doctor"
+      }
+    },
+    "forgotPassword": {
+      "title": "Forgot your password?",
+      "subtitle": "Enter your email address and we’ll send you a link to reset your password.",
+      "emailLabel": "Email address",
+      "sendButton": "Send reset link",
+      "backToLogin": "Back to login",
+      "errors": {
+        "required": "Email is required",
+        "invalid": "Enter a valid email"
+      }
+    },
+    "register": {
+      "button": "Register",
+      "title": "Create your account",
+      "subtitle": "Fill in your details to register",
+      "fullName": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "accept": "I accept the",
+      "privacyPolicy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "and": "and",
+      "submit": "Register",
+      "already": "Already have an account?",
+      "loginLink": "Log in",
+      "errorPolicies": "You must accept the policies to register."
+    }
+  },
+  "footer": {
+    "rightsReserved": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "help": "Help"
   }
 }

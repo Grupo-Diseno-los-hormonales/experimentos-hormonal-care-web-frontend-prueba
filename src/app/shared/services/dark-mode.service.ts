@@ -5,6 +5,10 @@ import { BehaviorSubject } from 'rxjs';
 export class DarkModeService {
   private darkModeSubject = new BehaviorSubject<boolean>(false);
   darkMode$ = this.darkModeSubject.asObservable();
+  constructor() {
+    const isDark = this.getStoredMode(); // <-- ya existe este método
+    this.darkModeSubject.next(isDark);   // <-- sincroniza el BehaviorSubject
+  }
 
   private getStoredMode(): boolean {
     const stored = localStorage.getItem('dark-mode');

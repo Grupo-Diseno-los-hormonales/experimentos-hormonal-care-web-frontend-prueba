@@ -10,6 +10,9 @@
   </nav>
 
   <div class="header-right">
+    <button mat-icon-button (click)="toggleDarkMode()" [matTooltip]="'Toggle Dark Mode'">
+      <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
     <!-- Idioma compacto -->
     <div class="language-wrapper">
       <app-language-switcher></app-language-switcher>

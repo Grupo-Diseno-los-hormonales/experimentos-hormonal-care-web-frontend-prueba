@@ -7,8 +7,8 @@
 html, body {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #faf7fb;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -18,7 +18,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #8c5e9b;
+  background-color: var(--accent-color);
   color: white;
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -54,7 +54,7 @@ html, body {
 }
 .header-right .register-link {
   background-color: white;
-  color: #8c5e9b;
+  color: var(--accent-color);
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   font-weight: bold;
@@ -75,14 +75,16 @@ html, body {
   padding: 4rem 2rem;
   gap: 2rem;
   text-align: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 .role-title-box h2 {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #5e2a84;
+  color: var(--accent-color);
 }
 .role-title-box .subtitle {
-  color: #7c6991;
+  color: var(--text-color);
   font-size: 1rem;
   margin-top: 0.5rem;
 }
@@ -107,7 +109,7 @@ html, body {
   min-height: 440px;
   border-radius: 24px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -119,7 +121,7 @@ html, body {
 .role-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
-  background: linear-gradient(to bottom, #d3a8f0, #e0bff1);
+  background: var(--card-bg);
 }
 .role-image {
   width: 130px;
@@ -131,20 +133,20 @@ html, body {
 }
 .role-card h3 {
   font-size: 1.3rem;
-  color: #4c1e6e;
+  color: var(--accent-color);
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 .card-desc {
   font-size: 1rem;
-  color: #5e366a;
+  color: var(--text-color);
   margin-bottom: 2rem;
   line-height: 1.6;
   padding: 0 0.5rem;
 }
 .card-btn {
   padding: 0.6rem 1.2rem;
-  background-color: #7c3a9b;
+  background-color: var(--accent-color);
   color: white;
   font-weight: 600;
   border: none;
@@ -159,7 +161,7 @@ html, body {
 
 /* ==== FOOTER (RESPONSIVE Y FIJO) ==== */
 .main-footer {
-  background-color: #8c5e9b;
+  background-color: var(--accent-color);
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -211,6 +213,7 @@ html, body {
   color: #e0c4f0;
 }
 
+/* ==== MEDIA QUERIES ==== */
 @media (max-width: 700px) {
   .main-footer {
     flex-direction: column;
@@ -233,7 +236,6 @@ html, body {
   }
 }
 
-/* ==== MEDIA QUERIES ==== */
 @media (max-width: 900px) {
   .main-header {
     flex-direction: column;
@@ -320,3 +322,37 @@ html, body {
     color: #ccc;
   }
 }
+
+/* ==== MODO OSCURO (ESTILOS ADICIONALES) ==== */
+body.dark-mode .role-card {
+  background: linear-gradient(to bottom, #2e1f40, #2c2c3e);
+}
+
+body.dark-mode .role-card h3 {
+  color: var(--text-color);
+}
+
+body.dark-mode .card-desc {
+  color: var(--text-color);
+}
+
+body.dark-mode .card-btn {
+  background-color: #9265a0;
+  border: 1px solid #c4a4d6;
+  color: white;
+}
+::ng-deep body.dark-mode .role-card {
+  background: linear-gradient(to bottom, #2e1f40, #2c2c3e) !important;
+}
+
+::ng-deep body.dark-mode .role-card h3,
+::ng-deep body.dark-mode .role-card .card-desc {
+  color: var(--text-color) !important;
+}
+
+::ng-deep body.dark-mode .card-btn {
+  background-color: #9265a0 !important;
+  border: 1px solid #c4a4d6;
+  color: white;
+}
+

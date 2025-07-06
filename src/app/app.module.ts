@@ -109,7 +109,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchDoctorsComponent,
     SearchPatiensComponent,
     PatientChatComponent,
-    HomeDoctorComponent,
     DoctorRegistrationComponent,
     PatientsUploadExamComponent,
     BackgroundComponent,
@@ -203,7 +202,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     NgChartsModule,
     ChatComponent,
-    DoctorChatComponent
+    DoctorChatComponent,
+    HomeDoctorComponent
   ],
   providers: [
     DoctorService,

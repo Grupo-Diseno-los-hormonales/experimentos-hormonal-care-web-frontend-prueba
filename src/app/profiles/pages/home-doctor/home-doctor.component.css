@@ -180,8 +180,88 @@ mat-sidenav-container {
   color: #7c3aed;
   margin-right: 8px;
 }
+
 ::ng-deep .announcement-snackbar {
   background-color: #7e57c2;
   color: #fff;
   font-weight: bold;
+}
+
+:host-context(.dark-mode) .content {
+  background-color: #1e1e2f;
+}
+
+:host-context(.dark-mode) .section-title {
+  color: #f0e7ff;
+}
+
+:host-context(.dark-mode) .table-container {
+  background-color: #2c2c3e;
+  border: 1px solid #444;
+}
+
+:host-context(.dark-mode) .patients-table thead {
+  background: #3c3c4f;
+}
+
+:host-context(.dark-mode) .patients-table th,
+:host-context(.dark-mode) .patients-table td {
+  color: #f1f1f1;
+  border-bottom: 1px solid #555;
+}
+
+:host-context(.dark-mode) .patients-table th {
+  color: #caa9ff;
+}
+
+:host-context(.dark-mode) .name {
+  color: #f3e8ff;
+}
+
+:host-context(.dark-mode) .age {
+  color: #bdbdbd;
+}
+
+:host-context(.dark-mode) .side-search {
+  background: linear-gradient(to bottom, #2a293b, #1f1e2e);
+  border: 1px solid #555;
+}
+
+:host-context(.dark-mode) .side-search input {
+  background-color: #2e2e3e;
+  border: 1px solid #666;
+  color: #f5f5f5;
+}
+
+:host-context(.dark-mode) .mini-patient {
+  background: #3b3a50;
+  border: 1px solid #555;
+}
+
+:host-context(.dark-mode) .mini-age {
+  color: #d1d1d1;
+}
+
+:host-context(.dark-mode) .tag-btn {
+  background-color: #5e4a8d;
+  color: #ffffff;
+}
+
+:host-context(.dark-mode) .tag-btn:hover {
+  background-color: #715bb4;
+}
+
+:host-context(.dark-mode) .transfer-label {
+  color: #d3bfff;
+}
+
+:host-context(.dark-mode) .video-btn,
+:host-context(.dark-mode) .transfer-btn {
+  background-color: #9f6ffe;
+  color: #fff;
+}
+
+:host-context(.dark-mode) .video-btn:hover,
+:host-context(.dark-mode) .transfer-btn:hover {
+  background-color: #7a4fd6;
 }
