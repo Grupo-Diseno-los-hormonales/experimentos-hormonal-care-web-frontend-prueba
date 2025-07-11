@@ -14,6 +14,8 @@ import {
   MatCardSubtitle, MatCardTitle
 } from "@angular/material/card";
 import {MatIcon} from "@angular/material/icon";
+import {Reminder} from "../../model/reminder.model";
+import {ReminderService} from "../../services/reminder.service";
 
 @Component({
   selector: 'app-notifications-patients',
@@ -23,12 +25,14 @@ import {MatIcon} from "@angular/material/icon";
   styleUrls: ['./notifications-patients.component.css']
 })
 export class NotificationsPatientsComponent implements OnInit {
+  todayReminders: Reminder[] = [];
   notifications: any[] = []; // otras notificaciones
   announcements: (AnnouncementEntity & { expanded?: boolean })[] = []; // comunicados con toggle
 
-  constructor(private announcementService: AnnouncementService) {}
+  constructor(private announcementService: AnnouncementService, private reminderService: ReminderService) {}
 
   ngOnInit(): void {
+    this.todayReminders = this.reminderService.getTodaysReminders();
     const saved = localStorage.getItem('notifications');
     this.notifications = saved ? JSON.parse(saved) : [];
 
@@ -40,7 +44,10 @@ export class NotificationsPatientsComponent implements OnInit {
     this.notifications.splice(index, 1);
     localStorage.setItem('notifications', JSON.stringify(this.notifications));
   }
-
+  markAsRead(reminderId: string): void {
+    this.reminderService.markAsRead(reminderId);
+    this.todayReminders = this.reminderService.getTodaysReminders();
+  }
   deleteAnnouncement(index: number): void {
     this.announcements.splice(index, 1);
     localStorage.setItem('announcements', JSON.stringify(this.announcements));

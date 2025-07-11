@@ -3,8 +3,33 @@
     <div class="notifications-container">
       <h1 class="title">🔔 Your Notifications</h1>
 
-      <!-- Notificaciones comunes -->
+      <!-- ✅ RECORDATORIOS DE HOY -->
+      <div *ngIf="todayReminders.length > 0">
+        <h2 class="subtitle">🕒 Reminders for Today</h2>
+        <mat-card *ngFor="let reminder of todayReminders" class="notification-card reminder">
+          <mat-card-header>
+            <div mat-card-avatar class="icon-avatar">
+              <mat-icon color="primary">event_note</mat-icon>
+            </div>
+            <mat-card-title>{{ reminder.title }}</mat-card-title>
+            <mat-card-subtitle>{{ reminder.date | date:'short' }}</mat-card-subtitle>
+            <span class="spacer"></span>
+            <button mat-icon-button color="primary" (click)="markAsRead(reminder.id)">
+              <mat-icon>done</mat-icon>
+            </button>
+          </mat-card-header>
+          <mat-card-content>
+            <p><strong>{{ reminder.message }}</strong></p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-stroked-button color="primary" (click)="markAsRead(reminder.id)">Got it</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+      <!-- ✅ NOTIFICACIONES COMUNES -->
       <div *ngIf="notifications.length > 0; else noNotifications">
+        <h2 class="subtitle">📩 Other Notifications</h2>
         <mat-card *ngFor="let notif of notifications" class="notification-card">
           <mat-card-header>
             <div mat-card-avatar class="icon-avatar">
@@ -31,7 +56,7 @@
         </mat-card>
       </div>
 
-      <!-- Comunicados del administrador -->
+      <!-- ✅ COMUNICADOS DEL ADMINISTRADOR -->
       <div *ngIf="announcements.length > 0">
         <h2 class="subtitle">📣 Admin Announcements</h2>
         <mat-card *ngFor="let a of announcements; let i = index" class="notification-card announcement">
@@ -59,6 +84,7 @@
         </mat-card>
       </div>
 
+      <!-- 💤 SIN NOTIFICACIONES -->
       <ng-template #noNotifications>
         <p class="no-data">No notifications at this moment</p>
       </ng-template>
