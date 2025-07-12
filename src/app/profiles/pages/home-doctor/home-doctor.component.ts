@@ -19,6 +19,7 @@ import { AnnouncementPopupComponent } from '../../../notifications/components/an
   styleUrls: ['./home-doctor.component.css']
 })
 export class HomeDoctorComponent implements OnInit {
+  doctorName: string = '';
   isLoading: boolean = true;
   searchTerm: string = '';
   patients: PatientEntity[] = [];
@@ -38,8 +39,11 @@ export class HomeDoctorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userType = this.userTypeService.getUserType();
+    const userString = localStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    this.doctorName = user?.name || 'Doctor/a';
 
+    const userType = user?.role || this.userTypeService.getUserType();
     if (userType !== 'endocrinologist') {
       this.router.navigate(['/login'], { replaceUrl: true });
       return;

@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
     { name: 'Abraham', email: 'paciente@gmail.com', password: '123456', role: 'patient' },
     { name: 'Renzo', email: 'renzo@gmail.com', password: '123456', role: 'patient' },
     { name: 'Dra. Solano', email: 'doctor@gmail.com', password: '123456', role: 'endocrinologist' },
-    { name: 'Admin Ana', email: 'admin@gmail.com', password: '123456', role: 'admin' }
+    { name: 'Admin Ana', email: 'admin@gmail.com', password: '123456', role: 'admin' },
+    { name: 'Diego', email: 'diego@hormonalcare.com', password: '123456', role: 'admin' },
   ];
 
 
@@ -80,6 +81,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', 'fake-token');
       localStorage.setItem('username', 'Admin User');
       localStorage.setItem('userId', '1');
+      localStorage.setItem('user', JSON.stringify(foundUser));
+
 
       // ✅ Activar estado manualmente
       this.authenticationService['signedIn'].next(true);
@@ -87,9 +90,11 @@ export class LoginComponent implements OnInit {
       this.authenticationService['signedInUsername'].next('Admin User');
 
       this.router.navigate(['/admin']).then();
-    } else if (foundUser.role === 'endocrinologist') {
-      this.router.navigate(['/homeDoctor']).then();
-    } else if (foundUser.role === 'patient') {
+    }else if (foundUser.role === 'endocrinologist') {
+        localStorage.setItem('user', JSON.stringify(foundUser)); // ✅ Guardar nombre del doctor
+        this.router.navigate(['/homeDoctor']).then();
+      }
+      else if (foundUser.role === 'patient') {
       localStorage.setItem('user', JSON.stringify(foundUser)); // ✅ Guardar usuario con nombre
       this.router.navigate(['/homePatient']).then();
     }

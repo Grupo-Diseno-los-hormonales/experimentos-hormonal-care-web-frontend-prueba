@@ -9,6 +9,12 @@
 .welcome-section {
   margin-bottom: 2rem;
 }
+.welcome-admin {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #4a148c;
+}
 
 .welcome-section h1 {
   font-size: 2rem;

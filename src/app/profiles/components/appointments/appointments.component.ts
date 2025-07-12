@@ -145,7 +145,7 @@ export class AppointmentsComponent {
 
   confirmAppointment() {
     if (this.selectedDate) {
-      this.router.navigate(['/payment'], {
+      this.router.navigate(['/homePatient'], {
         state: {
           dayName: this.selectedDate.dayName,
           dayNumber: this.selectedDate.dayNumber,

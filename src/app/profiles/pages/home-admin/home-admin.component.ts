@@ -23,6 +23,7 @@ import {MatButton, MatButtonModule} from "@angular/material/button";
   standalone: true
 })
 export class HomeAdminComponent implements OnInit {
+  adminName: string = '';
   username: string = '';
   userId: number = 0;
 
@@ -32,6 +33,17 @@ export class HomeAdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const userString = localStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    this.adminName = user?.name || 'Admin';
+
+    const userType = user?.role;
+
+    if (userType !== 'admin') {
+      this.router.navigate(['/login'], { replaceUrl: true });
+      return;
+    }
+
     this.authService.currentUsername.subscribe(name => {
       this.username = name;
     });

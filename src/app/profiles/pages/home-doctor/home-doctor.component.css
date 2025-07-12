@@ -8,6 +8,12 @@ mat-sidenav-container {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f8fafc;
 }
+.welcome-message {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #2c2c3e;
+}
 
 /* FECHA Y HORA ACTUAL */
 .current-date-time {
