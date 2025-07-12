@@ -18,10 +18,12 @@ export class LoginComponent implements OnInit {
 
   // ✅ Usuarios simulados localmente
   MOCK_USERS = [
-    { email: 'paciente@gmail.com', password: '123456', role: 'patient' },
-    { email: 'doctor@gmail.com', password: '123456', role: 'endocrinologist' },
-    { email: 'admin@gmail.com', password: '123456', role: 'admin' }
+    { name: 'Abraham', email: 'paciente@gmail.com', password: '123456', role: 'patient' },
+    { name: 'Renzo', email: 'renzo@gmail.com', password: '123456', role: 'patient' },
+    { name: 'Dra. Solano', email: 'doctor@gmail.com', password: '123456', role: 'endocrinologist' },
+    { name: 'Admin Ana', email: 'admin@gmail.com', password: '123456', role: 'admin' }
   ];
+
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +66,8 @@ export class LoginComponent implements OnInit {
     );
 
     if (!foundUser) {
+      localStorage.setItem('user', JSON.stringify(foundUser));
+
       this.loginError = true;
       return;
     }
@@ -86,8 +90,10 @@ export class LoginComponent implements OnInit {
     } else if (foundUser.role === 'endocrinologist') {
       this.router.navigate(['/homeDoctor']).then();
     } else if (foundUser.role === 'patient') {
+      localStorage.setItem('user', JSON.stringify(foundUser)); // ✅ Guardar usuario con nombre
       this.router.navigate(['/homePatient']).then();
-    } else {
+    }
+    else {
       this.loginError = true;
     }
   }

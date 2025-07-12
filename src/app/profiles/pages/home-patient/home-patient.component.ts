@@ -30,6 +30,7 @@ import { MatDialog } from '@angular/material/dialog';
   ]
 })
 export class HomePatientComponent implements OnInit {
+  patientName: string = '';
   doctors = [
     { name: 'Dr. Gómez', price: 90, isVerified: true, image: 'assets/images/doctors/gomez.png' },
     { name: 'Dr. Juan Egüía', price: 100, isVerified: true, image: 'assets/images/doctors/eguia.png' }
@@ -44,7 +45,11 @@ export class HomePatientComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userType = this.userTypeService.getUserType();
+    const userString = localStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    this.patientName = user?.name || 'Paciente';
+
+    const userType = user?.role || this.userTypeService.getUserType();
 
     // ✅ Redirige si no es paciente
     if (userType !== 'patient') {
