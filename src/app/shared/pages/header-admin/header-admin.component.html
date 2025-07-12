@@ -1,4 +1,3 @@
-
 <mat-toolbar class="admin-toolbar" [class.dark-mode]="isDarkMode">
   <div class="logo-container">
     <img src="assets/images/logo.png" alt="Logo" class="logo" />
@@ -13,10 +12,20 @@
     <button mat-icon-button (click)="toggleDarkMode()" aria-label="Toggle dark mode">
       <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
-
-
     <span class="admin-name">Admin</span>
     <img src="assets/images/admin.png" alt="admin" class="admin-avatar" />
     <button mat-raised-button color="warn" (click)="logout()">Sign out</button>
   </div>
 </mat-toolbar>
+
+<!-- Modal de confirmación de cierre de sesión -->
+<div class="custom-modal-backdrop" *ngIf="showLogoutModal">
+  <div class="custom-modal">
+    <div class="custom-modal-header">¿Confirmar cierre de sesión?</div>
+    <div class="custom-modal-body">¿Estás seguro de que quieres cerrar sesión?</div>
+    <div class="custom-modal-actions">
+      <button class="modal-btn cancel" (click)="closeLogoutModal(false)">Cancelar</button>
+      <button class="modal-btn accept" (click)="closeLogoutModal(true)">Cerrar sesión</button>
+    </div>
+  </div>
+</div>

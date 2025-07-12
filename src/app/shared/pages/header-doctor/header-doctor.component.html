@@ -1,17 +1,40 @@
+<mat-toolbar>
+  <div class="logo-container">
+    <img src="assets/images/logo.png" alt="Logo" class="logo">
+    <span class="app-title">HormonalCare</span>
+  </div>
 
+  <app-colleague-search></app-colleague-search>
 
+  <span class="spacer"></span>
 
-    <mat-toolbar>
-      <div class="logo-container">
-        <img src="assets/images/logo.png" alt="Logo" class="logo">
-        <mat-toolbar>HormonalCare</mat-toolbar>
-      </div>
-      <app-colleague-search> </app-colleague-search>
-      <span class="spacer"></span>
-      <a mat-button *ngFor="let option of options; let i = index" [routerLink]="option.path" routerLinkActive="active-button" class="nav-button" [class.first-button]="i === 0">
-        <div class="icon-text">
-        <img [src]="option.icon" alt="{{option.title}}" class="option-icon">
-        </div>
-        {{ option.title }}
-      </a>
-    </mat-toolbar>
+  <a
+    mat-button
+    *ngFor="let option of options; let i = index"
+    [routerLink]="option.path"
+    routerLinkActive="active-button"
+    class="nav-button"
+    [class.first-button]="i === 0">
+    <div class="icon-text">
+      <img [src]="option.icon" alt="{{option.title}}" class="option-icon">
+    </div>
+    {{ option.title }}
+  </a>
+
+  <!-- Botón Sign out -->
+  <button mat-raised-button color="warn" (click)="logout()">
+    Sign out
+  </button>
+</mat-toolbar>
+
+<!-- Modal de confirmación de cierre de sesión -->
+<div class="custom-modal-backdrop" *ngIf="showLogoutModal">
+  <div class="custom-modal">
+    <div class="custom-modal-header">¿Confirmar cierre de sesión?</div>
+    <div class="custom-modal-body">¿Estás seguro de que quieres cerrar sesión?</div>
+    <div class="custom-modal-actions">
+      <button class="modal-btn cancel" (click)="closeLogoutModal(false)">Cancelar</button>
+      <button class="modal-btn accept" (click)="closeLogoutModal(true)">Cerrar sesión</button>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,7 @@ mat-toolbar {
   align-items: center;
   justify-content: space-between;
   margin: 0 !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 /* Contenedor del logo */
@@ -25,72 +25,231 @@ mat-toolbar {
   display: flex;
   align-items: center;
 }
-.logo-container mat-toolbar {
-  margin: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
 .logo-container .logo {
-  border-radius: 60%;
-  width: 50px;
+  border-radius: 50%;
+  width: 40px;
   height: 40px;
-  margin-right: 10px;
+  margin-right: 12px;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.app-title {
+  font-weight: 700;
+  font-size: 1.18rem;
+  letter-spacing: 1px;
+  color: #fff;
 }
 
 /* Botones de navegación */
 .nav-button {
-  margin-left: 32px;
-  color: white;
+  margin-left: 24px;
+  color: #fff !important;
   font-weight: 600;
   text-transform: none;
-  border-radius: 20px;
-  padding: 6px 12px;
+  border-radius: 18px !important;
+  padding: 6px 16px;
   display: flex;
   align-items: center;
+  background: transparent;
+  transition: background 0.18s;
+  position: relative;
 }
+.nav-button:hover, .nav-button.active-button {
+  background: #fff !important;
+  color: #7B2CBF !important;
+  box-shadow: 0 2px 10px rgba(123,44,191,0.10);
+}
+
 .active-button {
-  background-color: white;
-  color: black !important;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+  background-color: #fff !important;
+  color: #7B2CBF !important;
+  box-shadow: 0 2px 8px rgba(123,44,191,0.11);
 }
-.nav-button .icon-text {
+
+/* Íconos y etiquetas */
+.icon-text {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .option-icon {
-  height: 30px;
-
+  height: 28px;
+  width: 28px;
   display: block;
 }
 
 .option-label {
-  font-size: 14px;
-  line-height: 1;
+  font-size: 15px;
+  line-height: 1.1;
+  font-weight: 500;
 }
 
-.notification-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background-color: red;
-  color: white;
-  font-size: 11px;
-  font-weight: bold;
-  border-radius: 50%;
-  padding: 2px 6px;
-  z-index: 10;
+/* Available Doctors */
+button[mat-raised-button][color="accent"] {
+  font-weight: 600;
+  background: #fff !important;
+  color: #7B2CBF !important;
+  border-radius: 22px !important;
+  margin-left: 32px;
+  box-shadow: 0 1px 6px rgba(123,44,191,0.07);
+  letter-spacing: 0.5px;
+}
+button[mat-raised-button][color="accent"]:hover {
+  background: #F3E9F7 !important;
+  color: #4E148C !important;
 }
 
+/* Sign out */
+button[mat-raised-button][color="warn"] {
+  font-weight: 600;
+  margin-left: 12px;
+  border-radius: 22px !important;
+  background: #d32f2f !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(211,47,47,0.10);
+  transition: background 0.18s;
+}
+button[mat-raised-button][color="warn"]:hover {
+  background: #B71C1C !important;
+}
+
+/* Notificaciones */
 .notification-button {
   position: relative;
 }
 
-.icon-text {
-  position: relative;
+.notification-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background: #ff5252;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 7px;
+  min-width: 22px;
+  min-height: 22px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(255,82,82,0.13);
+  z-index: 10;
+}
+
+/* --- MODAL DE CONFIRMACIÓN DE CIERRE DE SESIÓN --- */
+.custom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(52, 31, 92, 0.30);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeBackdrop .15s;
+}
+
+@keyframes fadeBackdrop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.custom-modal {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 40px rgba(123,44,191,0.18);
+  width: 340px;
+  max-width: 96vw;
+  padding: 30px 24px 22px 24px;
+  font-family: inherit;
+  animation: fadeInModal .20s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid #f3e9f7;
+}
+
+@keyframes fadeInModal {
+  0% { opacity: 0; transform: translateY(-26px);}
+  100% { opacity: 1; transform: none;}
+}
+
+.custom-modal-header {
+  font-size: 1.20rem;
+  font-weight: 700;
+  color: #7B2CBF;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.custom-modal-body {
+  font-size: 1.05rem;
+  color: #3c325c;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.custom-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.modal-btn {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 18px;
+  padding: 8px 26px;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background .17s,
+    color .13s,
+    box-shadow .18s;
+  box-shadow: 0 1px 5px rgba(123,44,191,0.07);
+}
+
+.modal-btn.cancel {
+  background: #f7f3fa;
+  color: #7B2CBF;
+  border: 1.5px solid #ece4f3;
+}
+.modal-btn.cancel:hover {
+  background: #eee6fa;
+  color: #5f1c97;
+  border-color: #d1b3f4;
+}
+
+.modal-btn.accept {
+  background: #d32f2f;
+  color: #fff;
+  border: 1.5px solid #c12626;
+}
+.modal-btn.accept:hover {
+  background: #a31515;
+  border-color: #a31515;
+}
+
+/* --- RESPONSIVE PARA MOBILE --- */
+@media (max-width: 480px) {
+  .custom-modal {
+    width: 98vw;
+    min-width: unset;
+    padding: 18px 5vw 16px 5vw;
+  }
+  .custom-modal-header,
+  .custom-modal-body {
+    font-size: 1rem;
+  }
+  .modal-btn {
+    padding: 7px 10vw;
+    font-size: 0.95rem;
+  }
 }
