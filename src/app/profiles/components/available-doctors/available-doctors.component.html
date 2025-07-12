@@ -50,7 +50,6 @@
       </div>
 
       <div class="doctor-list">
-<<<<<<< HEAD
         <div *ngFor="let doctor of filteredDoctors" (click)="goToDoctorProfile(doctor.id)" class="doctor-card">
           <div class="doctor-card-header">
             <h3>
@@ -72,16 +71,6 @@
           </div>
           <img [src]="doctor.image" alt="{{ doctor.name }}" class="doctor-image">
           <p>{{ doctor.specialty }}</p>
-=======
-        <div
-          *ngFor="let doctor of filteredDoctors"
-          (click)="goToDoctorProfile(doctor.id)"
-          class="doctor-card"
-        >
-          <h3>{{ doctor.name }}</h3>
-          <img [src]="doctor.image" alt="{{ doctor.name }}" class="doctor-image" />
-          <p>{{ 'doctor.specialties.' + doctor.specialty | translate }}</p>
->>>>>>> fusion-repo2
           <p>s/. {{ doctor.price }}</p>
           <p class="rating">★ {{ doctor.rating }}</p>
         </div>

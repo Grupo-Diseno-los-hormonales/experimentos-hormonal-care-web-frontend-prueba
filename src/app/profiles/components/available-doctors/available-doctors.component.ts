@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -7,16 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Doctor } from '../../../communications/model/doctor.models';
 import { DoctorService } from '../../../communications/services/doctor.service';
 
-=======
-import { Component } from '@angular/core';
-import {MatIconModule } from '@angular/material/icon';
-import { CommonModule} from '@angular/common';
-import { Router} from '@angular/router';
-import {FormsModule} from '@angular/forms';
-import {Doctor} from "../../../communications/model/doctor.models";
-import {DoctorService} from "../../../communications/services/doctor.service";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
->>>>>>> fusion-repo2
 @Component({
   selector: 'app-available-doctors',
   standalone: true,
@@ -29,12 +19,9 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
   ],
   styleUrls: ['./available-doctors.component.css']
 })
-<<<<<<< HEAD
 export class AvailableDoctorsComponent implements OnInit {
   doctors: (Doctor & { isVerified?: boolean, isOnline?: boolean })[] = [];
 
-=======
-export class AvailableDoctorsComponent {
   constructor(private doctorService: DoctorService, private router: Router, private translate: TranslateService) {
     const lang = localStorage.getItem('lang') || 'es';
     this.translate.setDefaultLang(lang);
@@ -48,20 +35,8 @@ export class AvailableDoctorsComponent {
     localStorage.setItem('lang', lang);
     this.selectedLang = lang;
   }
-  doctors: Doctor[] = [];
   ngOnInit() {
     this.doctors = this.doctorService.getDoctors();
-  }
->>>>>>> fusion-repo2
-  searchQuery: string = '';
-  sortOption: string = '';
-
-  constructor(
-    private doctorService: DoctorService,
-    private router: Router
-  ) {}
-
-  ngOnInit() {
     // Simula que algunos doctores están en línea y/o verificados
     this.doctors = this.doctorService.getDoctors().map((doctor, i) => ({
       ...doctor,
@@ -69,6 +44,9 @@ export class AvailableDoctorsComponent {
       isOnline: i % 3 === 0      // Ejemplo: online solo algunos
     }));
   }
+
+  searchQuery: string = '';
+  sortOption: string = '';
 
   get filteredDoctors(): (Doctor & { isVerified?: boolean, isOnline?: boolean })[] {
     let result = this.doctors.filter(doc =>

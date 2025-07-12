@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
-import {Location, NgForOf, NgIf} from '@angular/common';
+import {DatePipe, Location, NgForOf, NgIf} from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,12 +13,12 @@ import { AnnouncementService } from '../../../notifications/services/announcemen
 import { AnnouncementEntity } from '../../../notifications/model/announcement.entity';
 import { AnnouncementPopupComponent } from '../../../notifications/components/announcement-popup/announcement-popup.component';
 import {FormBuilder, FormsModule} from "@angular/forms";
-import {AuthenticationService} from "../../../iam/services/authentication.service";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {DarkModeService} from "../../../shared/services/dark-mode.service";
 import {MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {MatIcon} from "@angular/material/icon";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {MatIconButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-home-doctor',
@@ -33,7 +33,9 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     MatProgressSpinner,
     FormsModule,
     NgIf,
-    RouterLink
+    RouterLink,
+    DatePipe,
+    MatIconButton
   ],
   styleUrls: ['./home-doctor.component.css']
 })
@@ -42,16 +44,14 @@ export class HomeDoctorComponent implements OnInit {
   isLoading: boolean = true;
   searchTerm: string = '';
   patients: PatientEntity[] = [];
-<<<<<<< HEAD
+
   exams: any[] = [];
   currentDate: Date = new Date(); // <- Para mostrar fecha y hora actual
 
   private intervalId: any;
 
-=======
   selectedLang = localStorage.getItem('lang') || 'es';
   isDarkMode = false;
->>>>>>> fusion-repo2
   constructor(
     private userTypeService: UserTypeService,
     private router: Router,

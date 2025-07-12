@@ -6,12 +6,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIcon } from "@angular/material/icon";
 import { DarkModeService } from "../../services/dark-mode.service";
 import { Router } from "@angular/router";
-<<<<<<< HEAD
-import { AuthenticationService } from "../../../iam/services/authentication.service";
-=======
 import { AuthenticationService} from "../../../iam/services/authentication.service";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
->>>>>>> fusion-repo2
 
 @Component({
   selector: 'app-header-admin',

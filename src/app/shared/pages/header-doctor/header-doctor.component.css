@@ -34,7 +34,6 @@ mat-toolbar, .mat-toolbar {
   background: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-<<<<<<< HEAD
 .app-title {
   font-weight: 700;
   font-size: 1.19rem;
@@ -65,9 +64,8 @@ mat-toolbar, .mat-toolbar {
 .nav-button:hover, .nav-button.active-button {
   background: #fff !important;
   color: #7B2CBF !important;
-  box-shadow: 0 2px 8px rgba(123,44,191,0.09);
-=======
-
+  box-shadow: 0 2px 8px rgba(123, 44, 191, 0.09);
+}
 .logo-container mat-toolbar {
   margin: 0;
 }
@@ -97,19 +95,15 @@ app-language-switcher {
   top: 8px;
   position: relative;
   display: inline-block;
-  margin-left: 0px;
 }
 
 .option-icon {
   height: 30px;
   margin-right: 10px;
->>>>>>> fusion-repo2
 }
 .first-button {
   margin-left: 20px;
 }
-
-<<<<<<< HEAD
 a {
   border-radius: 20px;
   transition: box-shadow 0.13s;
@@ -127,7 +121,6 @@ a {
   position: relative;
   display: inline-flex;
   align-items: center;
-  margin-left: 0px;
   gap: 6px;
 }
 
@@ -240,29 +233,31 @@ a {
     min-width: unset;
     padding: 16px 3vw 14px 3vw;
   }
+
   .custom-modal-header,
   .custom-modal-body {
     font-size: 1rem;
   }
+
   .modal-btn {
     padding: 7px 10vw;
     font-size: 0.95rem;
   }
-=======
-.nav-button {
-  margin-left: 44px;
-}
 
-a {
-  border-radius: 20px;
-  padding: 15px 10px 20px 10px;
-}
+  .nav-button {
+    margin-left: 44px;
+  }
 
-.active-button {
-  background-color: white;
-  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
-}
+  a {
+    border-radius: 20px;
+    padding: 15px 10px 20px 10px;
+  }
 
+  .active-button {
+    background-color: white;
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+}
 /* 🌙 Modo oscuro */
 .dark-mode .mat-toolbar {
   background-color: #2c2c3e !important;
@@ -288,5 +283,4 @@ a {
 
 .dark-mode app-language-switcher {
   color: #ffffff;
->>>>>>> fusion-repo2
 }

@@ -94,30 +94,30 @@
             </div>
           </ng-template>
         </div>
-      </div>
-    </div>
+      </div> <!-- 📄 Panel de exámenes recientes -->
+      <div class="exam-panel">
+        <h2 class="section-title">Recent Patient Exams</h2>
 
-    <!-- 📄 Panel de exámenes recientes -->
-    <div class="exam-panel">
-      <h2 class="section-title">Recent Patient Exams</h2>
-
-      <div *ngIf="exams.length === 0" class="empty-message">
-        No exams received yet.
-      </div>
-
-      <div *ngFor="let exam of exams" class="exam-card">
-        <div class="exam-info">
-          <strong>{{ exam.name }}</strong>
-          <p>Received: {{ exam.uploadedAt | date:'short' }}</p>
-          <p>Patient: Juan Pérez</p>
+        <div *ngIf="exams.length === 0" class="empty-message">
+          No exams received yet.
         </div>
-        <div class="exam-action">
-          <a [href]="exam.url" [download]="exam.name" class="download-link">Download</a>
-          <button mat-icon-button color="warn" (click)="deleteExam(exam)">
-            <mat-icon>delete</mat-icon>
-          </button>
+
+        <div *ngFor="let exam of exams" class="exam-card">
+          <div class="exam-info">
+            <strong>{{ exam.name }}</strong>
+            <p>Received: {{ exam.uploadedAt | date:'short' }}</p>
+            <p>Patient: Juan Pérez</p>
+          </div>
+          <div class="exam-action">
+            <a [href]="exam.url" [download]="exam.name" class="download-link">Download</a>
+            <button mat-icon-button color="warn" (click)="deleteExam(exam)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

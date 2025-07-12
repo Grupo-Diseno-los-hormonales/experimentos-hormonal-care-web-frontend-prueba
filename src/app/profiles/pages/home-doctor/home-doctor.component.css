@@ -207,8 +207,6 @@ mat-sidenav-container {
   color: #fff;
   font-weight: bold;
 }
-
-<<<<<<< HEAD
 .exam-panel {
   margin: 40px 0 0;
   padding: 28px 32px;
@@ -222,7 +220,7 @@ mat-sidenav-container {
   font-size: 26px;
   font-weight: 700;
   color: #1f2937;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .exam-card {
@@ -231,7 +229,6 @@ mat-sidenav-container {
   align-items: center;
   background-color: #ffffff;
   padding: 18px 24px;
-  border-radius: 14px;
   border: 1px solid #e5e7eb;
   margin-bottom: 16px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.03);
@@ -262,7 +259,7 @@ mat-sidenav-container {
 .view-link:hover {
   background-color: #c4b5fd;
   color: #4c1d95;
-=======
+}
 :host-context(.dark-mode) .content {
   background-color: #1e1e2f;
 }
@@ -340,5 +337,93 @@ mat-sidenav-container {
 :host-context(.dark-mode) .video-btn:hover,
 :host-context(.dark-mode) .transfer-btn:hover {
   background-color: #7a4fd6;
->>>>>>> fusion-repo2
+}
+
+:host-context(.dark-mode) ::ng-deep .exam-panel {
+  background-color: #1f1d2b;
+  color: #eee;
+}
+
+:host-context(.dark-mode) ::ng-deep .exam-card {
+  background-color: #2c2c3e;
+}
+
+:host-context(.dark-mode) ::ng-deep .exam-info p {
+  color: #ccc;
+}
+
+:host-context(.dark-mode) ::ng-deep .empty-message {
+  background-color: #2a2935;
+  border-color: #555;
+  color: #aaa;
+}
+
+
+::ng-deep .exam-panel {
+  padding: 24px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+::ng-deep .section-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #5c4084;
+  margin-bottom: 16px;
+}
+
+::ng-deep .empty-message {
+  font-style: italic;
+  color: #999;
+  padding: 12px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fff;
+}
+
+::ng-deep .exam-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+::ng-deep .exam-info {
+  flex-grow: 1;
+}
+
+::ng-deep .exam-info strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+::ng-deep .exam-info p {
+  margin: 2px 0;
+  color: #666;
+}
+
+::ng-deep .exam-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+::ng-deep .download-link {
+  color: #673ab7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+::ng-deep .download-link:hover {
+  color: #512da8;
+  text-decoration: underline;
 }

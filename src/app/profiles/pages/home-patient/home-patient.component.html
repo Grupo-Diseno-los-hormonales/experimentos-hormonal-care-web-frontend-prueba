@@ -32,27 +32,20 @@
         <div class="part2">
           <div class="upload-exam-wrapper">
             <label for="examFile" class="upload-exam-button">
-<<<<<<< HEAD
               <mat-icon>upload</mat-icon>
               Upload your exams
-            </label>
 
-=======
               {{ 'patientDashboard.uploadExams' | translate }}
             </label>
->>>>>>> fusion-repo2
             <input type="file" id="examFile" (change)="onExamSelected($event)" hidden />
 
             <div *ngIf="selectedExam" class="exam-preview">
-<<<<<<< HEAD
               <p><strong>Selected file:</strong> {{ selectedExam.name }}</p>
 
               <button mat-flat-button color="primary" (click)="sendToDoctor()">
                 Send to Doctor
               </button>
-=======
               <strong>{{ 'patientDashboard.selectedFile' | translate }}</strong> {{ selectedExam.name }}
->>>>>>> fusion-repo2
             </div>
           </div>
         </div>

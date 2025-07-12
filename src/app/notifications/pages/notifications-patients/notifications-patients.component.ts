@@ -13,15 +13,11 @@ import {
   MatCardHeader,
   MatCardSubtitle, MatCardTitle
 } from "@angular/material/card";
-<<<<<<< HEAD
 import {MatIcon} from "@angular/material/icon";
 import {Reminder} from "../../model/reminder.model";
 import {ReminderService} from "../../services/reminder.service";
-=======
-import { MatIcon } from "@angular/material/icon";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { formatDate } from '@angular/common';
->>>>>>> fusion-repo2
 
 @Component({
   selector: 'app-notifications-patients',
@@ -50,35 +46,31 @@ export class NotificationsPatientsComponent implements OnInit {
   notifications: any[] = []; // otras notificaciones
   announcements: (AnnouncementEntity & { expanded?: boolean })[] = []; // comunicados con toggle
 
-<<<<<<< HEAD
-  constructor(private announcementService: AnnouncementService, private reminderService: ReminderService) {}
-=======
+
+  constructor(private announcementService: AnnouncementService, private reminderService: ReminderService,
+  private translate: TranslateService) {
+  const lang = this.selectedLang;
+  this.translate.setDefaultLang(lang);
+  this.translate.use(lang);
+
+  // Debug opcional
+  this.translate.get('notificationMessages.nuevaCitaMedica').subscribe(res => {
+  console.log('Traducción cargada:', res);
+});
+}
   private isNewAppointment(title: string): boolean {
     return ['Nueva Cita Médica', 'New Medical Appointment'].includes(title);
   }
 
   selectedLang = localStorage.getItem('lang') || 'es';
 
-  constructor(
-    private announcementService: AnnouncementService,
-    private translate: TranslateService
-  ) {
-    const lang = this.selectedLang;
-    this.translate.setDefaultLang(lang);
-    this.translate.use(lang);
 
-    // Debug opcional
-    this.translate.get('notificationMessages.nuevaCitaMedica').subscribe(res => {
-      console.log('Traducción cargada:', res);
-    });
-  }
 
   changeLang(lang: string): void {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
     this.selectedLang = lang;
   }
->>>>>>> fusion-repo2
 
   ngOnInit(): void {
     this.todayReminders = this.reminderService.getTodaysReminders();
