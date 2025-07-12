@@ -14,8 +14,12 @@
     "ERROR": "Invalid email or password.",
     "NO_ACCOUNT": "Don’t have an account?"
   },
+  "HOME_PATIENT": {
+    "WELCOME": "Hello, {{name}}. Welcome. "
+  },
   "HOME_DOCTOR": {
-    "TITLE": "Today's Patients",
+    "TITLE": "Welcome to your Doctor Dashboard",
+    "WELCOME": "Hello, Dr. {{name}}. Welcome.",
     "TABLE": {
       "NAME": "Name",
       "CARE": "Care Type",
@@ -34,6 +38,13 @@
     "LOADING": {
       "TABLE": "Loading patient table...",
       "SEARCH": "Loading search results..."
+    },
+    "EXAMS": {
+      "TITLE": "Recent Patient Exams",
+      "EMPTY": "No exams received yet.",
+      "RECEIVED": "Received: {{date}}",
+      "PATIENT": "Patient: Juan Pérez",
+      "DOWNLOAD": "Download"
     }
   },
   "HEADER": {
@@ -491,16 +502,27 @@
   "appName": "HormonalCare",
   "header": {
     "availableDoctors": "Available Doctors",
-    "signOut": "Sign out",
-    "options": {
-      "home": "Home",
-      "calendar": "Calendar",
-      "messages": "Messages",
-      "profile": "Profile",
-      "notifications": "Notifications"
-    }
+    "signOut": "Sign out"
   },
-  "patientDoctors": {
+
+  "TOOLBAR": {
+    "AVAILABLE_DOCTORS": "Available doctors",
+    "HOME": "Home",
+    "CALENDAR": "Calendar",
+    "MESSAGES": "Messages",
+    "NOTIFICATIONS": "Notifications",
+    "PROFILE": "Profile",
+    "SIGN_OUT": "Sign out",
+    "DOCTORS": "Available Doctors",
+    "CONFIRM_LOGOUT_TITLE": "Confirm logout?",
+    "CONFIRM_LOGOUT_BODY": "Are you sure you want to log out?",
+    "CANCEL": "Cancel",
+    "LOGOUT": "Log out"
+  },
+
+
+
+"patientDoctors": {
     "title": "Find your endocrinologist doctor:",
     "description": "We have the best endocrinologist doctors at your disposal. Find them by clicking above on available doctors or on 'See more doctors'.",
     "price": "Price:",

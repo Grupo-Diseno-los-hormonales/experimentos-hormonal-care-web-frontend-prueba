@@ -1,5 +1,5 @@
 <h2 class="welcome-message">
-  👋 Hola, {{ patientName }}. Bienvenido/a a tu espacio de salud.
+  👋 {{ 'HOME_PATIENT.WELCOME' | translate:{ name: patientName } }}
 </h2>
 
 <!-- 🔽 Luego todo el contenido de recordatorios y tareas -->
@@ -33,7 +33,6 @@
           <div class="upload-exam-wrapper">
             <label for="examFile" class="upload-exam-button">
               <mat-icon>upload</mat-icon>
-              Upload your exams
 
               {{ 'patientDashboard.uploadExams' | translate }}
             </label>

@@ -10,6 +10,7 @@ import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {CommonModule} from "@angular/common";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {LanguageSwitcherComponent} from "../../components/language-switcher/language-switcher.component";
+import {DarkModeService} from "../../services/dark-mode.service";
 
 @Component({
   selector: 'app-header-patient',
@@ -29,29 +30,32 @@ import {LanguageSwitcherComponent} from "../../components/language-switcher/lang
 })
 export class HeaderPatientComponent implements OnInit {
   unreadCount = 0;
+  isDarkMode = false;
   showLogoutModal = false; // <--- AGREGA ESTA VARIABLE
+  selectedLang = localStorage.getItem('lang') || 'es';
 
   optionsPatients = [
-    { path: '/homePatient', title: 'Home', icon: 'assets/images/home-icon.png' },
-    { path: '/calendarPatientView', title: 'Calendar', icon: 'assets/images/calendar.png' },
-    { path: '/messagesPatient', title: 'Messages', icon: 'assets/images/message.png' },
-    { path: '/notificationsPatient', title: 'Notifications', icon: 'assets/images/bell.png' },
-    { path: '/patientProfile', title: 'Profile', icon: 'assets/images/profile-icon.png' },
+    { path: '/homePatient', titleKey: 'TOOLBAR.HOME', icon: 'assets/images/home-icon.png' },
+    { path: '/calendarPatientView', titleKey: 'TOOLBAR.CALENDAR', icon: 'assets/images/calendar.png' },
+    { path: '/messagesPatient', titleKey: 'TOOLBAR.MESSAGES', icon: 'assets/images/message.png' },
+    { path: '/notificationsPatient', titleKey: 'TOOLBAR.NOTIFICATIONS', icon: 'assets/images/bell.png' },
+    { path: '/patientProfile', titleKey: 'TOOLBAR.PROFILE', icon: 'assets/images/profile-icon.png' },
   ];
+
 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private reminderService: ReminderService,
   private translate: TranslateService,
+    private darkModeService: DarkModeService
 ) {
-  const lang = localStorage.getItem('lang') || 'es';
-  this.translate.setDefaultLang(lang);
-  this.translate.use(lang);
+    const lang = this.selectedLang;
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+    this.isDarkMode=this.darkModeService.current;
 
 }
-  selectedLang = localStorage.getItem('lang') || 'es';
-
   changeLang(lang: string): void {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);

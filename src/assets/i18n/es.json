@@ -14,8 +14,12 @@
     "ERROR": "Correo o contraseña inválidos.",
     "NO_ACCOUNT": "¿No tienes una cuenta?"
   },
+  "HOME_PATIENT": {
+    "WELCOME": "Hola, {{name}}. Bienvenido/a. "
+  },
   "HOME_DOCTOR": {
-    "TITLE": "Pacientes de hoy",
+    "TITLE": "Bienvenido a tu Panel de Doctor",
+    "WELCOME": "Hola, Dr. {{name}}. Bienvenido/a.",
     "TABLE": {
       "NAME": "Nombre",
       "CARE": "Tipo de atención",
@@ -34,6 +38,13 @@
     "LOADING": {
       "TABLE": "Cargando tabla de pacientes...",
       "SEARCH": "Cargando resultados de búsqueda..."
+    },
+    "EXAMS": {
+      "TITLE": "Exámenes recientes del paciente",
+      "EMPTY": "Aún no se han recibido exámenes.",
+      "RECEIVED": "Recibido: {{date}}",
+      "PATIENT": "Paciente: Juan Pérez",
+      "DOWNLOAD": "Descargar"
     }
   },
   "HEADER": {
@@ -485,14 +496,21 @@
   "appName": "HormonalCare",
   "header": {
     "availableDoctors": "Doctores disponibles",
-    "signOut": "Cerrar sesión",
-    "options": {
-      "home": "Inicio",
-      "calendar": "Calendario",
-      "messages": "Mensajes",
-      "profile": "Perfil",
-      "notifications": "Notificaciones"
-    }
+    "signOut": "Cerrar sesión"
+  },
+  "TOOLBAR": {
+    "AVAILABLE_DOCTORS": "Doctores disponibles",
+    "HOME": "Inicio",
+    "CALENDAR": "Calendario",
+    "MESSAGES": "Mensajes",
+    "NOTIFICATIONS": "Notificaciones",
+    "PROFILE": "Perfil",
+    "SIGN_OUT": "Cerrar sesión",
+    "DOCTORS": "Doctores disponibles",
+    "CONFIRM_LOGOUT_TITLE": "¿Confirmar cierre de sesión?",
+    "CONFIRM_LOGOUT_BODY": "¿Estás seguro de que quieres cerrar sesión?",
+    "CANCEL": "Cancelar",
+    "LOGOUT": "Cerrar sesión"
   },
   "patientDoctors": {
     "title": "Encuentra a tu endocrinólogo:",

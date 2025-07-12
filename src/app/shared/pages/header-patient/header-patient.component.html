@@ -1,19 +1,20 @@
-
 <mat-toolbar color="primary">
   <!-- Logo y título -->
   <div class="logo-container" style="display: flex; align-items: center;">
     <img src="assets/images/logo.png" alt="Logo" class="logo" style="height:36px; margin-right:12px;">
-    <span class="app-title" style="font-weight:700; font-size:1.2rem; letter-spacing:1px;">HormonalCare</span>
+    <span class="app-title" style="font-weight:700; font-size:1.2rem; letter-spacing:1px;">
+      HormonalCare
+    </span>
   </div>
 
   <button mat-raised-button color="accent" (click)="navigateToDoctors()" style="margin-left: 32px;">
-    Available Doctors
+    {{ 'TOOLBAR.AVAILABLE_DOCTORS' | translate }}
   </button>
 
   <span class="spacer" style="flex: 1 1 auto;"></span>
 
   <ng-container *ngFor="let option of optionsPatients; let i = index">
-    <ng-container *ngIf="option.title !== 'Notifications'; else notificationIcon">
+    <ng-container *ngIf="option.titleKey !== 'Notifications'; else notificationIcon">
       <a
         mat-button
         [routerLink]="option.path"
@@ -23,8 +24,8 @@
         style="margin-right:8px;"
       >
         <span class="icon-text" style="display: flex; align-items: center; gap: 5px;">
-          <img [src]="option.icon" class="option-icon" alt="{{option.title}}" style="height:22px;">
-          <span class="option-label">{{ option.title }}</span>
+          <img [src]="option.icon" class="option-icon" [alt]="option.titleKey" style="height:22px;">
+<span class="option-label">{{ option.titleKey | translate }}</span>
         </span>
       </a>
     </ng-container>
@@ -40,28 +41,31 @@
     >
       <span class="icon-text" style="display: flex; align-items: center; gap: 5px;">
         <img src="assets/images/bell.png" class="option-icon" alt="Notifications" style="height:22px;">
-        <span class="option-label">Notifications</span>
+        <span class="option-label">{{ 'TOOLBAR.OPTION.NOTIFICATIONS' | translate }}</span>
         <span class="notification-badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
       </span>
     </a>
   </ng-template>
-<app-language-switcher></app-language-switcher>
-  <!-- Botón Sign out con confirmación -->
+
+  <app-language-switcher></app-language-switcher>
+
   <button mat-raised-button color="warn" (click)="logout()">
-    Sign out
+    {{ 'TOOLBAR.SIGN_OUT' | translate }}
   </button>
 
-
-
-<!-- Modal de confirmación de cierre de sesión -->
-<div class="custom-modal-backdrop" *ngIf="showLogoutModal">
-  <div class="custom-modal">
-    <div class="custom-modal-header">¿Confirmar cierre de sesión?</div>
-    <div class="custom-modal-body">¿Estás seguro de que quieres cerrar sesión?</div>
-    <div class="custom-modal-actions">
-      <button class="modal-btn cancel" (click)="closeLogoutModal(false)">Cancelar</button>
-      <button class="modal-btn accept" (click)="closeLogoutModal(true)">Cerrar sesión</button>
+  <!-- Modal de confirmación de cierre de sesión -->
+  <div class="custom-modal-backdrop" *ngIf="showLogoutModal">
+    <div class="custom-modal">
+      <div class="custom-modal-header">{{ 'TOOLBAR.CONFIRM_LOGOUT_TITLE' | translate }}</div>
+      <div class="custom-modal-body">{{ 'TOOLBAR.CONFIRM_LOGOUT_BODY' | translate }}</div>
+      <div class="custom-modal-actions">
+        <button class="modal-btn cancel" (click)="closeLogoutModal(false)">
+          {{ 'TOOLBAR.CANCEL' | translate }}
+        </button>
+        <button class="modal-btn accept" (click)="closeLogoutModal(true)">
+          {{ 'TOOLBAR.LOGOUT' | translate }}
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </mat-toolbar>
