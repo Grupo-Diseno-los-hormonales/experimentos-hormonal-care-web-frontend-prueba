@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -17,8 +17,8 @@ import { DoctorService } from '../../../communications/services/doctor.service';
   ],
   styleUrls: ['./available-doctors.component.css']
 })
-export class AvailableDoctorsComponent {
-  doctors: (Doctor & { isVerified?: boolean })[] = [];
+export class AvailableDoctorsComponent implements OnInit {
+  doctors: (Doctor & { isVerified?: boolean, isOnline?: boolean })[] = [];
 
   searchQuery: string = '';
   sortOption: string = '';
@@ -29,13 +29,15 @@ export class AvailableDoctorsComponent {
   ) {}
 
   ngOnInit() {
-    this.doctors = this.doctorService.getDoctors().map(doctor => ({
+    // Simula que algunos doctores están en línea y/o verificados
+    this.doctors = this.doctorService.getDoctors().map((doctor, i) => ({
       ...doctor,
-      isVerified: true
+      isVerified: i % 2 === 0,   // Ejemplo: verifica solo algunos
+      isOnline: i % 3 === 0      // Ejemplo: online solo algunos
     }));
   }
 
-  get filteredDoctors(): (Doctor & { isVerified?: boolean })[] {
+  get filteredDoctors(): (Doctor & { isVerified?: boolean, isOnline?: boolean })[] {
     let result = this.doctors.filter(doc =>
       doc.name.toLowerCase().includes(this.searchQuery.toLowerCase().trim())
     );
