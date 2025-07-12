@@ -4,130 +4,100 @@
   min-height: calc(100vh - 64px); /* Ajusta si tu header es más alto o más bajo */
 }
 
-mat-sidenav-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: #f3eef9;
-  margin-top: 64px;
-}
-
-mat-sidenav-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 .notifications-container {
-  flex: 1;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
+  padding: 24px;
+  background-color: #f7f6fb;
+  min-height: 100vh;
+  color: #333;
 }
 
-/* TITULARES */
+:host-context(.dark-mode) .notifications-container {
+  background-color: #1c1b29;
+  color: #f1f1f1;
+}
+
 .title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: #5b3573;
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #6a1b9a;
+}
+
+:host-context(.dark-mode) .title {
+  color: #e1bee7;
 }
 
 .subtitle {
-  margin-top: 40px;
-  margin-bottom: 16px;
   font-size: 20px;
-  font-weight: 600;
-  color: #5e35b1;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #4527a0;
 }
 
-/* Tarjetas */
+:host-context(.dark-mode) .subtitle {
+  color: #d1c4e9;
+}
+
 .notification-card {
-  margin-bottom: 20px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 6px 16px rgba(123, 66, 246, 0.1);
-  transition: transform 0.2s ease;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
 }
 
-.notification-card:hover {
-  transform: translateY(-2px);
+:host-context(.dark-mode) .notification-card {
+  background-color: #2c2c3e;
+  color: #f1f1f1;
 }
 
-.notification-card.announcement {
-  border-left: 5px solid #7e57c2;
-  background-color: #f9f6ff;
+.notification-card .mat-card-title,
+.notification-card .mat-card-subtitle {
+  color: inherit;
 }
 
-/* Avatar */
 .icon-avatar {
-  background-color: #e0d4f7;
-  color: #4a148c;
+  background-color: #ede7f6;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
 }
 
-/* Botones */
-button[mat-icon-button] {
-  color: #b91c1c;
-  transition: transform 0.2s ease;
+:host-context(.dark-mode) .icon-avatar {
+  background-color: #4a4a63;
 }
 
-button[mat-icon-button]:hover {
-  transform: scale(1.2);
-}
-
-/* Espaciado */
 .spacer {
   flex: 1 1 auto;
 }
 
-/* Contenido especial */
-.highlighted-notification {
-  border-left: 5px solid #5b3573;
-  background-color: #f9f5ff;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(91, 53, 115, 0.1);
-}
-
-.appointment-details {
-  font-size: 14px;
+.announcement-description {
   margin-top: 8px;
-  color: #444;
-}
-
-.appointment-details span {
-  display: block;
-  margin-bottom: 4px;
+  font-style: italic;
+  opacity: 0.85;
 }
 
 .no-data {
+  margin-top: 32px;
+  font-size: 18px;
+  color: #757575;
   text-align: center;
-  color: #999;
-  margin-top: 50px;
-  font-size: 16px;
 }
 
-/* Header de las tarjetas */
-mat-card-header {
-  display: flex;
-  align-items: center;
-}
- .spacer {
-   flex: 1 1 auto;
- }
-
-.notification-card.announcement {
-  border-left: 5px solid #7e57c2;
-  background-color: #f9f6ff;
+:host-context(.dark-mode) .no-data {
+  color: #aaa;
 }
 
-.subtitle {
-  margin-top: 24px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #5e35b1;
+/* Botones en modo oscuro */
+:host-context(.dark-mode) ::ng-deep .mat-stroked-button {
+  border-color: #aaa;
+  color: #e0e0e0;
+}
+
+:host-context(.dark-mode) ::ng-deep .mat-stroked-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Asegura que los íconos hereden color */
+:host-context(.dark-mode) ::ng-deep .mat-icon {
+  color: #f1f1f1;
 }

@@ -1,7 +1,61 @@
 :host {
   display: block;
-  margin-top: 64px; /* altura real de tu <mat-toolbar> */
+  padding: 24px;
+  background-color: #f4f4f9;
+  min-height: 100vh;
 }
-mat-grid-list {
-  background-color: #e5dde6;
+
+:host-context(.dark-mode) {
+  background-color: #1c1b29;
+  color: #e0e0e0;
+}
+
+/* Estilo general del grid */
+::ng-deep mat-grid-list {
+  gap: 16px;
+}
+
+/* Ajustes a los tiles */
+::ng-deep mat-grid-tile {
+  background: transparent !important;
+  padding: 8px;
+}
+
+/* Estilo para tarjetas de info (asumiendo que tienen mat-card internamente) */
+::ng-deep app-info-card-profile-patiens .mat-card {
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+:host-context(.dark-mode) ::ng-deep app-info-card-profile-patiens .mat-card {
+  background-color: #2c2c3e;
+  color: #f1f1f1;
+}
+
+/* Estilo para el componente info-profile */
+::ng-deep app-info-profile-patiens {
+  display: block;
+  background-color: #fefefe;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+:host-context(.dark-mode) ::ng-deep app-info-profile-patiens {
+  background-color: #2a293a;
+  color: #f1f1f1;
+}
+
+/* Foto paciente */
+::ng-deep app-photo-patients img {
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  width: 100%;
+  max-width: 160px;
+}
+
+:host-context(.dark-mode) ::ng-deep app-photo-patients img {
+  border-color: #aaa;
 }
