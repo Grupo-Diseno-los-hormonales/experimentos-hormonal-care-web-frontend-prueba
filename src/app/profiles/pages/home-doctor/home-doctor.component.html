@@ -3,6 +3,11 @@
     <div class="content">
       <h2 class="section-title">Today's patients</h2>
 
+      <!-- FECHA Y HORA ACTUAL -->
+      <div class="current-date-time">
+        {{ currentDate | date:'fullDate' }} — {{ currentDate | date:'HH:mm:ss' }}
+      </div>
+
       <div class="main-layout">
 
         <!-- Tabla de pacientes -->
@@ -85,7 +90,6 @@
               <p style="margin-top: 10px;">Loading search results...</p>
             </div>
           </ng-template>
-
         </div>
       </div>
     </div>

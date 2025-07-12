@@ -23,6 +23,9 @@ export class HomeDoctorComponent implements OnInit {
   searchTerm: string = '';
   patients: PatientEntity[] = [];
   exams: any[] = [];
+  currentDate: Date = new Date(); // <- Para mostrar fecha y hora actual
+
+  private intervalId: any;
 
   constructor(
     private userTypeService: UserTypeService,
@@ -50,7 +53,7 @@ export class HomeDoctorComponent implements OnInit {
       history.pushState(null, '', location.href);
     };
 
-    // ✅ Mostrar comunicado emergente si hay alguno sin leer (doctor)
+    // Mostrar comunicado emergente si hay alguno sin leer (doctor)
     const unreadAnnouncements: AnnouncementEntity[] =
       this.announcementService.getUnreadForAudience('doctors');
 
@@ -64,6 +67,18 @@ export class HomeDoctorComponent implements OnInit {
 
         this.announcementService.markAsRead(announcement.id, 'doctors');
       });
+    }
+
+    // 🕒 Actualiza la fecha y hora cada segundo
+    this.intervalId = setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    // Limpia el intervalo al destruir el componente
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
   }
 
@@ -111,6 +126,7 @@ export class HomeDoctorComponent implements OnInit {
       }
     });
   }
+
   deleteExam(examToDelete: any): void {
     this.exams = this.exams.filter(exam => exam !== examToDelete);
     localStorage.setItem('doctorFiles', JSON.stringify(this.exams));
