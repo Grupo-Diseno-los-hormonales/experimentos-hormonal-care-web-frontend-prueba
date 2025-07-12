@@ -243,7 +243,14 @@ html, body {
   gap: 0.2rem;
   transition: transform 0.3s ease;
 }
-.doctor-card h3,
+/* Estilo para el título de la tarjeta de doctor y el icono de verificación */
+.doctor-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.2rem;
+}
 .doctor-card p {
   margin-top: 0.2rem;
 }
@@ -327,4 +334,51 @@ html, body {
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 1.5rem;
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 7px;
+  vertical-align: middle;
+  /* Efecto de sombra */
+  filter: drop-shadow(0 1px 2px rgba(33,150,243,0.16));
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.verified-badge:hover {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.doctor-card-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+.header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.verified-badge,
+.header h2 > span[title="Verified"] {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(33,150,243,0.12));
+  cursor: pointer;
+  transition: transform 0.13s;
+}
+
+.verified-badge:hover,
+.header h2 > span[title="Verified"]:hover {
+  transform: scale(1.11) rotate(-5deg);
 }

@@ -92,3 +92,19 @@
   min-width: 200px;
   justify-content: space-between;
 }
+
+.doctor-name-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(33,150,243,0.12));
+}

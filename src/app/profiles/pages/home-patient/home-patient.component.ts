@@ -30,6 +30,10 @@ import { MatDialog } from '@angular/material/dialog';
   ]
 })
 export class HomePatientComponent implements OnInit {
+  doctors = [
+    { name: 'Dr. Gómez', price: 90, isVerified: true, image: 'assets/images/doctors/gomez.png' },
+    { name: 'Dr. Juan Egüía', price: 100, isVerified: true, image: 'assets/images/doctors/eguia.png' }
+  ];
   selectedExam: File | null = null;
 
   constructor(

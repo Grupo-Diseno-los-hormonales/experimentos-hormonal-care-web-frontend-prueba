@@ -210,3 +210,16 @@ mat-grid-tile {
     font-size: 0.95rem;
   }
 }
+
+.verified-icon {
+  color: #1d4ed8;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.doctor-name {
+  font-weight: bold;
+  text-align: center;
+  margin: 8px 0;
+}
