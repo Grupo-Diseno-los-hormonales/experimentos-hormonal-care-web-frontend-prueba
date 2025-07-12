@@ -116,3 +116,18 @@ mat-card-header {
   display: flex;
   align-items: center;
 }
+ .spacer {
+   flex: 1 1 auto;
+ }
+
+.notification-card.announcement {
+  border-left: 5px solid #7e57c2;
+  background-color: #f9f6ff;
+}
+
+.subtitle {
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #5e35b1;
+}

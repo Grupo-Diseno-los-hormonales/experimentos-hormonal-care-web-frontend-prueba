@@ -1,7 +1,7 @@
 import {
   Component,
   ViewChild,
-  AfterViewInit
+  AfterViewInit, OnInit
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -16,6 +16,7 @@ import autoTable from 'jspdf-autotable';
 
 import { UserFormComponent, UserFormData } from '../user-form/user-form.component';
 import { MatTooltip } from '@angular/material/tooltip';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 interface User extends UserFormData {
   id: number;
@@ -37,12 +38,13 @@ const STORAGE_KEY = 'hormonal-users';
     MatDialogModule,
     UserFormComponent,
     MatSnackBarModule,
-    MatTooltip
+    MatTooltip,
+    TranslateModule
   ],
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements AfterViewInit {
+export class UserListComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['name', 'email', 'role', 'status', 'createdAt', 'actions'];
   users: User[] = [];
   dataSource = new MatTableDataSource<User>();
@@ -50,7 +52,22 @@ export class UserListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  ngOnInit(): void {
+    this.changeLang(this.selectedLang);
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+
     const savedUsers = localStorage.getItem(STORAGE_KEY);
     if (savedUsers) {
       try {

@@ -18,15 +18,18 @@ import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
 import { EventCalendarService } from '../../services/event-calendar.service';
 import { Subscription } from 'rxjs';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 @Component({
   selector: 'app-calendar-doctor',
   templateUrl: './calendar-doctor.component.html',
   styleUrl: './calendar-doctor.component.css',
-  imports: [CommonModule, RouterOutlet, FullCalendarModule],
+  imports: [CommonModule, RouterOutlet, FullCalendarModule, TranslateModule],
   standalone: true
 })
 export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy {
+isDarkMode = false;
   @ViewChild('calendar') calendarComponent: any;
 
   private subscription: Subscription = new Subscription();
@@ -60,10 +63,23 @@ export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private eventCalendarService: EventCalendarService
-  ) {}
+    private eventCalendarService: EventCalendarService,
+    private translate: TranslateService, private darkModeService: DarkModeService,) {
+  const lang = localStorage.getItem('lang') || 'es';
+  this.translate.setDefaultLang(lang);
+  this.translate.use(lang);
+this.isDarkMode= this.darkModeService.current;
+}
+selectedLang = localStorage.getItem('lang') || 'es';
 
-  ngOnInit(): void {}
+changeLang(lang: string): void {
+  this.translate.use(lang);
+  localStorage.setItem('lang', lang);
+  this.selectedLang = lang;
+}
+  ngOnInit(): void {
+  this.applyDarkModeClass();
+  }
 
   ngAfterViewInit(): void {
     this.subscription = this.eventCalendarService.events$.subscribe(events => {
@@ -83,7 +99,19 @@ export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy
       }
     });
   }
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+    this.applyDarkModeClass(); // 👈 Aplica al cambiar
+  }
 
+  applyDarkModeClass(): void {
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
@@ -131,4 +159,5 @@ export class CalendarDoctorComponent implements OnInit, AfterViewInit, OnDestroy
     const detail = event?.detail || event;
     this.handleEvents(detail);
   }
+
 }

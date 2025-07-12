@@ -1,4 +1,3 @@
-
 .container {
   display: flex;
   background-color: #DFCAE1;
@@ -7,10 +6,19 @@
 .schedule {
   flex: 1;
   padding: 20px;
-
 }
 
 .event-card-container {
   flex: 0 0 400px;
   padding: 20px;
+}
+
+/* 🌙 Modo oscuro */
+:host-context(.dark-mode) .container {
+  background-color: #1c1b29;
+}
+
+:host-context(.dark-mode) .schedule,
+:host-context(.dark-mode) .event-card-container {
+  padding: 20px; /* mantiene el padding */
 }

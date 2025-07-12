@@ -20,6 +20,7 @@ import {
 } from '@angular/animations';
 import { MatIcon, MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 interface ExtendedLogEntry {
   timestamp: string;
@@ -49,7 +50,8 @@ interface ExtendedLogEntry {
     MatIconModule,
     MatTooltipModule,
     NgChartsModule,
-    MatIcon
+    MatIcon,
+    TranslateModule
   ],
   animations: [
     trigger('detailExpand', [
@@ -98,7 +100,19 @@ export class LogsComponent implements AfterViewInit {
 
   barChartType: ChartType = 'bar';
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar, private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+    selectedLang = localStorage.getItem('lang') || 'es';
+
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
+
     this.loadMockLogs();
   }
 
@@ -219,10 +233,12 @@ export class LogsComponent implements AfterViewInit {
 
   refreshLogs() {
     this.loadMockLogs();
-    this.snackBar.open('Logs reloaded successfully!', 'Close', {
-      duration: 3000,
-      verticalPosition: 'top'
-    });
+    this.snackBar.open(
+      this.translate.instant('ADMIN_LOGS.SNACKBAR.REFRESH_SUCCESS'),
+      this.translate.instant('COMMON.CLOSE'),
+      { duration: 3000, verticalPosition: 'top' }
+    );
+
   }
 
   toggleRow(log: ExtendedLogEntry) {
@@ -233,8 +249,11 @@ export class LogsComponent implements AfterViewInit {
   exportLogs() {
     const logs = this.dataSource.data;
     if (!logs.length) {
-      this.snackBar.open('No logs to export.', 'Close', { duration: 3000, verticalPosition: 'top' });
-      return;
+      this.snackBar.open(
+        this.translate.instant('ADMIN_LOGS.SNACKBAR.NO_DATA'),
+        this.translate.instant('COMMON.CLOSE'),
+        { duration: 3000, verticalPosition: 'top' }
+      );      return;
     }
 
     const headers = ['Timestamp', 'User', 'Event Type', 'IP Address', 'Risk Level', 'Location', 'Device', 'Action ID'];
@@ -264,6 +283,9 @@ export class LogsComponent implements AfterViewInit {
     document.body.removeChild(link);
     window.URL.revokeObjectURL(url);
 
-    this.snackBar.open('Logs exported as CSV!', 'Close', { duration: 3000, verticalPosition: 'top' });
-  }
+    this.snackBar.open(
+      this.translate.instant('ADMIN_LOGS.SNACKBAR.EXPORT_SUCCESS'),
+      this.translate.instant('COMMON.CLOSE'),
+      { duration: 3000, verticalPosition: 'top' }
+    );  }
 }

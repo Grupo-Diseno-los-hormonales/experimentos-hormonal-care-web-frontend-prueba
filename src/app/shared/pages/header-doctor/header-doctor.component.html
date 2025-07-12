@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <mat-toolbar>
   <div class="logo-container">
     <img src="assets/images/logo.png" alt="Logo" class="logo">
@@ -38,3 +39,31 @@
     </div>
   </div>
 </div>
+=======
+<body [class.dark-mode]="isDarkMode">
+<mat-toolbar>
+  <div class="logo-container">
+    <img src="assets/images/logo.png" alt="Logo" class="logo">
+    <mat-toolbar>{{ 'HEADER.TITLE' | translate }}</mat-toolbar>
+  </div>
+
+  <app-colleague-search></app-colleague-search>
+  <span class="spacer"></span>
+
+  <a mat-button *ngFor="let option of options; let i = index"
+     [routerLink]="option.path"
+     routerLinkActive="active-button"
+     class="nav-button"
+     [class.first-button]="i === 0">
+    <div class="icon-text">
+      <img [src]="option.icon" alt="{{ option.title | translate }}" class="option-icon">
+    </div>
+    {{ option.title | translate }}
+  </a>
+
+  <button mat-icon-button (click)="toggleDarkMode()" [matTooltip]="'Toggle Dark Mode' | translate">
+    <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+  </button>
+  <app-language-switcher></app-language-switcher>
+</mat-toolbar>
+>>>>>>> fusion-repo2

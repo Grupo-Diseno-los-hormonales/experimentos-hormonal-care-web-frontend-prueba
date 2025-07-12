@@ -3,6 +3,7 @@
     <button mat-icon-button class="back-btn">
       <mat-icon>arrow_back</mat-icon>
     </button>
+<<<<<<< HEAD
     <h2 class="doctor-name-header">
       {{ doctor.name }}
       <span title="Verified" class="verified-badge">
@@ -13,22 +14,28 @@
       </span>
     </h2>
     <button mat-raised-button color="warn" (click)="logout()">Sign out</button>
+=======
+    <h2>{{ 'DOCTOR_PROFILE.TITLE' | translate:{ name: doctor.name } }}</h2>
+    <button mat-raised-button color="warn" (click)="logout()">
+      {{ 'DOCTOR_PROFILE.SIGN_OUT' | translate }}
+    </button>
+>>>>>>> fusion-repo2
   </div>
 
   <div class="content">
-    <!-- FOTO -->
+    <!-- PHOTO -->
     <div class="photo-section">
       <img [src]="doctor.photoUrl || defaultPhoto" alt="Doctor photo">
       <button mat-icon-button (click)="editPhoto()">
         <mat-icon>edit</mat-icon>
       </button>
-      <p>Edit photo</p>
+      <p>{{ 'DOCTOR_PROFILE.EDIT_PHOTO' | translate }}</p>
     </div>
 
     <!-- FORMULARIO -->
     <div class="form-section mat-elevation-z2">
       <div class="field" *ngFor="let field of profileFields">
-        <label>{{ field.label }}</label>
+        <label>{{ field.label | translate }}</label>
         <div class="input-icon">
           <input [(ngModel)]="field.value" [readonly]="!field.editable" />
           <button mat-icon-button>
@@ -40,9 +47,11 @@
 
     <!-- PLAN Y CALENDARIO -->
     <div class="plan-section">
-      <p><strong>Number of patients:</strong> {{ doctor.patients }}/5</p>
-      <button mat-raised-button color="accent" (click)="improvePlan()">Improve plan</button>
-      <p><strong>Appointment availability:</strong></p>
+      <p><strong>{{ 'DOCTOR_PROFILE.PATIENTS' | translate }}:</strong> {{ doctor.patients }}/5</p>
+      <button mat-raised-button color="accent" (click)="improvePlan()">
+        {{ 'DOCTOR_PROFILE.IMPROVE_PLAN' | translate }}
+      </button>
+      <p><strong>{{ 'DOCTOR_PROFILE.AVAILABILITY' | translate }}:</strong></p>
       <mat-calendar [(selected)]="selectedDate"></mat-calendar>
       <button mat-icon-button (click)="editCalendar()">
         <mat-icon>edit</mat-icon>
@@ -52,15 +61,15 @@
 
   <div class="actions">
     <button mat-stroked-button (click)="configureCertificates()">
-      Configure certificates
+      {{ 'DOCTOR_PROFILE.CONFIGURE_CERTIFICATES' | translate }}
       <mat-icon>arrow_forward</mat-icon>
     </button>
     <button mat-stroked-button (click)="configurePlan()">
-      Configure current plan
+      {{ 'DOCTOR_PROFILE.CONFIGURE_PLAN' | translate }}
       <mat-icon>arrow_forward</mat-icon>
     </button>
     <button mat-stroked-button (click)="setUpNotification()">
-      Set up notification
+      {{ 'DOCTOR_PROFILE.SETUP_NOTIFICATIONS' | translate }}
       <mat-icon>arrow_forward</mat-icon>
     </button>
   </div>

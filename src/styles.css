@@ -1,23 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* === Import Angular Material base theme === */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-body {
+
+/* === Global reset and layout === */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow: auto;
 }
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet + * {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+/* === Light Theme Variables === */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #8c5e9b;
+  --link-color: #8c5e9b;
+  --card-bg: #f5f5f5;
+  --input-bg: #ffffff;
+}
+
+/* === Dark Theme Variables === */
 body.dark-mode {
-  background-color: #1e1e2f;
-  color: #f0f0f0;
+  --bg-color: #1e1e2f;
+  --text-color: #f0f0f0;
+  --accent-color: #2c2c3e;
+  --link-color: #b3c0ff;
+  --card-bg: #2c2c3c;
+  --input-bg: #2a2a3a;
 }
 
-body.dark-mode a {
-  color: #b3c0ff;
+/* === Global Theme Application === */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-body.dark-mode .mat-mdc-button {
-  color: #f0f0f0;
+/* === Links === */
+a {
+  color: var(--link-color);
 }
 
+/* === Angular Material Elements === */
+.mat-mdc-button {
+  color: var(--text-color);
+}
+
+body.dark-mode .mat-mdc-card {
+  background-color: var(--card-bg);
+}
+
+body.dark-mode .mat-mdc-input-element {
+  color: var(--text-color);
+  background-color: var(--input-bg);
+}
+
+body.dark-mode .mat-mdc-form-field-subscript-wrapper,
+body.dark-mode .mat-mdc-form-field-label {
+  color: #cccccc;
+}
+
+/* === Other Cards / Containers === */
+mat-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* === Optional: Smooth transitions === */
+body, body * {
+  transition: background-color 0.3s, color 0.3s;
+}
 
 

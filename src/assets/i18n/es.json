@@ -1,6 +1,746 @@
 {
+  "LOGIN": {
+    "HOME": "Inicio",
+    "REGISTER": "Registrarse",
+    "WELCOME": "Bienvenido a",
+    "SUBTITLE": "Controla tu salud hormonal con especialistas de confianza.",
+    "TITLE": "Iniciar sesión",
+    "SUBTITLE_CARD": "Accede a tu panel",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "REMEMBER": "Recordarme",
+    "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
+    "BUTTON": "Entrar",
+    "ERROR": "Correo o contraseña inválidos.",
+    "NO_ACCOUNT": "¿No tienes una cuenta?"
+  },
+  "HOME_DOCTOR": {
+    "TITLE": "Pacientes de hoy",
+    "TABLE": {
+      "NAME": "Nombre",
+      "CARE": "Tipo de atención",
+      "HOUR": "Hora",
+      "DIAGNOSIS": "Diagnóstico",
+      "ALERT": "Alerta",
+      "TRANSFER": "Transferir",
+      "VIDEO": "Videoconferencia",
+      "YEARS": "años"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Buscar un paciente",
+      "SCHEDULE": "Agendar seguimiento",
+      "HISTORY": "Historia clínica"
+    },
+    "LOADING": {
+      "TABLE": "Cargando tabla de pacientes...",
+      "SEARCH": "Cargando resultados de búsqueda..."
+    }
+  },
+  "HEADER": {
+    "TITLE": "HormonalCare",
+    "HOME": "Inicio",
+    "CALENDAR": "Calendario",
+    "MESSAGES": "Mensajes",
+    "NOTIFICATIONS": "Notificaciones",
+    "PROFILE": "Perfil",
+    "SEARCH_COLLEAGUE": "Buscar colega por correo..."
+  },
+  "CALENDAR": {
+    "ALL_EVENTS": "Todos los eventos",
+    "ADD_EVENT": "Agregar evento",
+    "EVENT_DATE": "Fecha del evento",
+    "START_TIME": "Hora de inicio",
+    "END_TIME": "Hora de fin",
+    "TITLE": "Título",
+    "TITLE_PLACEHOLDER": "Escribe un título",
+    "PATIENT_EMAIL": "Paciente asociado",
+    "PATIENT_PLACEHOLDER": "Correo del paciente @",
+    "EMAIL_REQUIRED": "El correo es obligatorio.",
+    "EMAIL_INVALID": "Por favor ingrese un correo válido.",
+    "CREATE_EVENT": "Crear evento"
+  },
+  "MESSAGES": {
+    "CHAT_WITH_PATIENT": "Chat con Paciente",
+    "CLEAR_CHAT": "Borrar chat",
+    "TYPE_MESSAGE": "Escribe un mensaje..."
+  },
+  "NOTIFICATIONS": {
+    "APPOINTMENTS_TITLE": "Notificaciones de citas",
+    "ANNOUNCEMENTS_TITLE": "Comunicados del administrador",
+    "APPOINTMENT_WITH": "Cita con {{name}}",
+    "NEW_APPOINTMENT": "Nueva cita programada",
+    "HIDE": "Ocultar",
+    "SHOW": "Mostrar +",
+    "GOT_IT": "Entendido",
+    "NO_NOTIFICATIONS": "No tienes notificaciones en este momento."
+  },
+  "DOCTOR_PROFILE": {
+    "TITLE": "Perfil de usuario: “Hola, Dr {{name}}”",
+    "SIGN_OUT": "Cerrar sesión",
+    "EDIT_PHOTO": "Editar foto",
+    "PATIENTS": "Número de pacientes",
+    "IMPROVE_PLAN": "Mejorar plan",
+    "AVAILABILITY": "Disponibilidad de citas",
+    "CONFIGURE_CERTIFICATES": "Configurar certificados",
+    "CONFIGURE_PLAN": "Configurar plan actual",
+    "SETUP_NOTIFICATIONS": "Configurar notificaciones"
+  },
+  "FOOTER": {
+    "RIGHTS": "HormonalCare. Todos los derechos reservados.",
+    "PRIVACY": "Política de Privacidad",
+    "TERMS": "Términos de Servicio",
+    "PERSONAL": "Datos Personales",
+    "HELP": "Ayuda"
+  },
+  "ADMIN_HEADER": {
+    "MAIN_PANEL": "Panel principal",
+    "ADMIN": "Admin",
+    "SIGN_OUT": "Cerrar sesión"
+  },
+  "ADMIN_LAYOUT": {
+    "TITLE": "HormonalCare Admin",
+    "DASHBOARD": "Panel",
+    "STATS": "Estadísticas",
+    "ANNOUNCEMENTS": "Comunicados",
+    "LOGS": "Registros",
+    "REASSIGN": "Reasignar",
+    "SUPPORT": "Soporte",
+    "USERS": "Usuarios"
+  },
+  "HOME_ADMIN": {
+    "WELCOME": "Bienvenido, {{username}}",
+    "SESSION_ID": "ID de sesión: {{id}}",
+    "DESCRIPTION": "Este es el panel principal de administración de HormonalCare.",
+    "DESCRIPTION_2": "Desde aquí puedes gestionar anuncios, usuarios, soporte, seguridad y más.",
+    "QUICK_ACTIONS": "Acciones Rápidas",
+    "CREATE_ANNOUNCEMENT": "Crear Anuncio",
+    "REGISTER_DOCTOR": "Registrar Nuevo Doctor",
+    "REVIEW_LOGS": "Revisar Registros",
+    "REASSIGN_PATIENT": "Reasignar Paciente",
+    "VIEW_SUPPORT": "Ver Solicitudes",
+    "QUICK_ACCESS": "Acceso Rápido",
+    "DASHBOARD": "Panel",
+    "STATS": "Estadísticas",
+    "ANNOUNCEMENTS": "Anuncios",
+    "LOGS": "Registros de Acceso",
+    "REASSIGN": "Reasignar Pacientes",
+    "SUPPORT": "Soporte",
+    "USER_MANAGEMENT": "Gestión de Usuarios",
+    "TOOLTIP_DASHBOARD": "Ver estadísticas generales y actividad del sistema",
+    "TOOLTIP_STATS": "Análisis detallado y métricas de rendimiento",
+    "TOOLTIP_ANNOUNCEMENTS": "Crear y gestionar anuncios globales",
+    "TOOLTIP_LOGS": "Revisar intentos de inicio de sesión sospechosos y accesos",
+    "TOOLTIP_REASSIGN": "Reasignar pacientes a otros doctores",
+    "TOOLTIP_SUPPORT": "Gestionar solicitudes técnicas de soporte",
+    "TOOLTIP_USERS": "Gestionar usuarios registrados y sus roles"
+  },
+  "ADMIN_DASHBOARD": {
+    "TITLE": "Resumen del Sistema",
+    "CARDS": {
+      "ANNOUNCEMENTS": "Anuncios Enviados",
+      "LOGS": "Registros Guardados",
+      "REASSIGNED": "Pacientes Reasignados",
+      "FAILED_LOGINS": "Intentos Fallidos de Inicio",
+      "NEW_USERS": "Usuarios Nuevos Registrados",
+      "RESPONSE_TIME": "Tiempo Promedio de Respuesta",
+      "SUPPORT_OPEN": "Tickets de Soporte Abiertos"
+    },
+    "RECENT_ACTIVITY": {
+      "TITLE": "Actividad Reciente",
+      "ITEMS": {
+        "CHANGED_PASSWORD": "Usuario {{user}} cambió su contraseña",
+        "ANNOUNCEMENT_SENT": "Anuncio enviado a todos los doctores",
+        "NEW_USER": "Nuevo usuario {{user}} registrado",
+        "DOCTOR_REASSIGNED": "Doctor {{doctor}} reasignado al paciente #{{id}}",
+        "SUPPORT_RESOLVED": "Solicitud de soporte marcada como resuelta"
+      }
+    },
+    "CRITICAL": {
+      "TITLE": "Registros Críticos y Accesos Sospechosos",
+      "LATEST_ERRORS": "🔴 Últimos Errores del Sistema",
+      "FAILED_IPS": "⚠️ IPs con Múltiples Fallos",
+      "SUSPICIOUS_BEHAVIOR": "🕵️ Alertas de Comportamiento Sospechoso",
+      "ITEMS": {
+        "ERROR_1": "Error 500 en `/api/assign-doctor`",
+        "ERROR_2": "Timeout en `/api/support`",
+        "IP_1": "192.168.1.44 — 5 intentos fallidos",
+        "IP_2": "190.12.55.88 — 3 intentos fallidos",
+        "SUSPICIOUS_1": "Usuario `admin1` inició sesión desde ubicación inusual",
+        "SUSPICIOUS_2": "Intento de acceso no autorizado a `/admin/reassign`"
+      }
+    }
+  },
+  "ADMIN_STATS": {
+    "TITLE": "Estadísticas detalladas",
+    "DESCRIPTION": "Analiza el rendimiento del sistema y los patrones de actividad entre usuarios y módulos.",
+    "GRAPHS": {
+      "MONTHLY_ACTIVITY": "Comparación de actividad mensual",
+      "USER_ROLES": "Distribución de roles de usuario",
+      "RESPONSE_TRENDS": "Tendencias de tiempo de respuesta",
+      "TICKET_CATEGORIES": "Tickets de soporte por categoría",
+      "CONSULTATIONS_VS_FOLLOWUPS": "Consultas vs Seguimientos",
+      "LOGS_WEEKLY": "Registros por tipo (semanal)",
+      "VISITS_FOLLOWUPS": "Estadísticas de visitas y seguimientos",
+      "TRAFFIC_SOURCES": "Fuentes de tráfico"
+    }
+  },
+  "ADMIN_ANNOUNCEMENTS": {
+    "TITLE": "Enviar Comunicado",
+    "FORM": {
+      "TITLE": "Título",
+      "DESCRIPTION": "Descripción",
+      "POPUP_MSG": "Mensaje emergente (opcional)",
+      "AUDIENCE": "Audiencia",
+      "SUBMIT": "Publicar Comunicado"
+    },
+    "AUDIENCES": {
+      "ALL": "Todos",
+      "DOCTORS": "Médicos",
+      "PATIENTS": "Pacientes"
+    },
+    "SENT": {
+      "TITLE": "Comunicados Enviados"
+    }
+  },
+  "ADMIN_LOGS": {
+    "TITLE": "Registros de Acceso y Actividad",
+    "FILTER": {
+      "SEARCH_PLACEHOLDER": "Buscar usuario o IP...",
+      "RISK": "Nivel de Riesgo",
+      "GROUP": "Agrupar por"
+    },
+    "RISKS": {
+      "ALL": "Todos",
+      "LOW": "Bajo",
+      "MEDIUM": "Medio",
+      "HIGH": "Alto"
+    },
+    "GROUPS": {
+      "NONE": "Ninguno",
+      "USER": "Usuario",
+      "EVENT": "Tipo de Evento"
+    },
+    "COLUMNS": {
+      "TIMESTAMP": "Fecha y Hora",
+      "USER": "Usuario",
+      "EVENT": "Evento",
+      "IP": "Dirección IP",
+      "RISK": "Riesgo"
+    },
+    "DETAILS": {
+      "ACTION_ID": "ID de Acción",
+      "LOCATION": "Ubicación",
+      "DEVICE": "Dispositivo"
+    },
+    "GROUP_LABELS": {
+      "USER": "Usuario: ",
+      "EVENT": "Evento: "
+    },
+    "EXPORT": "Exportar",
+    "REFRESH": "Actualizar Registros",
+    "NO_RESULTS": "No se encontraron registros con los criterios seleccionados.",
+    "SNACKBAR": {
+      "REFRESH_SUCCESS": "¡Registros actualizados correctamente!",
+      "EXPORT_SUCCESS": "¡Registros exportados como CSV!",
+      "NO_DATA": "No hay registros para exportar."
+    }
+  },
+  "COMMON": {
+    "CLOSE": "Cerrar"
+  },
+  "REASSIGN": {
+    "TITLE": "Reasignar Paciente",
+    "FULL_NAME": "Nombre completo",
+    "AGE": "Edad",
+    "YEARS": "años",
+    "SELECT_DOCTOR": "Seleccionar un médico",
+    "CONFIRM": "Confirmar transferencia",
+    "CANCEL": "Cancelar"
+  },
+  "SUPPORT": {
+    "TITLE": "Centro de Soporte",
+    "TABS": {
+      "ALL": "Todos los tickets",
+      "CHAT": "Chat en vivo",
+      "KB": "Base de conocimiento",
+      "ANALYTICS": "Analítica",
+      "SETTINGS": "Configuraciones"
+    },
+    "SUBJECTS": {
+      "CALENDAR_SYNC": "Sincronización del calendario no funciona",
+      "UPLOAD_LAB": "No se pueden subir resultados de laboratorio",
+      "LOGIN_ISSUE": "Problema de inicio de sesión",
+      "REMINDER_NOT_WORKING": "Recordatorios no se reciben",
+      "HISTORY_NOT_LOADING": "La historia clínica no carga",
+      "APP_CRASH_LOGIN": "La app se cierra tras iniciar sesión",
+      "VIEW_LAB_RESULTS": "No se pueden ver resultados de laboratorio",
+      "NO_ASSIGNED_DOCTOR": "No aparece médico asignado",
+      "SLOW_PLATFORM": "La plataforma está lenta"
+    },
+    "MESSAGES": {
+      "CALENDAR_NOT_SYNCING": "Los eventos del calendario no se sincronizan correctamente con mi dispositivo móvil.",
+      "UPLOAD_403": "Recibo un error 403 al intentar subir mis resultados de laboratorio.",
+      "LOGIN_CANNOT_ACCESS": "No puedo iniciar sesión en mi cuenta a pesar de usar las credenciales correctas.",
+      "REMINDER_NO_RECEIVED": "No recibo recordatorios de citas aunque están activados.",
+      "HISTORY_BLANK_PAGE": "Cuando abro la historia clínica de un paciente, la pantalla permanece en blanco.",
+      "APP_CRASH_AFTER_LOGIN": "La aplicación se cierra inmediatamente después de iniciar sesión.",
+      "CANNOT_OPEN_RESULTS": "No puedo abrir los resultados de laboratorio de mis pacientes.",
+      "DASHBOARD_NO_DOCTOR": "Mi panel muestra que no tengo un médico asignado.",
+      "PLATFORM_LAGS": "El sistema está muy lento y no responde en ocasiones."
+    },
+    "KB": {
+      "TITLE": "Base de Conocimiento HormonalCare",
+      "SEARCH_LABEL": "Buscar pregunta",
+      "SEARCH_PLACEHOLDER": "Escribe una palabra clave...",
+      "Q1": {
+        "TITLE": "🧑‍⚕️ ¿Cómo registrarse y comenzar a usar HormonalCare?",
+        "CONTENT": "Para comenzar, descarga la app desde Google Play o App Store. Luego, selecciona tu tipo de usuario (paciente o médico), completa los datos y activa tu cuenta con el correo electrónico enviado."
+      },
+      "Q2": {
+        "TITLE": "🕒 ¿Cómo programar, reprogramar o cancelar una cita médica?",
+        "CONTENT": "Dirígete a la sección 'Citas'. Puedes agendar una nueva, ver las programadas o cancelarlas si aún no han comenzado."
+      },
+      "Q3": {
+        "TITLE": "🔔 ¿Cómo funcionan los recordatorios de medicación y citas?",
+        "CONTENT": "Recibirás notificaciones diarias configurables desde tu perfil. Puedes activar o desactivar los recordatorios desde 'Configuración'."
+      },
+      "Q4": {
+        "TITLE": "📊 ¿Qué información muestra el Dashboard del paciente o médico?",
+        "CONTENT": "El dashboard incluye evolución hormonal, alertas de salud, cumplimiento de medicación y accesos rápidos a herramientas como el chat, citas y recordatorios."
+      },
+      "Q5": {
+        "TITLE": "💬 ¿Cómo usar el chat médico-paciente?",
+        "CONTENT": "Accede desde la sección 'Comunicaciones'. El chat es asincrónico y permite mensajes, imágenes y respuestas del equipo médico."
+      },
+      "Q6": {
+        "TITLE": "🔐 ¿Qué tan segura es la información que comparto?",
+        "CONTENT": "Usamos cifrado AES y servidores certificados para proteger tus datos. Cumplimos con la Ley de Protección de Datos Personales (LPDP) del Perú."
+      },
+      "Q7": {
+        "TITLE": "🔑 ¿Qué hago si olvidé mi contraseña o no puedo acceder?",
+        "CONTENT": "Desde la pantalla de inicio, selecciona '¿Olvidaste tu contraseña?' y sigue los pasos para restablecerla vía correo."
+      },
+      "Q8": {
+        "TITLE": "📆 ¿Puedo sincronizar mi calendario con Google Calendar u otras apps?",
+        "CONTENT": "Sí. Desde Configuración, activa la sincronización con Google Calendar para recibir tus citas en tu calendario habitual."
+      },
+      "Q9": {
+        "TITLE": "🎮 ¿Cómo funciona la gamificación dentro de la app?",
+        "CONTENT": "HormonalCare ofrece medallas y recompensas por cumplimiento de tareas, control de citas, medicamentos y participación activa."
+      },
+      "Q10": {
+        "TITLE": "📩 ¿Cómo contacto al equipo de soporte?",
+        "CONTENT": "Desde la sección de Soporte puedes iniciar un chat en vivo, enviar un ticket o acceder a esta base de conocimiento."
+      }
+    },
+    "ANALYTICS": {
+      "TITLE": "Panel de Analítica de Soporte",
+      "KB_VISITS": {
+        "TITLE": "Visitas a la Base de Conocimiento",
+        "LABEL": "visitas"
+      },
+      "TICKETS": {
+        "TITLE": "Tickets de soporte",
+        "CREATED": "creados",
+        "RESOLVED": "resueltos"
+      },
+      "AVG_RESPONSE": {
+        "TITLE": "Tiempo promedio de respuesta",
+        "UNIT": "hrs"
+      },
+      "RESOLUTION_RATE": {
+        "TITLE": "Tasa de resolución"
+      },
+      "WEEKLY_EVOLUTION": "Evolución semanal de interacciones"
+    },
+    "SETTINGS": {
+      "TITLE": "⚙️ Configuración de Soporte",
+      "NOTIFICATIONS": {
+        "TITLE": "🔔 Notificaciones",
+        "EMAIL": "Enviar notificaciones por correo electrónico",
+        "PUSH": "Activar notificaciones emergentes (push)"
+      },
+      "HOURS": {
+        "TITLE": "🕒 Horario de atención",
+        "START": "Inicio",
+        "END": "Fin"
+      },
+      "TEST_MODE": {
+        "TITLE": "🧪 Modo de prueba",
+        "TOGGLE": "Activar entorno de pruebas"
+      },
+      "STYLE": {
+        "TITLE": "🎨 Estilo del soporte",
+        "BACKGROUND": "Color de fondo",
+        "TEXT": "Color de texto"
+      },
+      "EXPORT": {
+        "TITLE": "💾 Exportación",
+        "CSV": "Exportar en CSV",
+        "PDF": "Exportar en PDF"
+      },
+      "RESET": {
+        "TITLE": "♻️ Restaurar configuración",
+        "BUTTON": "Restaurar valores por defecto"
+      }
+    }
+  },
+  "FILTER": {
+    "SEARCH": "Buscar",
+    "PLACEHOLDER": "Nombre o asunto",
+    "PRIORITY": "Prioridad",
+    "STATUS": "Estado",
+    "ALL": "Todos",
+    "START_DATE": "Fecha de inicio",
+    "END_DATE": "Fecha de fin"
+  },
+  "PRIORITY": {
+    "LOW": "Baja",
+    "MEDIUM": "Media",
+    "HIGH": "Alta"
+  },
+  "STATUS": {
+    "OPEN": "Abierto",
+    "IN_PROGRESS": "En progreso",
+    "RESOLVED": "Resuelto",
+    "CLOSED": "Cerrado"
+  },
+  "TICKET": {
+    "DATE": "Fecha",
+    "USER": "Usuario",
+    "SUBJECT": "Asunto",
+    "PRIORITY": "Prioridad",
+    "STATUS": "Estado",
+    "MESSAGE": "Mensaje",
+    "CREATED_AT": "Creado el",
+    "ATTACHMENTS": "Adjuntos",
+    "NONE": "Ninguno",
+    "NO_RESULTS": "No se encontraron tickets con los filtros aplicados",
+    "SHOWING": "Mostrando {{shown}} de {{total}} tickets"
+  },
+  "ACTIONS": {
+    "CLEAR": "Limpiar",
+    "EXPORT_CSV": "Exportar a CSV",
+    "CHANGE_STATUS": "Cambiar estado",
+    "REPLY": "Responder"
+  },
+  "TOOLTIPS": {
+    "HIGH_RISK": "Riesgo alto",
+    "CANNOT_REPLY": "No puedes responder a un ticket cerrado",
+    "CANNOT_CHANGE_STATUS": "No puedes cambiar el estado de un ticket cerrado"
+  },
+  "TICKET_MESSAGES": {
+    "SUBJECTS": {
+      "CALENDAR_SYNC": "Problemas de sincronización con el calendario",
+      "UPLOAD_ERROR": "Error al subir resultados",
+      "LOGIN_ISSUE": "No puedo acceder a mi cuenta",
+      "REMINDER_MISSING": "No recibí recordatorio de cita",
+      "HISTORY_EMPTY": "La historia clínica aparece en blanco",
+      "CRASH_AFTER_LOGIN": "La app se cierra después de iniciar sesión",
+      "CANNOT_VIEW_RESULTS": "No se pueden visualizar los resultados",
+      "DOCTOR_NOT_ASSIGNED": "No aparece un médico asignado",
+      "PLATFORM_LAG": "La plataforma está lenta"
+    },
+    "MESSAGES": {
+      "CALENDAR_NOT_SYNCING": "Los eventos que agendo no se sincronizan correctamente con Google Calendar.",
+      "UPLOAD_403": "Me sale un error 403 al intentar subir mis resultados de laboratorio.",
+      "LOGIN_CANNOT_ACCESS": "He intentado ingresar varias veces, pero el sistema no me permite acceder.",
+      "REMINDER_NO_RECEIVED": "No me llegó el recordatorio para mi cita de hoy.",
+      "HISTORY_BLANK_PAGE": "Entré a mi historia clínica y la página se carga en blanco.",
+      "APP_CRASH_AFTER_LOGIN": "Después de poner mi contraseña y entrar, la app se cierra sola.",
+      "CANNOT_OPEN_RESULTS": "No puedo abrir mis resultados, se queda cargando indefinidamente.",
+      "DASHBOARD_NO_DOCTOR": "En mi panel no figura ningún doctor asignado.",
+      "PLATFORM_LAGS": "La plataforma está extremadamente lenta y no responde a tiempo."
+    }
+  },
+  "ADMIN": {
+    "USER_MANAGEMENT": {
+      "TITLE": "Gestión de Usuarios"
+    },
+    "USER_LIST": {
+      "NEW_USER": "Nuevo Usuario",
+      "EXPORT_CSV": "Exportar CSV",
+      "EXPORT_PDF": "Exportar PDF",
+      "SEARCH": "Buscar usuario...",
+      "NAME": "Nombre",
+      "EMAIL": "Correo",
+      "ROLE": "Rol",
+      "STATUS": "Estado",
+      "REGISTERED": "Registro",
+      "ACTIONS": "Acciones",
+      "EDIT": "Editar",
+      "DELETE": "Eliminar",
+      "ACTIVATE": "Activar",
+      "DEACTIVATE": "Inactivar"
+    }
+  },
+  "patientDashboard": {
+    "remindersTitle": "Recordatorios de hoy",
+    "nextAppointment": "Tu próxima cita...",
+    "treatmentTracking": "Seguimiento de tratamiento",
+    "pendingTasks": "Tareas pendientes",
+    "uploadExams": "Sube tus exámenes",
+    "selectedFile": "Archivo seleccionado:"
+  },
+  "appName": "HormonalCare",
+  "header": {
+    "availableDoctors": "Doctores disponibles",
+    "signOut": "Cerrar sesión",
+    "options": {
+      "home": "Inicio",
+      "calendar": "Calendario",
+      "messages": "Mensajes",
+      "profile": "Perfil",
+      "notifications": "Notificaciones"
+    }
+  },
+  "patientDoctors": {
+    "title": "Encuentra a tu endocrinólogo:",
+    "description": "Tenemos los mejores endocrinólogos a tu disposición. Encuéntralos haciendo clic en doctores disponibles o en 'Ver más doctores'.",
+    "price": "Precio:",
+    "rating": "Calificación:",
+    "scheduleButton": "Agendar cita",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "feature1": {
+      "title": "Agenda tu cita médica",
+      "desc": "Encuentra horarios que se ajusten a tu tiempo. No esperes semanas…"
+    },
+    "feature2": {
+      "title": "Sube tus análisis de resultados",
+      "desc": "No olvides subir tus resultados. Esto permitirá un seguimiento eficiente de tu enfermedad."
+    },
+    "feature3": {
+      "title": "Organiza tu historial médico",
+      "desc": "Facilita diagnósticos precisos y la personalización del tratamiento."
+    }
+  },
+  "treatmentTable": {
+    "medication": "Medicamento",
+    "concentration": "Concentración",
+    "frequency": "Frecuencia"
+  },
+  "treatmentFrequencies": {
+    "1 time a day": "1 vez al día",
+    "2 times a day": "2 veces al día",
+    "3 times a day": "3 veces al día"
+  },
+  "drugs": {
+    "Levothyroxine": "Levotiroxina",
+    "Metformin": "Metformina",
+    "Hydrocortisone": "Hidrocortisona",
+    "Combined oral contraceptive": "Anticonceptivo oral combinado",
+    "Propylthiouracil (PTU)": "Propiltiouracilo (PTU)"
+  },
+  "exams": {
+    "glucose level test": "Prueba de nivel de glucosa",
+    "blood lipid level test": "Prueba de lípidos en sangre",
+    "progesterone level test": "Prueba de nivel de progesterona",
+    "testosterone level test": "Prueba de nivel de testosterona"
+  },
+  "calendar": {
+    "chooseDate": "Elige una fecha",
+    "selectDate": "Seleccionar fecha",
+    "sections": {
+      "appointments": "Citas médicas",
+      "medication": "Medicamentos"
+    },
+    "filters": {
+      "appointment1": "Consulta de seguimiento para controlar el hipotiroidismo",
+      "appointment2": "Revisión de tratamiento hormonal",
+      "appointment3": "Ajuste de medicación",
+      "medication1": "Tomando Levotiroxina"
+    },
+    "mainTitle": "Calendario de salud: citas médicas y medicamentos",
+    "upcomingEvents": "Próximos eventos"
+  },
+  "chat": {
+    "header": "Chat con el Doctor",
+    "clear": "Borrar chat",
+    "inputPlaceholder": "Escribe un mensaje..."
+  },
+  "notifications": {
+    "title": "Tus notificaciones",
+    "announcementsTitle": "Comunicados del administrador",
+    "gotIt": "Entendido",
+    "showMore": "Mostrar +",
+    "hide": "Ocultar",
+    "none": "No hay notificaciones en este momento"
+  },
+  "notificationTitles": {
+    "Nueva Cita Médica": "Nueva Cita Médica"
+  },
+  "notificationMessages": {
+    "newMedicalAppointment": "Tienes una nueva cita el {{date}} a las {{time}} con {{doctor}}."
+  },
+  "patientHome": {
+    "card1Title": "Consultas médicas",
+    "card1Content": "Agenda tu próxima visita o resuelve tus dudas médicas, haz clic aquí.",
+    "card2Title": "Consultar estado de mi tratamiento",
+    "card2Content": "Para una evaluación detallada y ajustes en tu tratamiento, haz clic aquí.",
+    "card3Title": "Configurar notificaciones",
+    "card3Content": "Activa o personaliza tus alertas para mantenerte informado, haz clic aquí."
+  },
+  "patientProfile": {
+    "sectionTitle": "Información del usuario",
+    "fullName": "Nombre completo",
+    "age": "Edad",
+    "phoneNumber": "Número de teléfono",
+    "email": "Correo electrónico",
+    "bloodType": "Tipo de sangre"
+  },
+  "doctorSearch": {
+    "title": "Doctores disponibles",
+    "searchPlaceholder": "Buscar un endocrinólogo",
+    "genreTitle": "Género:",
+    "female": "Femenino",
+    "male": "Masculino",
+    "subspecialty": "Subespecialidad:",
+    "subspecialtyExample": "Ovario poliquístico, Hiperandrogenismo",
+    "priceRangeTitle": "Rango de precios:",
+    "priceRange": {
+      "50_60": "s/.50 - s/.60",
+      "60_70": "s/.60 - s/.70",
+      "70_80": "s/.70 - s/.80",
+      "80_90": "s/.80 - s/.90",
+      "90_100": "s/.90 - s/.100",
+      "100_plus": "s/.100 o más"
+    },
+    "sortBy": "Ordenar por",
+    "sort": {
+      "none": "Ninguno",
+      "price": "Precio",
+      "rating": "Calificación"
+    }
+  },
+  "doctor": {
+    "specialties": {
+      "Endocrinologist": "Endocrinólogo"
+    },
+    "subSpecialties": {
+      "Diabetes and Metabolism": "Diabetes y Metabolismo",
+      "Thyroid Disorders": "Trastornos de la Tiroides",
+      "Obesity and Nutrition": "Obesidad y Nutrición",
+      "Pediatric Endocrinology": "Endocrinología Pediátrica",
+      "Reproductive Endocrinology": "Endocrinología Reproductiva",
+      "Neuroendocrinology": "Neuroendocrinología"
+    },
+    "universities": {
+      "Universidad Nacional Mayor de San Marcos": "Universidad Nacional Mayor de San Marcos",
+      "Universidad Peruana Cayetano Heredia": "Universidad Peruana Cayetano Heredia",
+      "Universidad Nacional de Trujillo": "Universidad Nacional de Trujillo",
+      "Universidad Científica del Sur": "Universidad Científica del Sur",
+      "Universidad Nacional de San Agustín de Arequipa": "Universidad Nacional de San Agustín de Arequipa",
+      "Pontificia Universidad Católica del Perú": "Pontificia Universidad Católica del Perú",
+      "Universidad Ricardo Palma": "Universidad Ricardo Palma",
+      "Universidad Peruana de Ciencias Aplicadas (UPC)": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "Universidad Nacional Federico Villarreal": "Universidad Nacional Federico Villarreal",
+      "Universidad Nacional del Altiplano": "Universidad Nacional del Altiplano",
+      "Universidad de San Martín de Porres": "Universidad de San Martín de Porres"
+    },
+    "rateTitle": "Tarifa estándar:",
+    "scheduleButton": "Agendar cita",
+    "specialtyLabel": "Especialidad",
+    "subSpecialtyLabel": "Subespecialidad",
+    "schoolNumberLabel": "N° de colegiatura",
+    "rneLabel": "RNE",
+    "undergraduateLabel": "Pregrado",
+    "postgraduateLabel": "Postgrado",
+    "loading": "Cargando información del doctor..."
+  },
+  "appointment": {
+    "availableTimes": "Horarios Disponibles",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "selectedTitle": "Seleccionado:",
+    "confirm": "Confirmar Cita",
+    "at": "a las",
+    "months": {
+      "January": "Enero",
+      "February": "Febrero",
+      "March": "Marzo",
+      "April": "Abril",
+      "May": "Mayo",
+      "June": "Junio",
+      "July": "Julio",
+      "August": "Agosto",
+      "September": "Septiembre",
+      "October": "Octubre",
+      "November": "Noviembre",
+      "December": "Diciembre"
+    }
+  },
+  "payment": {
+    "title": "Selecciona el método de pago",
+    "methods": {
+      "card": "Tarjeta de Crédito / Débito",
+      "yape": "Yape",
+      "plin": "Plin"
+    },
+    "costs": {
+      "title": "Costos:",
+      "standardFee": "Tarifa estándar:",
+      "tax": "Impuesto:",
+      "total": "Total:"
+    },
+    "actions": {
+      "pay": "Pagar"
+    }
+  },
+  "common": {
+    "back": "Volver"
+  },
+  "auth": {
+    "home": "Inicio",
+    "login": "Iniciar sesión",
+    "selectRole": {
+      "title": "Selecciona tu tipo de usuario",
+      "subtitle": "Elige tu perfil para continuar con el registro",
+      "patient": {
+        "title": "Paciente",
+        "desc": "Accede al monitoreo hormonal y a citas con especialistas.",
+        "button": "Registrarse como Paciente"
+      },
+      "doctor": {
+        "title": "Endocrinólogo",
+        "desc": "Gestiona a tus pacientes, citas y planes de tratamiento.",
+        "button": "Registrarse como Doctor"
+      }
+    },
+    "register": {
+      "button": "Registrarse",
+      "title": "Crea tu cuenta",
+      "subtitle": "Completa tus datos para registrarte",
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "accept": "Acepto la",
+      "privacyPolicy": "Política de Privacidad",
+      "terms": "Términos del Servicio",
+      "and": "y los",
+      "submit": "Registrarse",
+      "already": "¿Ya tienes una cuenta?",
+      "loginLink": "Inicia sesión",
+      "errorPolicies": "Debes aceptar las políticas para registrarte."
+    },
+    "forgotPassword": {
+      "title": "¿Olvidaste tu contraseña?",
+      "subtitle": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+      "emailLabel": "Dirección de correo electrónico",
+      "sendButton": "Enviar enlace de restablecimiento",
+      "backToLogin": "Volver al inicio de sesión",
+      "errors": {
+        "required": "El correo electrónico es obligatorio",
+        "invalid": "Ingresa un correo válido"
+      }
+    }
+  },
   "footer": {
-    "intro": "Hecho con",
-    "author": "por el Equipo de Desarrollo de {{ author }}"
+    "rightsReserved": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "help": "Ayuda"
   }
 }
+

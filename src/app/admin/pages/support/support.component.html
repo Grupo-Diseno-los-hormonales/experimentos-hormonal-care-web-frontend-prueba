@@ -1,23 +1,23 @@
-<h2 class="support-title">Support Center</h2>
+<h2 class="support-title">{{ 'SUPPORT.TITLE' | translate }}</h2>
 
 <mat-tab-group [(selectedIndex)]="selectedTabIndex">
-  <mat-tab label="All Tickets">
+  <mat-tab label="{{ 'SUPPORT.TABS.ALL' | translate }}">
     <app-ticket-list [tickets]="mockTickets"></app-ticket-list>
   </mat-tab>
 
-  <mat-tab label="Live Chat">
+  <mat-tab label="{{ 'SUPPORT.TABS.CHAT' | translate }}">
     <app-live-chat></app-live-chat>
   </mat-tab>
 
-  <mat-tab label="Knowledge Base">
+  <mat-tab label="{{ 'SUPPORT.TABS.KB' | translate }}">
     <app-knowledge-base></app-knowledge-base>
   </mat-tab>
 
-  <mat-tab label="Analytics">
+  <mat-tab label="{{ 'SUPPORT.TABS.ANALYTICS' | translate }}">
     <app-analytics></app-analytics>
   </mat-tab>
 
-  <mat-tab label="Settings">
+  <mat-tab label="{{ 'SUPPORT.TABS.SETTINGS' | translate }}">
     <app-settings></app-settings>
   </mat-tab>
 </mat-tab-group>

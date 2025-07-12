@@ -19,13 +19,15 @@ import { MatButtonModule } from '@angular/material/button';
 
 // reCAPTCHA
 import { RecaptchaModule } from 'ng-recaptcha';
+import {TranslateModule} from "@ngx-translate/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {SharedModule} from "../../shared/shared.module";
+import {LanguageSwitcherComponent} from "../../shared/components/language-switcher/language-switcher.component";
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-    SelectUserRoleComponent
+
   ],
   imports: [
     CommonModule,
@@ -40,15 +42,20 @@ import { RecaptchaModule } from 'ng-recaptcha';
     MatIconModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatSelectModule,
+    MatOptionModule,
+    SharedModule,
+    LoginComponent,
 
     // reCAPTCHA
     RecaptchaModule,
+    TranslateModule,
+    LanguageSwitcherComponent,
+    RegisterComponent,
+    SelectUserRoleComponent,
+    ForgotPasswordComponent,
   ],
   exports: [
-    LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-    SelectUserRoleComponent
   ],
 })
 export class AuthModule {}

@@ -8,13 +8,13 @@
     <mat-grid-tile>
       <div class="box1">
         <div class="part1">
-          <h2>Today's reminders</h2>
+          <h2>{{ 'patientDashboard.remindersTitle' | translate }}</h2>
           <button mat-flat-button color="primary" routerLink="/calendar/appointments">
-            Your next appointment...
+            {{ 'patientDashboard.nextAppointment' | translate }}
           </button>
           <button mat-flat-button color="accent" routerLink="/profile/treatment-status" style="margin-left: 8px;">
             <mat-icon>medical_services</mat-icon>
-            Seguimiento de tratamiento
+            {{ 'patientDashboard.treatmentTracking' | translate }}
           </button>
         </div>
         <div class="part2">
@@ -26,24 +26,33 @@
     <mat-grid-tile>
       <div class="box2">
         <div class="part1">
-          <h2>Pending Tasks</h2>
+          <h2>{{ 'patientDashboard.pendingTasks' | translate }}</h2>
           <app-patients-pending-task></app-patients-pending-task>
         </div>
         <div class="part2">
           <div class="upload-exam-wrapper">
             <label for="examFile" class="upload-exam-button">
+<<<<<<< HEAD
               <mat-icon>upload</mat-icon>
               Upload your exams
             </label>
 
+=======
+              {{ 'patientDashboard.uploadExams' | translate }}
+            </label>
+>>>>>>> fusion-repo2
             <input type="file" id="examFile" (change)="onExamSelected($event)" hidden />
 
             <div *ngIf="selectedExam" class="exam-preview">
+<<<<<<< HEAD
               <p><strong>Selected file:</strong> {{ selectedExam.name }}</p>
 
               <button mat-flat-button color="primary" (click)="sendToDoctor()">
                 Send to Doctor
               </button>
+=======
+              <strong>{{ 'patientDashboard.selectedFile' | translate }}</strong> {{ selectedExam.name }}
+>>>>>>> fusion-repo2
             </div>
           </div>
         </div>

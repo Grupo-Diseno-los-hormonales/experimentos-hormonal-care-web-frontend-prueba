@@ -2,56 +2,66 @@
   <div class="dashboard-grid">
     <!-- LEFT COLUMN: Doctors -->
     <div class="section doctor-section">
-      <h2 class="section-title">Find your endocrinologist doctor:</h2>
+      <h2 class="section-title">
+        {{ 'patientDoctors.title' | translate }}
+      </h2>
       <p class="section-description">
-        We have the best endocrinologist doctors at your disposal. Find them by clicking above on available doctors or on "See more doctors".
+        {{ 'patientDoctors.description' | translate }}
       </p>
 
       <div class="doctor-cards">
         <div class="doctor-card" *ngFor="let doctor of paginatedDoctors; trackBy: trackDoctor">
           <img [src]="doctor.image" [alt]="'Doctor: ' + doctor.name" width="150" height="150" />
           <p class="doctor-name">{{ doctor.name }}</p>
-          <p class="doctor-price">Price: {{ doctor.price | currency }}</p>
+          <p class="doctor-price">
+            {{ 'patientDoctors.price' | translate }} {{ doctor.price | currency }}
+          </p>
           <div class="doctor-rating-container">
-            <span class="rating-text">Rating: {{ doctor.rating }} ★</span>
+            <span class="rating-text">
+              {{ 'patientDoctors.rating' | translate }} {{ doctor.rating }} ★
+            </span>
             <button mat-icon-button (click)="toggleFavorite(doctor.id)" [color]="favorites.has(doctor.id) ? 'primary' : 'default'" class="favorite-button">
               <mat-icon [class.mat-primary]="favorites.has(doctor.id)">favorite</mat-icon>
             </button>
           </div>
           <div class="doctor-actions">
             <button mat-raised-button color="primary" (click)="scheduleAppointment(doctor.id)">
-              Schedule Appointment
+              {{ 'patientDoctors.scheduleButton' | translate }}
             </button>
           </div>
         </div>
       </div>
 
-
-      <button mat-button (click)="changePage(false)" [disabled]="currentPage === 1">Previous</button>
-      <button mat-button (click)="changePage(true)" [disabled]="currentPage >= Math.ceil(filteredDoctors.length / doctorsPerPage)">Next</button>
+      <button mat-button (click)="changePage(false)" [disabled]="currentPage === 1">
+        {{ 'patientDoctors.previous' | translate }}
+      </button>
+      <button mat-button (click)="changePage(true)" [disabled]="currentPage >= Math.ceil(filteredDoctors.length / doctorsPerPage)">
+        {{ 'patientDoctors.next' | translate }}
+      </button>
     </div>
+
     <!-- RIGHT COLUMN: Features -->
     <div class="section feature-section">
       <div class="feature-card">
         <div class="feature-content">
-          <h3>Schedule your medical appointment</h3>
-          <p>Find times that fit your time. Don't wait weeks…</p>
+          <h3>{{ 'patientDoctors.feature1.title' | translate }}</h3>
+          <p>{{ 'patientDoctors.feature1.desc' | translate }}</p>
         </div>
         <mat-icon>arrow_forward</mat-icon>
       </div>
 
       <div class="feature-card">
         <div class="feature-content">
-          <h3>Upload your results analysis</h3>
-          <p>Don't forget to upload your results. This will allow efficient monitoring of your disease.</p>
+          <h3>{{ 'patientDoctors.feature2.title' | translate }}</h3>
+          <p>{{ 'patientDoctors.feature2.desc' | translate }}</p>
         </div>
         <mat-icon>arrow_forward</mat-icon>
       </div>
 
       <div class="feature-card">
         <div class="feature-content">
-          <h3>Organize your history doctor</h3>
-          <p>Facilitates accurate diagnoses and personalization of treatment.</p>
+          <h3>{{ 'patientDoctors.feature3.title' | translate }}</h3>
+          <p>{{ 'patientDoctors.feature3.desc' | translate }}</p>
         </div>
         <mat-icon>arrow_forward</mat-icon>
       </div>

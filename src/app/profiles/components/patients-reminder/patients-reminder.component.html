@@ -1,15 +1,17 @@
 <section>
   <table matSort (matSortChange)="sortData($event)">
     <tr>
-      <th mat-sort-header="drug_name" >Medication</th>
-      <th mat-sort-header="concentration" >Concentration</th>
-      <th mat-sort-header="frequency" >Frequency</th>
+      <th mat-sort-header="drug_name">{{ 'treatmentTable.medication' | translate }}</th>
+      <th mat-sort-header="concentration">{{ 'treatmentTable.concentration' | translate }}</th>
+      <th mat-sort-header="frequency">{{ 'treatmentTable.frequency' | translate }}</th>
     </tr>
 
     <tr *ngFor="let treatment of dataSource">
-      <td class="left">{{treatment.drug_name}}</td>
-      <td class="right">{{treatment.concentration}}</td>
-      <td class="right">{{treatment.frequency}}</td>
+      <td class="left">{{ 'drugs.' + treatment.drug_name | translate }}</td>
+
+      <td class="right">{{ treatment.concentration }}</td>
+      <td class="right">{{ 'treatmentFrequencies.' + treatment.frequency | translate }}</td>
+
     </tr>
   </table>
 </section>

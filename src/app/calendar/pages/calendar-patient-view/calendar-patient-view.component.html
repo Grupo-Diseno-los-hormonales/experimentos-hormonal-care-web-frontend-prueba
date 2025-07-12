@@ -1,5 +1,4 @@
 <div class="calendar-container">
-
   <main class="calendar-main">
 
     <!-- Sidebar -->
@@ -7,27 +6,31 @@
 
       <!-- Date Picker -->
       <mat-form-field appearance="outline" class="calendar-picker">
-        <mat-label>Choose date</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Select date">
+        <mat-label>{{ 'calendar.chooseDate' | translate }}</mat-label>
+        <input matInput [matDatepicker]="picker" [placeholder]="'calendar.selectDate' | translate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <!-- Appointments Filters -->
       <section class="filter-section">
-        <h3 class="filter-title" (click)="toggleSection('appointments')">Medical Appointments</h3>
+        <h3 class="filter-title" (click)="toggleSection('appointments')">
+          {{ 'calendar.sections.appointments' | translate }}
+        </h3>
         <div *ngIf="showAppointments" class="checkbox-group">
-          <mat-checkbox>Follow-up consultation to control hypothyroidism</mat-checkbox>
-          <mat-checkbox>Treatment review hormonal</mat-checkbox>
-          <mat-checkbox>Medication adjustment</mat-checkbox>
+          <mat-checkbox>{{ 'calendar.filters.appointment1' | translate }}</mat-checkbox>
+          <mat-checkbox>{{ 'calendar.filters.appointment2' | translate }}</mat-checkbox>
+          <mat-checkbox>{{ 'calendar.filters.appointment3' | translate }}</mat-checkbox>
         </div>
       </section>
 
       <!-- Medication Filters -->
       <section class="filter-section">
-        <h3 class="filter-title" (click)="toggleSection('medication')">Medication</h3>
+        <h3 class="filter-title" (click)="toggleSection('medication')">
+          {{ 'calendar.sections.medication' | translate }}
+        </h3>
         <div *ngIf="showMedication" class="checkbox-group">
-          <mat-checkbox>Taking Levothyroxine</mat-checkbox>
+          <mat-checkbox>{{ 'calendar.filters.medication1' | translate }}</mat-checkbox>
         </div>
       </section>
 
@@ -35,14 +38,14 @@
 
     <!-- Calendar Main View -->
     <section class="calendar-grid">
-      <h2>Health Calendar: Medical Appointments and Medication</h2>
+      <h2>{{ 'calendar.mainTitle' | translate }}</h2>
 
       <!-- FullCalendar embebido -->
       <full-calendar [options]="calendarOptions"></full-calendar>
 
       <!-- Lista de eventos extraída desde gapi -->
       <div *ngIf="calendarEvents.length > 0" class="events-list">
-        <h3>Upcoming Events</h3>
+        <h3>{{ 'calendar.upcomingEvents' | translate }}</h3>
         <ul>
           <li *ngFor="let event of calendarEvents">
             <strong>{{ event.summary }}</strong> <br />
@@ -53,5 +56,4 @@
     </section>
 
   </main>
-
 </div>

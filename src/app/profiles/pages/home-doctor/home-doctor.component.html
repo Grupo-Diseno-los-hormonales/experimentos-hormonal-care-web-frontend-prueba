@@ -1,7 +1,8 @@
+<body [class.dark-mode]="isDarkMode">
 <mat-sidenav-container>
   <mat-sidenav-content>
     <div class="content">
-      <h2 class="section-title">Today's patients</h2>
+      <h2 class="section-title">{{ 'HOME_DOCTOR.TITLE' | translate }}</h2>
 
       <!-- FECHA Y HORA ACTUAL -->
       <div class="current-date-time">
@@ -18,13 +19,13 @@
             <table class="patients-table">
               <thead>
               <tr>
-                <th>Name</th>
-                <th>Type of care</th>
-                <th>Hour</th>
-                <th>Diagnosis</th>
-                <th>Alert</th>
-                <th>Transfer</th>
-                <th>Video conference</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.NAME' | translate }}</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.CARE' | translate }}</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.HOUR' | translate }}</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.DIAGNOSIS' | translate }}</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.ALERT' | translate }}</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.TRANSFER' | translate }}</th>
+                <th>{{ 'HOME_DOCTOR.TABLE.VIDEO' | translate }}</th>
               </tr>
               </thead>
               <tbody>
@@ -34,7 +35,7 @@
                     <img [src]="patient.image || 'https://via.placeholder.com/150'" alt="{{ patient.firstName }}" class="avatar" />
                     <div>
                       <div class="name">{{ patient.firstName }} {{ patient.lastName }}</div>
-                      <div class="age">{{ patient.age }} years</div>
+                      <div class="age">{{ patient.age }} {{ 'HOME_DOCTOR.TABLE.YEARS' | translate }}</div>
                     </div>
                   </div>
                 </td>
@@ -59,27 +60,27 @@
           <ng-template #loadingTable>
             <div style="text-align: center; padding: 40px 0;">
               <mat-spinner diameter="50" strokeWidth="4"></mat-spinner>
-              <p style="margin-top: 10px;">Loading patients table...</p>
+              <p style="margin-top: 10px;">{{ 'HOME_DOCTOR.LOADING.TABLE' | translate }}</p>
             </div>
           </ng-template>
         </div>
 
         <!-- Búsqueda lateral -->
         <div class="side-search">
-          <input type="text" [(ngModel)]="searchTerm" placeholder="Find a patient" />
+          <input type="text" [(ngModel)]="searchTerm" [placeholder]="'HOME_DOCTOR.SEARCH.PLACEHOLDER' | translate" />
 
           <ng-container *ngIf="!isLoading; else loadingSearch">
             <div class="mini-patient" *ngFor="let patient of filteredPatients">
               <img [src]="patient.image || 'https://via.placeholder.com/150'" class="mini-avatar" />
               <div class="mini-info">
                 <strong>{{ patient.firstName }} {{ patient.lastName }}</strong>
-                <div class="mini-age">{{ patient.age }} years</div>
+                <div class="mini-age">{{ patient.age }} {{ 'HOME_DOCTOR.TABLE.YEARS' | translate }}</div>
                 <div>
                   <button class="tag-btn" [routerLink]="['/calendar/schedule-follow-up', patient.id]">
-                    Schedule follow-up
+                    {{ 'HOME_DOCTOR.SEARCH.SCHEDULE' | translate }}
                   </button>
                   <button class="tag-btn" [routerLink]="['/medical-history/medical-history-page', patient.id]">
-                    Clinic history
+                    {{ 'HOME_DOCTOR.SEARCH.HISTORY' | translate }}
                   </button>
                 </div>
               </div>
@@ -89,7 +90,7 @@
           <ng-template #loadingSearch>
             <div style="margin-top: 30px; text-align: center;">
               <mat-spinner diameter="40" strokeWidth="3"></mat-spinner>
-              <p style="margin-top: 10px;">Loading search results...</p>
+              <p style="margin-top: 10px;">{{ 'HOME_DOCTOR.LOADING.SEARCH' | translate }}</p>
             </div>
           </ng-template>
         </div>

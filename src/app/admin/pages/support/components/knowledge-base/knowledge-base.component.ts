@@ -11,9 +11,11 @@ import {FormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {NgForOf, NgIf} from "@angular/common";
 import {MatIconButton} from "@angular/material/button";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
 interface KnowledgeItem {
-  title: string;
-  content: string;
+  titleKey: string;
+  contentKey: string;
 }
 @Component({
   selector: 'app-knowledge-base',
@@ -30,7 +32,8 @@ interface KnowledgeItem {
     MatInput,
     NgIf,
     MatIconButton,
-    NgForOf
+    NgForOf,
+    TranslateModule
   ],
   templateUrl: './knowledge-base.component.html',
   styleUrls: ['./knowledge-base.component.css']
@@ -39,73 +42,77 @@ export class KnowledgeBaseComponent {
   searchTerm = '';
   allQuestions: KnowledgeItem[] = [];
   filteredQuestions: KnowledgeItem[] = [];
+  constructor(private http: HttpClient, private translate: TranslateService) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
 
   ngOnInit(): void {
     this.allQuestions = [
       {
-        title: '🧑‍⚕️ ¿Cómo registrarse y comenzar a usar HormonalCare?',
-        content: 'Para comenzar, descarga la app desde Google Play o App Store. Luego, ' +
-                 'selecciona tu tipo de usuario (paciente o médico), completa los datos y ' +
-                 'activa tu cuenta con el correo electrónico enviado.'
+        titleKey: 'SUPPORT.KB.Q1.TITLE',
+        contentKey: 'SUPPORT.KB.Q1.CONTENT'
       },
       {
-        title: '🕒 ¿Cómo programar, reprogramar o cancelar una cita médica?',
-        content: 'Dirígete a la sección "Citas". ' +
-                 'Puedes agendar una nueva, ver las programadas ' +
-                 'o cancelarlas si aún no han comenzado.'
+        titleKey: 'SUPPORT.KB.Q2.TITLE',
+        contentKey: 'SUPPORT.KB.Q2.CONTENT'
       },
       {
-        title: '🔔 ¿Cómo funcionan los recordatorios de medicación y citas?',
-        content: 'Recibirás notificaciones diarias configurables desde tu perfil. ' +
-                 'Puedes activar o desactivar los recordatorios desde "Configuración".'
+        titleKey: 'SUPPORT.KB.Q3.TITLE',
+        contentKey: 'SUPPORT.KB.Q3.CONTENT'
       },
       {
-        title: '📊 ¿Qué información muestra el Dashboard del paciente o médico?',
-        content: 'El dashboard incluye evolución hormonal, alertas de salud, ' +
-                 'cumplimiento de medicación y accesos rápidos a herramientas ' +
-                 'como el chat, citas y recordatorios.'
+        titleKey: 'SUPPORT.KB.Q4.TITLE',
+        contentKey: 'SUPPORT.KB.Q4.CONTENT'
       },
       {
-        title: '💬 ¿Cómo usar el chat médico-paciente?',
-        content: 'Accede desde la sección "Comunicaciones". El chat es asincrónico ' +
-                 'y permite mensajes, imágenes y respuestas del equipo médico.'
+        titleKey: 'SUPPORT.KB.Q5.TITLE',
+        contentKey: 'SUPPORT.KB.Q5.CONTENT'
       },
       {
-        title: '🔐 ¿Qué tan segura es la información que comparto?',
-        content: 'Usamos cifrado AES y servidores certificados para proteger tus datos. ' +
-                 'Cumplimos con la Ley de Protección de Datos Personales (LPDP) del Perú.'
+        titleKey: 'SUPPORT.KB.Q6.TITLE',
+        contentKey: 'SUPPORT.KB.Q6.CONTENT'
       },
       {
-        title: '🔑 ¿Qué hago si olvidé mi contraseña o no puedo acceder?',
-        content: 'Desde la pantalla de inicio, selecciona "¿Olvidaste tu contraseña?" y ' +
-                 'sigue los pasos para restablecerla vía correo.'
+        titleKey: 'SUPPORT.KB.Q7.TITLE',
+        contentKey: 'SUPPORT.KB.Q7.CONTENT'
       },
       {
-        title: '📆 ¿Puedo sincronizar mi calendario con Google Calendar u otras apps?',
-        content: 'Sí. Desde Configuración, activa la sincronización con Google Calendar ' +
-                 'para recibir tus citas en tu calendario habitual.'
+        titleKey: 'SUPPORT.KB.Q8.TITLE',
+        contentKey: 'SUPPORT.KB.Q8.CONTENT'
       },
       {
-        title: '🎮 ¿Cómo funciona la gamificación dentro de la app?',
-        content: 'HormonalCare ofrece medallas y recompensas por cumplimiento de tareas, ' +
-                 'control de citas, medicamentos y participación activa.'
+        titleKey: 'SUPPORT.KB.Q9.TITLE',
+        contentKey: 'SUPPORT.KB.Q9.CONTENT'
       },
       {
-        title: '📩 ¿Cómo contacto al equipo de soporte?',
-        content: 'Desde la sección de Soporte puedes iniciar un chat en vivo, enviar un ticket ' +
-                 'o acceder a esta base de conocimiento.'
+        titleKey: 'SUPPORT.KB.Q10.TITLE',
+        contentKey: 'SUPPORT.KB.Q10.CONTENT'
       }
     ];
+
 
     this.filteredQuestions = [...this.allQuestions];
   }
 
   filterQuestions(): void {
     const term = this.searchTerm.toLowerCase().trim();
-    this.filteredQuestions = this.allQuestions.filter(
-      q => q.title.toLowerCase().includes(term) || q.content.toLowerCase().includes(term)
-    );
+    this.filteredQuestions = this.allQuestions.filter(q => {
+      const title = this.translate.instant(q.titleKey).toLowerCase();
+      const content = this.translate.instant(q.contentKey).toLowerCase();
+      return title.includes(term) || content.includes(term);
+    });
   }
+
 
   clearSearch(): void {
     this.searchTerm = '';

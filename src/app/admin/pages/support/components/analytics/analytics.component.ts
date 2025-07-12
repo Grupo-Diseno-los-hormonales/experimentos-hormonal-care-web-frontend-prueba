@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
 import {NgChartsModule} from "ng2-charts";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -12,7 +13,8 @@ import {NgChartsModule} from "ng2-charts";
     MatCard,
     MatCardTitle,
     MatCardContent,
-    NgChartsModule
+    NgChartsModule,
+    TranslateModule
   ],
   styleUrls: ['./analytics.component.css']
 })
@@ -21,7 +23,19 @@ export class AnalyticsComponent implements OnInit {
   totalTickets = 87;
   resolvedTickets = 69;
   avgResponseTime = 4.3;
+constructor( private translate: TranslateService) {
+  const lang = localStorage.getItem('lang') || 'es';
+  this.translate.setDefaultLang(lang);
+  this.translate.use(lang);
 
+}
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   get resolutionRate(): number {
     return Math.round((this.resolvedTickets / this.totalTickets) * 100);
   }

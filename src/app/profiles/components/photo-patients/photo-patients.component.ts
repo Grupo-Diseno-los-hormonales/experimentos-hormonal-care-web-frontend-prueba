@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 
 @Component({
   selector: 'app-photo-patients',
+  standalone: true,
   templateUrl: './photo-patients.component.html',
-  styleUrl: './photo-patients.component.css'
+  imports: [
+    MatGridList,
+    MatGridTile
+  ],
+  styleUrls: ['./photo-patients.component.css']
 })
 export class PhotoPatientsComponent {
 // URL de la imagen predeterminada

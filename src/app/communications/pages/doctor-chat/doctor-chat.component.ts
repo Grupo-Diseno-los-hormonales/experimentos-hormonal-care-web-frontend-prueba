@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {MatIcon} from "@angular/material/icon";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 interface ChatMessage {
   text?: string;
@@ -13,13 +18,38 @@ interface ChatMessage {
 
 @Component({
   selector: 'app-doctor-chat',
+  standalone: true,
   templateUrl: './doctor-chat.component.html',
-  styleUrls: ['./doctor-chat.component.css']
+  styleUrls: ['./doctor-chat.component.css'],
+  imports: [
+    NgForOf,
+    TranslateModule,
+    NgClass,
+    NgIf,
+    FormsModule,
+    MatIcon
+  ]
 })
 export class DoctorChatComponent implements OnInit {
+  isDarkMode = false;
   messages: ChatMessage[] = [];
   newMessage: string = '';
   uploadedFiles: { name: string; url: string; type?: string }[] = [];
+
+  constructor(private translate: TranslateService, private darkModeService: DarkModeService) {
+
+      const lang = localStorage.getItem('lang') || 'es';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+      this.isDarkMode= this.darkModeService.current;
+    }
+    selectedLang = localStorage.getItem('lang') || 'es';
+
+    changeLang(lang: string): void {
+      this.translate.use(lang);
+      localStorage.setItem('lang', lang);
+      this.selectedLang = lang;
+    }
 
   ngOnInit(): void {
     const saved = localStorage.getItem('single_chat');
@@ -54,7 +84,10 @@ export class DoctorChatComponent implements OnInit {
     this.uploadedFiles = [];
     this.saveMessages();
   }
-
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   handleFileUpload(event: any): void {
     const files: FileList = event.target.files;
     for (let i = 0; i < files.length; i++) {

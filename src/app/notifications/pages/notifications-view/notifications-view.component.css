@@ -21,3 +21,95 @@
   color: #888;
   font-style: italic;
 }
+/* 🌙 === MODO OSCURO === */
+::ng-deep body.dark-mode .notifications-container {
+  background-color: #1c1b29 !important;
+  color: #f1f1f1 !important;
+}
+
+::ng-deep body.dark-mode .notification-card {
+  background-color: #2a2a40 !important;
+  border-left-color: #a78bfa !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4) !important;
+  color: #f1f1f1 !important;
+}
+
+::ng-deep body.dark-mode .notification-card mat-card-subtitle,
+::ng-deep body.dark-mode .notification-card mat-card-content,
+::ng-deep body.dark-mode .notification-card mat-card-title {
+  color: #e0e0ff !important;
+}
+
+::ng-deep body.dark-mode .notification-card .mat-icon {
+  color: #c4b5fd !important;
+}
+
+::ng-deep body.dark-mode .notification-card .mat-card-actions button {
+  color: #c4b5fd !important;
+  border-color: #c4b5fd !important;
+}
+
+::ng-deep body.dark-mode .subtitle,
+::ng-deep body.dark-mode .title {
+  color: #e0e0ff !important;
+}
+
+::ng-deep body.dark-mode .no-data {
+  color: #bbb !important;
+  font-style: italic;
+}
+/* 🌙 === MODO OSCURO REFINADO === */
+::ng-deep body.dark-mode .notifications-container {
+  background-color: #1c1b29 !important;
+  color: #e0e0ff !important;
+}
+
+::ng-deep body.dark-mode .notification-card {
+  background-color: #2a2a40 !important;
+  border-left-color: #a78bfa !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3) !important;
+  color: #e0e0ff !important;
+}
+
+::ng-deep body.dark-mode .notification-card mat-card-subtitle,
+::ng-deep body.dark-mode .notification-card mat-card-content,
+::ng-deep body.dark-mode .notification-card mat-card-title {
+  color: #d6d6f8 !important;
+}
+
+::ng-deep body.dark-mode .notification-card .mat-icon {
+  color: #c4b5fd !important;
+}
+
+::ng-deep body.dark-mode .notification-card .mat-card-actions button {
+  color: #c4b5fd !important;
+  border-color: #c4b5fd !important;
+}
+
+::ng-deep body.dark-mode .mat-stroked-button:not([disabled]) {
+  border: 1px solid #c4b5fd !important;
+}
+
+::ng-deep body.dark-mode .subtitle,
+::ng-deep body.dark-mode .title {
+  color: #f3e8ff !important;
+}
+
+::ng-deep body.dark-mode .no-data {
+  color: #bbb !important;
+  font-style: italic;
+}
+
+::ng-deep body.dark-mode .mat-button,
+::ng-deep body.dark-mode .mat-stroked-button {
+  background-color: #2c2c3e !important;
+}
+/* 🌙 Fondo general en modo oscuro */
+::ng-deep body.dark-mode {
+  background-color: #1c1b29 !important;
+}
+
+::ng-deep body.dark-mode mat-sidenav-container,
+::ng-deep body.dark-mode mat-sidenav-content {
+  background-color: #1c1b29 !important;
+}

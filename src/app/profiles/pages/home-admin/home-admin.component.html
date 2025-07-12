@@ -1,69 +1,76 @@
 <div class="home-admin-container">
   <section class="welcome-section">
+<<<<<<< HEAD
     <h1>Welcome, {{ adminName }} 👋</h1>
     <p>Session ID: {{ userId }}</p>
     <p>This is the main administration panel of <strong>HormonalCare</strong>.</p>
     <p>From here you can manage announcements, users, support, security and more.</p>
+=======
+    <h1>{{ 'HOME_ADMIN.WELCOME' | translate:{ username: username } }} 👋</h1>
+    <p>{{ 'HOME_ADMIN.SESSION_ID' | translate:{ id: userId } }}</p>
+    <p>{{ 'HOME_ADMIN.DESCRIPTION' | translate }}</p>
+    <p>{{ 'HOME_ADMIN.DESCRIPTION_2' | translate }}</p>
+>>>>>>> fusion-repo2
   </section>
+
   <!-- Stats Cards -->
   <section class="quick-actions">
-    <h2>Quick Actions</h2>
+    <h2>{{ 'HOME_ADMIN.QUICK_ACTIONS' | translate }}</h2>
     <div class="action-buttons">
       <button mat-raised-button color="primary" (click)="goTo('announcementsAdmin')">
-        📢 Create Announcement
+        📢 {{ 'HOME_ADMIN.CREATE_ANNOUNCEMENT' | translate }}
       </button>
       <button mat-raised-button color="accent" (click)="goTo('registerDoctor')">
-        🧑‍⚕️ Register New Doctor
+        🧑‍⚕️ {{ 'HOME_ADMIN.REGISTER_DOCTOR' | translate }}
       </button>
       <button mat-raised-button color="warn" (click)="goTo('logs')">
-        🕵️ Review Logs
+        🕵️ {{ 'HOME_ADMIN.REVIEW_LOGS' | translate }}
       </button>
       <button mat-raised-button color="primary" (click)="goTo('reassignPatient')">
-        ❗ Reassign Patient
+        ❗ {{ 'HOME_ADMIN.REASSIGN_PATIENT' | translate }}
       </button>
       <button mat-raised-button color="accent" (click)="goTo('support')">
-        💬 View Support Requests
+        💬 {{ 'HOME_ADMIN.VIEW_SUPPORT' | translate }}
       </button>
     </div>
   </section>
 
   <section class="quick-links">
-    <h2>Quick Access</h2>
+    <h2>{{ 'HOME_ADMIN.QUICK_ACCESS' | translate }}</h2>
     <div class="button-grid">
-      <button mat-raised-button color="primary" (click)="goTo('dashboard')" matTooltip="View overall statistics and system activity">
+      <button mat-raised-button color="primary" (click)="goTo('dashboard')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_DASHBOARD' | translate }}">
         <mat-icon>dashboard</mat-icon>
-        <span>Dashboard</span>
+        <span>{{ 'HOME_ADMIN.DASHBOARD' | translate }}</span>
       </button>
 
-      <button mat-raised-button color="warn" (click)="goTo('stats')" matTooltip="Detailed analytics and performance metrics">
+      <button mat-raised-button color="warn" (click)="goTo('stats')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_STATS' | translate }}">
         <mat-icon>bar_chart</mat-icon>
-        <span>Statistics</span>
+        <span>{{ 'HOME_ADMIN.STATS' | translate }}</span>
       </button>
 
-
-      <button mat-raised-button color="accent" (click)="goTo('announcementsAdmin')" matTooltip="Create and manage global announcements">
+      <button mat-raised-button color="accent" (click)="goTo('announcementsAdmin')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_ANNOUNCEMENTS' | translate }}">
         <mat-icon>campaign</mat-icon>
-        <span>Announcements</span>
+        <span>{{ 'HOME_ADMIN.ANNOUNCEMENTS' | translate }}</span>
       </button>
 
-      <button mat-raised-button color="warn" (click)="goTo('logs')" matTooltip="Review suspicious login attempts and access logs">
+      <button mat-raised-button color="warn" (click)="goTo('logs')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_LOGS' | translate }}">
         <mat-icon>security</mat-icon>
-        <span>Access Logs</span>
+        <span>{{ 'HOME_ADMIN.LOGS' | translate }}</span>
       </button>
 
-      <button mat-raised-button color="primary" (click)="goTo('reassignPatient')"  matTooltip="Reassign patients to different doctors">
+      <button mat-raised-button color="primary" (click)="goTo('reassignPatient')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_REASSIGN' | translate }}">
         <mat-icon>sync_alt</mat-icon>
-        <span>Reassign Patients</span>
+        <span>{{ 'HOME_ADMIN.REASSIGN' | translate }}</span>
       </button>
 
-      <button mat-raised-button color="accent" (click)="goTo('support')" matTooltip="Manage technical support requests">
+      <button mat-raised-button color="accent" (click)="goTo('support')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_SUPPORT' | translate }}">
         <mat-icon>support_agent</mat-icon>
-        <span>Support</span>
+        <span>{{ 'HOME_ADMIN.SUPPORT' | translate }}</span>
       </button>
 
-      <button mat-raised-button color="primary" (click)="goTo('user-management')" matTooltip="Manage registered users and their roles" >
+      <button mat-raised-button color="primary" (click)="goTo('user-management')" matTooltip="{{ 'HOME_ADMIN.TOOLTIP_USERS' | translate }}">
         <mat-icon>group</mat-icon>
-        <span>User Management</span>
+        <span>{{ 'HOME_ADMIN.USER_MANAGEMENT' | translate }}</span>
       </button>
     </div>
   </section>

@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav-content>
     <div class="notifications-container">
-      <h1 class="title">🔔 Your Notifications</h1>
+      <h1 class="title">🔔 {{ 'notifications.title' | translate }}</h1>
 
       <!-- ✅ RECORDATORIOS DE HOY -->
       <div *ngIf="todayReminders.length > 0">
@@ -35,30 +35,38 @@
             <div mat-card-avatar class="icon-avatar">
               <mat-icon>{{ notif.icon }}</mat-icon>
             </div>
-            <mat-card-title>{{ notif.title }}</mat-card-title>
+            <mat-card-title>
+              {{ notif.translatedTitle || ('notificationTitles.' + notif.title | translate) }}
+            </mat-card-title>
             <mat-card-subtitle>{{ notif.date | date:'short' }}</mat-card-subtitle>
             <span class="spacer"></span>
             <button mat-icon-button color="warn" (click)="deleteNotification(notif.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-header>
+
           <mat-card-content>
-            <div *ngIf="notif.title === 'Nueva Cita Médica'; else normalMessage" class="highlighted-notification">
-              <strong>{{ notif.message }}</strong>
+            <!-- ✅ Muestra mensaje traducido si es cita médica -->
+            <div *ngIf="notif.type === 'newAppointment'; else normalMessage">
+              <strong>{{ notif.translatedMessage }}</strong>
             </div>
+
             <ng-template #normalMessage>
-              <p>{{ notif.message }}</p>
+              <p>{{ notif.translatedMessage || notif.message }}</p>
             </ng-template>
           </mat-card-content>
+
           <mat-card-actions align="end">
-            <button mat-stroked-button color="primary" (click)="deleteNotification(notif.id)">Got it</button>
+            <button mat-stroked-button color="primary" (click)="deleteNotification(notif.id)">
+              {{ 'notifications.gotIt' | translate }}
+            </button>
           </mat-card-actions>
         </mat-card>
       </div>
 
       <!-- ✅ COMUNICADOS DEL ADMINISTRADOR -->
       <div *ngIf="announcements.length > 0">
-        <h2 class="subtitle">📣 Admin Announcements</h2>
+        <h2 class="subtitle">📣 {{ 'notifications.announcementsTitle' | translate }}</h2>
         <mat-card *ngFor="let a of announcements; let i = index" class="notification-card announcement">
           <mat-card-header>
             <div mat-card-avatar class="icon-avatar">
@@ -71,41 +79,27 @@
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-header>
+
           <mat-card-content>
             <p>{{ a.message }}</p>
             <p *ngIf="a['expanded']" class="announcement-description"><em>{{ a.description }}</em></p>
           </mat-card-content>
+
           <mat-card-actions align="end">
             <button mat-button color="primary" (click)="toggleDescription(a)">
-              {{ a['expanded'] ? 'Ocultar' : 'Mostrar +' }}
+              {{ a['expanded'] ? ('notifications.hide' | translate) : ('notifications.showMore' | translate) }}
             </button>
-            <button mat-stroked-button color="accent" (click)="deleteAnnouncement(i)">Got it</button>
+            <button mat-stroked-button color="accent" (click)="deleteAnnouncement(i)">
+              {{ 'notifications.gotIt' | translate }}
+            </button>
           </mat-card-actions>
         </mat-card>
       </div>
 
       <!-- 💤 SIN NOTIFICACIONES -->
       <ng-template #noNotifications>
-        <p class="no-data">No notifications at this moment</p>
+        <p class="no-data">{{ 'notifications.none' | translate }}</p>
       </ng-template>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<style>
-  .spacer {
-    flex: 1 1 auto;
-  }
-
-  .notification-card.announcement {
-    border-left: 5px solid #7e57c2;
-    background-color: #f9f6ff;
-  }
-
-  .subtitle {
-    margin-top: 24px;
-    font-size: 20px;
-    font-weight: 600;
-    color: #5e35b1;
-  }
-</style>

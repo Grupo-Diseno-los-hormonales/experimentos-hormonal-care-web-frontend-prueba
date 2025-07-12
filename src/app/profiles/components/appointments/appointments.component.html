@@ -1,32 +1,32 @@
-
-
 <div class="appointments-container">
   <div class="header">
-  <div class="back-and-title">
-    <button class="back-button" (click)="goBack()">←</button>
-    <h1 class="title">Available Times</h1>
+    <div class="back-and-title">
+      <button class="back-button" (click)="goBack()">←</button>
+      <h1 class="title">{{ 'appointment.availableTimes' | translate }}</h1>
+    </div>
   </div>
-</div>
+
   <div class="calendar-controls">
-    <button mat-button (click)="previousWeek()">Previous</button>
+    <button mat-button (click)="previousWeek()">{{ 'appointment.previous' | translate }}</button>
 
     <div class="month-select">
       <select [(ngModel)]="selectedMonth" (change)="updateCalendar()">
-        <option *ngFor="let month of months">{{ month }}</option>
+        <option *ngFor="let month of months" [value]="month">
+          {{ 'appointment.months.' + month | translate }}
+        </option>
       </select>
-      <span>{{ currentYear }}</span>
+      <span> {{ currentYear }}</span>
     </div>
 
-    <button mat-button (click)="nextWeek()">Next</button>
+    <button mat-button (click)="nextWeek()">{{ 'appointment.next' | translate }}</button>
   </div>
 
-  <!-- Nuevo contenedor para alinear calendario y selected -->
   <div class="calendar-and-selected">
     <div class="calendar-wrapper">
       <div class="calendar-grid">
         <div class="calendar-header">
           <div *ngFor="let date of weekDates" class="day-column day-header">
-            <div class="day-name">{{ date.toLocaleDateString('en-US', { weekday: 'long' }) }}</div>
+            <div class="day-name">{{ date | date:'EEEE' }}</div>
             <div class="day-number">{{ date.getDate() }}</div>
           </div>
         </div>
@@ -52,11 +52,15 @@
       </div>
     </div>
 
-    <!-- Parte Selected a la derecha -->
     <div *ngIf="selectedDate" class="selected-appointment">
-      <h2>Selected:</h2>
-      <p>{{ selectedDate.dayName }}, {{ selectedDate.dayNumber }} {{ selectedDate.monthName }} {{ selectedDate.year }} at {{ selectedDate.time }}</p>
-      <button mat-raised-button color="primary" (click)="confirmAppointment()">Confirm Appointment</button>
+      <h2>{{ 'appointment.selectedTitle' | translate }}</h2>
+      <p>
+        {{ selectedDate.dayName }}, {{ selectedDate.dayNumber }} {{ selectedDate.monthName }} {{ selectedDate.year }}
+        {{ 'appointment.at' | translate }} {{ selectedDate.time }}
+      </p>
+      <button mat-raised-button color="primary" (click)="confirmAppointment()">
+        {{ 'appointment.confirm' | translate }}
+      </button>
     </div>
   </div>
 </div>

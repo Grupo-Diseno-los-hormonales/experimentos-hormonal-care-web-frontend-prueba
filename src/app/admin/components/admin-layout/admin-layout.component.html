@@ -5,13 +5,14 @@
   <aside class="sidebar" [class.closed]="isSidebarClosed">
     <img src="assets/images/logo.png" class="logo" alt="HormonalCare Logo" />
     <nav>
-      <a routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="stats" routerLinkActive="active">Stats</a>
-      <a routerLink="announcementsAdmin" routerLinkActive="active">Announcements</a>
-      <a routerLink="logs" routerLinkActive="active">Logs</a>
-      <a routerLink="reassignPatient" routerLinkActive="active">Reassign</a>
-      <a routerLink="support" routerLinkActive="active">Support</a>
-      <a routerLink="user-management" routerLinkActive="active">Users</a>
+      <a routerLink="dashboard" routerLinkActive="active">{{ 'ADMIN_LAYOUT.DASHBOARD' | translate }}</a>
+      <a routerLink="stats" routerLinkActive="active">{{ 'ADMIN_LAYOUT.STATS' | translate }}</a>
+      <a routerLink="announcementsAdmin" routerLinkActive="active">{{ 'ADMIN_LAYOUT.ANNOUNCEMENTS' | translate }}</a>
+      <a routerLink="logs" routerLinkActive="active">{{ 'ADMIN_LAYOUT.LOGS' | translate }}</a>
+      <a routerLink="reassignPatient" routerLinkActive="active">{{ 'ADMIN_LAYOUT.REASSIGN' | translate }}</a>
+      <a routerLink="support" routerLinkActive="active">{{ 'ADMIN_LAYOUT.SUPPORT' | translate }}</a>
+      <a routerLink="user-management" routerLinkActive="active">{{ 'ADMIN_LAYOUT.USERS' | translate }}</a>
+
     </nav>
   </aside>
 
@@ -23,14 +24,14 @@
         <button class="sidebar-toggle" (click)="toggleSidebar()">
           <mat-icon>menu</mat-icon>
         </button>
-        <h2>HormonalCare Admin</h2>
+        <h2>{{ 'ADMIN_LAYOUT.TITLE' | translate }}</h2>
+
       </div>
 
       <!-- Controles superiores: modo oscuro + i18n -->
       <div class="user-box">
-
         <select (change)="switchLang($any($event.target).value)">
-        <option value="en" [selected]="translate.currentLang === 'en'">EN</option>
+          <option value="en" [selected]="translate.currentLang === 'en'">EN</option>
           <option value="es" [selected]="translate.currentLang === 'es'">ES</option>
         </select>
       </div>

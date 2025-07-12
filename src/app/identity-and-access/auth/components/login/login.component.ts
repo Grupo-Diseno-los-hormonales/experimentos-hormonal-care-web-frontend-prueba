@@ -1,16 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
 import {UserTypeService} from "../../../../shared/services/user-type.service";
 import {AuthenticationService} from "../../../../iam/services/authentication.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {LanguageSwitcherComponent} from "../../../../shared/components/language-switcher/language-switcher.component";
+import {MatCard} from "@angular/material/card";
+import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatCheckbox} from "@angular/material/checkbox";
+import {RecaptchaModule} from "ng-recaptcha";
+import {NgIf} from "@angular/common";
+import {DarkModeService} from "../../../../shared/services/dark-mode.service";
+import {MatTooltip} from "@angular/material/tooltip";
 
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.component.html',
+  imports: [
+    TranslateModule,
+    RouterLink,
+    LanguageSwitcherComponent,
+    MatCard,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatIcon,
+    MatIconButton,
+    MatCheckbox,
+    RecaptchaModule,
+    MatButton,
+    MatError,
+    NgIf,
+    MatTooltip
+  ],
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isDarkMode = false;
   loginForm!: FormGroup;
   hidePassword = true;
   loginError = false;
@@ -31,8 +63,22 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userTypeService: UserTypeService,
     private authenticationService: AuthenticationService,
-  ) {}
+    private translate: TranslateService,
+    private darkModeService: DarkModeService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+    this.isDarkMode = this.darkModeService.current;
 
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,7 +87,10 @@ export class LoginComponent implements OnInit {
       recaptcha: ['', Validators.required] // ✅ Add this line
     });
   }
-
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
   }
@@ -111,4 +160,6 @@ export class LoginComponent implements OnInit {
   goToForgotPassword(): void {
     this.router.navigate(['/forgot-password']);
   }
+
+  protected readonly HTMLSelectElement = HTMLSelectElement;
 }

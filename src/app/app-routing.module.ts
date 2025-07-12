@@ -19,6 +19,9 @@ import {HeaderPatientComponent} from './shared/pages/header-patient/header-patie
 import {LoginComponent} from './identity-and-access/auth/components/login/login.component';
 import {RegisterComponent} from './identity-and-access/auth/components/register/register.component';
 import {ForgotPasswordComponent} from './identity-and-access/auth/components/forgot-password/forgot-password.component';
+import {
+  SelectPaymentMethodComponent
+} from "./subscriptions-and-payments/pages/select-payment-method/select-payment-method.component";
 
 
 const routes: Routes = [
@@ -77,6 +80,7 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profiles/profiles.module').then(m => m.ProfilesModule)
   },
+  {path:'payment',component: SelectPaymentMethodComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];

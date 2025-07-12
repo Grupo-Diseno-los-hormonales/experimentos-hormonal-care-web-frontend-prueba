@@ -1,13 +1,12 @@
 <div class="admin-stats-container">
   <header class="stats-header">
-    <h2>Detailed Statistics</h2>
-    <p>Analyze system performance and activity patterns across users and modules.</p>
+    <h2>{{ 'ADMIN_STATS.TITLE' | translate }}</h2>
+    <p>{{ 'ADMIN_STATS.DESCRIPTION' | translate }}</p>
   </header>
 
-  <!-- Charts -->
   <section class="stats-graphs">
     <div class="chart-card">
-      <h3>Monthly Activity Comparison</h3>
+      <h3>{{ 'ADMIN_STATS.GRAPHS.MONTHLY_ACTIVITY' | translate }}</h3>
       <canvas baseChart
               [data]="monthlyActivityData"
               [options]="monthlyActivityOptions"
@@ -16,7 +15,7 @@
     </div>
 
     <div class="chart-card">
-      <h3>User Role Distribution</h3>
+      <h3>{{ 'ADMIN_STATS.GRAPHS.USER_ROLES' | translate }}</h3>
       <canvas baseChart
               [data]="userRolesData"
               [options]="userRolesOptions"
@@ -25,7 +24,7 @@
     </div>
 
     <div class="chart-card">
-      <h3>Response Time Trends</h3>
+      <h3>{{ 'ADMIN_STATS.GRAPHS.RESPONSE_TRENDS' | translate }}</h3>
       <canvas baseChart
               [data]="responseTimeData"
               [options]="responseTimeOptions"
@@ -34,7 +33,7 @@
     </div>
 
     <div class="chart-card">
-      <h3>Support Tickets by Category</h3>
+      <h3>{{ 'ADMIN_STATS.GRAPHS.TICKET_CATEGORIES' | translate }}</h3>
       <canvas baseChart
               [data]="ticketCategoryData"
               [options]="ticketCategoryOptions"
@@ -43,7 +42,7 @@
     </div>
 
     <div class="chart-card">
-      <h3>Consultations vs Follow-ups</h3>
+      <h3>{{ 'ADMIN_STATS.GRAPHS.CONSULTATIONS_VS_FOLLOWUPS' | translate }}</h3>
       <canvas baseChart
               #lineChart
               [datasets]="lineChartData"
@@ -55,7 +54,7 @@
     </div>
 
     <div class="chart-card">
-      <h3>Logs by Type (Weekly)</h3>
+      <h3>{{ 'ADMIN_STATS.GRAPHS.LOGS_WEEKLY' | translate }}</h3>
       <canvas baseChart
               #stackedChart
               [datasets]="stackedBarData"
@@ -66,25 +65,25 @@
       </canvas>
     </div>
 
-      <div class="chart-card">
-        <h3>Visit and Follow-up Statistics</h3>
-        <canvas baseChart
-                #barChart
-                [data]="barChartData"
-                [options]="barChartOptions"
-                [type]="'bar'">
-        </canvas>
-      </div>
+    <div class="chart-card">
+      <h3>{{ 'ADMIN_STATS.GRAPHS.VISITS_FOLLOWUPS' | translate }}</h3>
+      <canvas baseChart
+              #barChart
+              [data]="barChartData"
+              [options]="barChartOptions"
+              [type]="'bar'">
+      </canvas>
+    </div>
 
-      <div class="chart-card">
-        <h3>Traffic Sources</h3>
-        <canvas baseChart
-                #pieChart
-                [data]="pieChartData"
-                [options]="pieChartOptions"
-                [type]="pieChartType">
-        </canvas>
-      </div>
-
+    <div class="chart-card">
+      <h3>{{ 'ADMIN_STATS.GRAPHS.TRAFFIC_SOURCES' | translate }}</h3>
+      <canvas baseChart
+              #pieChart
+              [data]="pieChartData"
+              [options]="pieChartOptions"
+              [type]="pieChartType">
+      </canvas>
+    </div>
   </section>
 </div>
+

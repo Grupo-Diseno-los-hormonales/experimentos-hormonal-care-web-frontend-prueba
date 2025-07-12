@@ -22,15 +22,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // Otros módulos
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import {TranslateModule} from "@ngx-translate/core";
+import {MatButton} from "@angular/material/button";
 
 @NgModule({
-  declarations: [
-    AppointmentsPageComponent,
-    AddEventCardComponent,
-    CalendarViewComponent,
-    CalendarPatientViewComponent,
-    ScheduleFollowUpComponent
-  ],
+    declarations: [
+        AppointmentsPageComponent,
+        CalendarPatientViewComponent,
+        ScheduleFollowUpComponent
+    ],
+    exports: [
+    ],
   imports: [
     CommonModule,
     CalendarRoutingModule,
@@ -44,7 +46,11 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MatIconModule,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule,
+    MatButton,
+    CalendarViewComponent,
+    AddEventCardComponent
   ]
 })
 export class CalendarModule {}

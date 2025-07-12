@@ -14,6 +14,7 @@ import { MatTooltipModule} from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { DoctorService} from '../../../communications/services/doctor.service';
 import {Doctor} from '../../../communications/model/doctor.models';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 @Component({
   standalone: true,
   selector: 'app-find-doctors-patient',
@@ -30,6 +31,7 @@ import {Doctor} from '../../../communications/model/doctor.models';
     MatOptionModule,
     MatInputModule,
     MatTooltipModule,
+    TranslateModule,
   ],
 })
 export class FindDoctorsPatientComponent {
@@ -44,7 +46,19 @@ export class FindDoctorsPatientComponent {
 
   doctors: Doctor[] = [];
 
-  constructor(private doctorService: DoctorService, private router: Router) {
+  constructor(private doctorService: DoctorService, private router: Router,
+              private translate: TranslateService,) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+  }
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
   }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import {Router, RouterLink} from '@angular/router';
+import {Location, NgForOf, NgIf} from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -12,10 +12,29 @@ import { PatientEntity } from '../../../profiles/model/patient.entity';
 import { AnnouncementService } from '../../../notifications/services/announcement.service';
 import { AnnouncementEntity } from '../../../notifications/model/announcement.entity';
 import { AnnouncementPopupComponent } from '../../../notifications/components/announcement-popup/announcement-popup.component';
+import {FormBuilder, FormsModule} from "@angular/forms";
+import {AuthenticationService} from "../../../iam/services/authentication.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
+import {MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
+import {MatIcon} from "@angular/material/icon";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-home-doctor',
+  standalone: true,
   templateUrl: './home-doctor.component.html',
+  imports: [
+    TranslateModule,
+    MatSidenavContainer,
+    MatSidenavContent,
+    NgForOf,
+    MatIcon,
+    MatProgressSpinner,
+    FormsModule,
+    NgIf,
+    RouterLink
+  ],
   styleUrls: ['./home-doctor.component.css']
 })
 export class HomeDoctorComponent implements OnInit {
@@ -23,11 +42,16 @@ export class HomeDoctorComponent implements OnInit {
   isLoading: boolean = true;
   searchTerm: string = '';
   patients: PatientEntity[] = [];
+<<<<<<< HEAD
   exams: any[] = [];
   currentDate: Date = new Date(); // <- Para mostrar fecha y hora actual
 
   private intervalId: any;
 
+=======
+  selectedLang = localStorage.getItem('lang') || 'es';
+  isDarkMode = false;
+>>>>>>> fusion-repo2
   constructor(
     private userTypeService: UserTypeService,
     private router: Router,
@@ -35,9 +59,24 @@ export class HomeDoctorComponent implements OnInit {
     private patientsDataService: PatientsDataService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private announcementService: AnnouncementService
-  ) {}
-
+    private announcementService: AnnouncementService,
+    private translate: TranslateService,
+    private darkModeService: DarkModeService,
+  ) {
+    const lang = localStorage.getItem('lang') || 'es';
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+    this.isDarkMode=this.darkModeService.current;
+  }
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   ngOnInit(): void {
     const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;

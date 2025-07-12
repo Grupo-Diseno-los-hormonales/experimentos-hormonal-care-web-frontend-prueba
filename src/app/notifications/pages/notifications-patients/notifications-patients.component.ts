@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnouncementEntity } from '../../../notifications/model/announcement.entity';
-import { AnnouncementService } from '../../../notifications/services/announcement.service';
-import {MatDialogModule} from "@angular/material/dialog";
-import {CommonModule} from "@angular/common";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
+import { AnnouncementEntity } from '../../model/announcement.entity';
+import { AnnouncementService } from '../../services/announcement.service';
+import { MatDialogModule } from "@angular/material/dialog";
+import { CommonModule } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
+import { MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
 import {
   MatCard,
   MatCardActions,
@@ -13,14 +13,35 @@ import {
   MatCardHeader,
   MatCardSubtitle, MatCardTitle
 } from "@angular/material/card";
+<<<<<<< HEAD
 import {MatIcon} from "@angular/material/icon";
 import {Reminder} from "../../model/reminder.model";
 import {ReminderService} from "../../services/reminder.service";
+=======
+import { MatIcon } from "@angular/material/icon";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { formatDate } from '@angular/common';
+>>>>>>> fusion-repo2
 
 @Component({
   selector: 'app-notifications-patients',
   standalone: true,
-  imports: [CommonModule,MatCardSubtitle, MatCardTitle, MatSidenavContent,MatDialogModule, MatDialogModule, MatButtonModule, MatDialogModule, MatSidenavContainer, MatCard, MatCardAvatar, MatCardHeader, MatIcon, MatCardContent, MatCardActions],
+  imports: [
+    CommonModule,
+    MatCardSubtitle,
+    MatCardTitle,
+    MatSidenavContent,
+    MatDialogModule,
+    MatButtonModule,
+    MatSidenavContainer,
+    MatCard,
+    MatCardAvatar,
+    MatCardHeader,
+    MatIcon,
+    MatCardContent,
+    MatCardActions,
+    TranslateModule
+  ],
   templateUrl: './notifications-patients.component.html',
   styleUrls: ['./notifications-patients.component.css']
 })
@@ -29,17 +50,95 @@ export class NotificationsPatientsComponent implements OnInit {
   notifications: any[] = []; // otras notificaciones
   announcements: (AnnouncementEntity & { expanded?: boolean })[] = []; // comunicados con toggle
 
+<<<<<<< HEAD
   constructor(private announcementService: AnnouncementService, private reminderService: ReminderService) {}
+=======
+  private isNewAppointment(title: string): boolean {
+    return ['Nueva Cita Médica', 'New Medical Appointment'].includes(title);
+  }
+
+  selectedLang = localStorage.getItem('lang') || 'es';
+
+  constructor(
+    private announcementService: AnnouncementService,
+    private translate: TranslateService
+  ) {
+    const lang = this.selectedLang;
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+
+    // Debug opcional
+    this.translate.get('notificationMessages.nuevaCitaMedica').subscribe(res => {
+      console.log('Traducción cargada:', res);
+    });
+  }
+
+  changeLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.selectedLang = lang;
+  }
+>>>>>>> fusion-repo2
 
   ngOnInit(): void {
     this.todayReminders = this.reminderService.getTodaysReminders();
     const saved = localStorage.getItem('notifications');
     this.notifications = saved ? JSON.parse(saved) : [];
 
-    // Inicializa announcements con el campo 'expanded' en false
+    this.notifications = this.notifications.map(n => ({
+      ...n,
+      type: this.isNewAppointment(n.title) ? 'newAppointment' : 'other'
+    }));
+
     this.announcements = this.announcementService.getForAudience('patients')
       .map(a => ({ ...a, expanded: false }));
+
+    this.translate.onLangChange.subscribe(() => {
+      this.updateTranslatedMessages();
+    });
+
+    this.updateTranslatedMessages();
   }
+
+  updateTranslatedMessages() {
+    const locale = this.translate.currentLang || 'es';
+
+    for (let notif of this.notifications) {
+      const appointmentDate = new Date(notif.date);
+      const dateStr = formatDate(appointmentDate, 'fullDate', locale);
+      const timeStr = formatDate(appointmentDate, 'shortTime', locale);
+
+      if (notif.type === 'newAppointment') {
+        this.translate.get([
+          'notificationMessages.nuevaCitaMedica',
+          'notificationMessages.tituloNuevaCita'
+        ], {
+          date: dateStr,
+          time: timeStr,
+          doctor: notif.doctorName
+        }).subscribe(translated => {
+          notif.translatedMessage = translated['notificationMessages.nuevaCitaMedica'];
+          notif.translatedTitle = translated['notificationMessages.tituloNuevaCita'];
+        });
+      } else {
+        // 🔄 Traduce el título genérico
+        this.translate.get(`notificationTitles.${notif.title}`).subscribe(transTitle => {
+          notif.translatedTitle = transTitle;
+        });
+
+        // 🔄 Traduce el mensaje genérico (si aplica)
+        this.translate.get(`notificationMessages.${notif.message}`).subscribe(transMsg => {
+          notif.translatedMessage = transMsg;
+        }, _ => {
+          // fallback si no hay clave, usa texto plano
+          notif.translatedMessage = notif.message;
+        });
+      }
+    }
+  }
+
+
+
   deleteNotification(index: number): void {
     this.notifications.splice(index, 1);
     localStorage.setItem('notifications', JSON.stringify(this.notifications));
@@ -57,4 +156,23 @@ export class NotificationsPatientsComponent implements OnInit {
     announcement.expanded = !announcement.expanded;
   }
 
+  getTranslatedMessage(notif: any): string {
+    if (!notif?.date || !notif?.doctorName) return '';
+
+    const appointmentDate = new Date(notif.date);
+    const locale = this.translate.currentLang || 'es';
+
+    const dateStr = formatDate(appointmentDate, 'fullDate', locale);
+    const timeStr = formatDate(appointmentDate, 'shortTime', locale);
+
+    if (notif.type === 'newAppointment') {
+      return this.translate.instant('notificationMessages.nuevaCitaMedica', {
+        date: dateStr,
+        time: timeStr,
+        doctor: notif.doctorName
+      });
+    }
+
+    return notif.message;
+  }
 }
