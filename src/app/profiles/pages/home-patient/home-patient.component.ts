@@ -13,6 +13,8 @@ import { AnnouncementEntity } from '../../../notifications/model/announcement.en
 import { AnnouncementPopupComponent } from '../../../notifications/components/announcement-popup/announcement-popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {MatSidenavContainer} from "@angular/material/sidenav";
+import {DarkModeService} from "../../../shared/services/dark-mode.service";
 
 @Component({
   selector: 'app-home-patient',
@@ -28,10 +30,12 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
     MatButton,
     RouterLink,
     MatIconModule,
-    TranslateModule
+    TranslateModule,
+    MatSidenavContainer
   ]
 })
 export class HomePatientComponent implements OnInit {
+  isDarkMode = false;
   patientName: string = '';
   doctors = [
     { name: 'Dr. Gómez', price: 90, isVerified: true, image: 'assets/images/doctors/gomez.png' },
@@ -45,14 +49,20 @@ export class HomePatientComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private translate: TranslateService,
+    private darkModeService: DarkModeService,
   ) {
     const lang = localStorage.getItem('lang') || 'es';
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
+    this.isDarkMode=this.darkModeService.current;
 
   }
   selectedLang = localStorage.getItem('lang') || 'es';
 
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   changeLang(lang: string): void {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);

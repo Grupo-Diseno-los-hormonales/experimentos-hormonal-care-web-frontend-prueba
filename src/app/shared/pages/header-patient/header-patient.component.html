@@ -46,7 +46,9 @@
       </span>
     </a>
   </ng-template>
-
+  <button mat-icon-button (click)="toggleDarkMode()" [matTooltip]="'Toggle Dark Mode' | translate">
+    <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+  </button>
   <app-language-switcher></app-language-switcher>
 
   <button mat-raised-button color="warn" (click)="logout()">

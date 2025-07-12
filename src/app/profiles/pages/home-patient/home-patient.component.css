@@ -2,6 +2,52 @@
   display: block;
   margin-top: 64px; /* altura real de tu <mat-toolbar> */
 }/* ==== SECTION ==== */
+/* 🌙 MODO OSCURO */
+:host-context(.dark-mode) {
+  background-color: #1c1b29;
+  color: #e0e0e0;
+}
+
+:host-context(.dark-mode) .welcome-message {
+  color: #f3e5f5;
+}
+
+:host-context(.dark-mode) .box1 .part1 a,
+:host-context(.dark-mode) .box1 .part1 button,
+:host-context(.dark-mode) .upload-exam-button {
+  background-color: #3a2d4b;
+  color: #fff;
+}
+
+:host-context(.dark-mode) .box1 .part1 a:hover,
+:host-context(.dark-mode) .box1 .part1 button:hover,
+:host-context(.dark-mode) .upload-exam-button:hover {
+  background-color: #5c4774;
+}
+
+:host-context(.dark-mode) .box1 .part2,
+:host-context(.dark-mode) .box2 .part1,
+:host-context(.dark-mode) .exam-preview {
+  background-color: #2a2338;
+  color: #ddd;
+}
+
+:host-context(.dark-mode) mat-grid-tile {
+  background-color: #2c2c3e;
+  border: 1px solid #444;
+}
+
+:host-context(.dark-mode) .exam-preview {
+  background-color: #3d3a4f;
+  color: #f0f0f0;
+}
+
+/* ✅ SNACKBAR anuncio */
+::ng-deep .announcement-snackbar {
+  background-color: #7e57c2;
+  color: #fff;
+  font-weight: bold;
+}
 section {
   box-sizing: border-box;
   width: 100%;

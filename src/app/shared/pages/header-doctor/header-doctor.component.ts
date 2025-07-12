@@ -62,13 +62,6 @@ export class HeaderDoctorComponent {
       this.router.navigate(['/login']);
     }
   }
-
-
-
-
-
-
-
   toggleDarkMode(): void {
     this.darkModeService.toggle();
     this.isDarkMode = this.darkModeService.current;

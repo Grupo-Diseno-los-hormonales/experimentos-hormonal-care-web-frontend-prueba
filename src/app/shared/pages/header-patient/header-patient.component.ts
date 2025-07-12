@@ -11,6 +11,8 @@ import {CommonModule} from "@angular/common";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {LanguageSwitcherComponent} from "../../components/language-switcher/language-switcher.component";
 import {DarkModeService} from "../../services/dark-mode.service";
+import {MatIcon} from "@angular/material/icon";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-header-patient',
@@ -25,7 +27,9 @@ import {DarkModeService} from "../../services/dark-mode.service";
     MatToolbarModule,
     MatButtonModule,
     TranslateModule,
- LanguageSwitcherComponent
+    LanguageSwitcherComponent,
+    MatIcon,
+    MatTooltip
   ]
 })
 export class HeaderPatientComponent implements OnInit {
@@ -56,6 +60,10 @@ export class HeaderPatientComponent implements OnInit {
     this.isDarkMode=this.darkModeService.current;
 
 }
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+    this.isDarkMode = this.darkModeService.current;
+  }
   changeLang(lang: string): void {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);

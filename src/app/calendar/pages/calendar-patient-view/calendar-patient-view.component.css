@@ -3,169 +3,136 @@
   margin-top: 64px; /* altura real de tu <mat-toolbar> */
 }
 /* ==== CONTENEDOR GENERAL ==== */
+/* ===== ESTRUCTURA GENERAL ===== */
 .calendar-container {
   display: flex;
   flex-direction: column;
-  background-color: #f1e7f3;
-  height: calc(100vh - 64px);
-  font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  min-height: calc(100vh - 64px); /* resta la altura del header */
 }
 
-/* ==== HEADER ==== */
-.calendar-header {
-  background-color: #a48eb8;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 2rem;
-}
-
-.logo {
-  height: 40px;
-}
-
-.button {
-  background: white;
-  color: #5a4a6f;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* ==== MAIN: SIDEBAR + CALENDARIO ==== */
 .calendar-main {
   display: flex;
+  flex-direction: row;
   flex: 1;
-  padding: 1rem;
-  gap: 1.5rem;
 }
 
-/* ==== SIDEBAR ==== */
+/* ===== SIDEBAR ===== */
 .calendar-sidebar {
   width: 280px;
-  min-width: 240px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-right: 1px solid #ddd;
 }
 
-.calendar-picker {
-  width: 100%;
+:host-context(.dark-mode) .calendar-sidebar {
+  background-color: #1e1d2d;
+  border-color: #333;
 }
 
-.filter-section {
-  background: #c3b0d9;
-  padding: 1rem;
-  border-radius: 10px;
+/* ===== MAT FORM FIELD (Date Picker) ===== */
+::ng-deep .calendar-picker .mat-form-field-flex {
+  background-color: #fff;
 }
 
+:host-context(.dark-mode) ::ng-deep .calendar-picker .mat-form-field-flex {
+  background-color: #2c2c3e;
+  color: white;
+}
+
+:host-context(.dark-mode) ::ng-deep .mat-form-field-label {
+  color: #ccc;
+}
+
+:host-context(.dark-mode) ::ng-deep input.mat-input-element {
+  color: white;
+}
+
+/* ===== FILTROS ===== */
 .filter-title {
   font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-weight: 600;
   cursor: pointer;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #4a148c;
+}
+
+:host-context(.dark-mode) .filter-title {
+  color: #e0cfff;
 }
 
 .checkbox-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
-/* ==== CALENDARIO PRINCIPAL ==== */
+:host-context(.dark-mode) ::ng-deep .mat-checkbox-label {
+  color: white;
+}
+
+/* ===== CALENDARIO PRINCIPAL ===== */
 .calendar-grid {
   flex: 1;
-  padding: 1rem;
-  overflow-x: auto;
-  background-color: #f5e9fb;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  background-color: #fafafa;
+  color: #333;
+}
+
+:host-context(.dark-mode) .calendar-grid {
+  background-color: #1a1925;
+  color: #f0f0f0;
 }
 
 .calendar-grid h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  color: #4a3c5f;
+  margin-bottom: 16px;
+  color: #4a148c;
 }
 
-/* ==== GOOGLE FULLCALENDAR EMBED ==== */
+:host-context(.dark-mode) .calendar-grid h2 {
+  color: #b388ff;
+}
+
+/* ===== FULLCALENDAR ===== */
 ::ng-deep .fc {
-  font-family: 'Segoe UI', sans-serif;
   background-color: white;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 10px;
 }
 
-::ng-deep .fc-toolbar-title {
-  font-size: 1.3rem;
-  color: #4a3c5f;
+:host-context(.dark-mode) ::ng-deep .fc {
+  background-color: #2c2c3e;
+  color: white;
 }
 
-::ng-deep .fc-button {
-  background-color: #a48eb8 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  font-weight: bold !important;
+:host-context(.dark-mode) ::ng-deep .fc-daygrid-day-number {
+  color: #ddd;
 }
 
-::ng-deep .fc-button:hover {
-  background-color: #8d70a5 !important;
+:host-context(.dark-mode) ::ng-deep .fc-event {
+  background-color: #7e57c2;
+  border-color: #7e57c2;
 }
 
-/* ==== EVENTOS ADICIONALES LISTADOS ==== */
+/* ===== LISTA DE EVENTOS ===== */
 .events-list {
-  margin-top: 2rem;
-  background: #f6ecfb;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #ede7f6;
+  border-radius: 8px;
+}
+
+:host-context(.dark-mode) .events-list {
+  background-color: #292840;
+  color: #f3e5f5;
 }
 
 .events-list ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
 }
 
 .events-list li {
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
-
-/* ==== RESPONSIVE ==== */
-@media (max-width: 900px) {
-  .calendar-main {
-    flex-direction: column;
-  }
-
-  .calendar-sidebar {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .calendar-picker,
-  .filter-section {
-    flex: 1 1 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .calendar-grid h2 {
-    font-size: 1.2rem;
-  }
-
-  ::ng-deep .fc-toolbar-title {
-    font-size: 1.1rem;
-  }
-
-  ::ng-deep .fc-button {
-    font-size: 0.85rem !important;
-    padding: 0.4rem 0.6rem !important;
-  }
+  margin-bottom: 12px;
 }

@@ -7,7 +7,14 @@
   width: 100%;
   display: block;
 }
+mat-icon {
+  font-size: 24px;
+  color: #333;
+}
 
+:host-context(.dark-mode) mat-icon {
+  color: black;
+}
 /* Estilo general del toolbar */
 mat-toolbar {
   background-color: #A788AB;
@@ -19,7 +26,10 @@ mat-toolbar {
   margin: 0 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
-
+:host-context(.dark-mode) mat-toolbar {
+  background-color: #1c1b29;
+  color: black;
+}
 /* Contenedor del logo */
 .logo-container {
   display: flex;
@@ -40,7 +50,9 @@ mat-toolbar {
   letter-spacing: 1px;
   color: #fff;
 }
-
+:host-context(.dark-mode) .app-title {
+  color: #e0cfff;
+}
 /* Botones de navegación */
 .nav-button {
   margin-left: 24px;
@@ -60,7 +72,9 @@ mat-toolbar {
   color: #7B2CBF !important;
   box-shadow: 0 2px 10px rgba(123,44,191,0.10);
 }
-
+:host-context(.dark-mode) .nav-button.active-button {
+  background-color: #5e4a77;
+}
 .active-button {
   background-color: #fff !important;
   color: #7B2CBF !important;
@@ -79,13 +93,17 @@ mat-toolbar {
   width: 28px;
   display: block;
 }
-
+:host-context(.dark-mode) .option-icon {
+  filter: brightness(0) invert(1); /* ⚠️ cambia íconos PNG a blanco */
+}
 .option-label {
   font-size: 15px;
   line-height: 1.1;
   font-weight: 500;
 }
-
+:host-context(.dark-mode) .option-label {
+  color: black;
+}
 /* Available Doctors */
 button[mat-raised-button][color="accent"] {
   font-weight: 600;
